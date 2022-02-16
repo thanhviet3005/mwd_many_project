@@ -1,0 +1,88 @@
+SSO_project/action/ActiveAccountA.java
+ SSO_project.action.ActiveAccountA
+SSO_project/page_object/ForgotPwPO.java
+ SSO_project.page_object.ForgotPwPO
+SSO_project/temp.java
+ SSO_project.temp
+SSO_admin_portal/temp2.java
+ SSO_admin_portal.temp2
+common/TimeUtil.java
+ common.TimeUtil
+general_action/GeneralA.java
+ general_action.GeneralA
+common/ExtentReportManager.java
+ common.ExtentReportManager
+SSO_project/page_object/ThankYouPO.java
+ SSO_project.page_object.ThankYouPO
+SSO_project/page_object/TestArchitectPO.java
+ SSO_project.page_object.TestArchitectPO
+SSO_project/page_object/ActiveAccountPO.java
+ SSO_project.page_object.ActiveAccountPO
+SSO_project/entity/UserAccount.java
+ SSO_project.entity.UserAccount
+common/Constant.java
+ common.Constant
+SSO_project/action/ForgotPwA.java
+ SSO_project.action.ForgotPwA
+SSO_admin_portal/action/NavigateA.java
+ SSO_admin_portal.action.NavigateA
+SSO_admin_portal/action/implement_action/NavigateImpA.java
+ SSO_admin_portal.action.implement_action.NavigateImpA
+SSO_project/page_object/SendActivePO.java
+ SSO_project.page_object.SendActivePO
+SSO_project/page_object/ChangePwPO.java
+ SSO_project.page_object.ChangePwPO
+SSO_project/page_object/LoginPO.java
+ SSO_project.page_object.LoginPO
+SSO_project/action/SignUpA.java
+ SSO_project.action.SignUpA
+base_test/BaseTest.java
+ base_test.BaseTest
+SSO_admin_portal/page_object/GeneralPO.java
+ SSO_admin_portal.page_object.GeneralPO
+SSO_project/action/NavigateA.java
+ SSO_project.action.NavigateA
+SSO_project/page_object/SignUpPO.java
+ SSO_project.page_object.SignUpPO
+common/URL.java
+ common.URL
+general_action/implement/GeneralImpA.java
+ general_action.implement.GeneralImpA
+SSO_project/action/implement_action/NavigateImpA.java
+ SSO_project.action.implement_action.NavigateImpA
+SSO_project/action/LoginA.java
+ SSO_project.action.LoginA
+SSO_project/action/implement_action/ForgotPwImpA.java
+ SSO_project.action.implement_action.ForgotPwImpA
+SSO_project/action/implement_action/LoginImpA.java
+ SSO_project.action.implement_action.LoginImpA
+SSO_project/action/implement_action/ActiveAccountImpA.java
+ SSO_project.action.implement_action.ActiveAccountImpA
+base_test/InitialSetup.java
+ base_test.InitialSetup
+SSO_admin_portal/action/implement_action/AddUserImpA.java
+ SSO_admin_portal.action.implement_action.AddUserImpA
+SSO_project/test_case/ActiveCodeTc.java
+ SSO_project.test_case.ActiveCodeTc
+common/LogReport.java
+ common.LogReport
+SSO_admin_portal/test_case/AddUserTc.java
+ SSO_admin_portal.test_case.AddUserTc
+SSO_admin_portal/page_object/UserManagementPO.java
+ SSO_admin_portal.page_object.UserManagementPO
+SSO_project/test_case/LoginTc.java
+ SSO_project.test_case.LoginTc
+common/SSOUtilA.java
+ common.SSOUtilA
+SSO_project/test_case/ForgotPwTc.java
+ SSO_project.test_case.ForgotPwTc
+common/SSOUtilImpA.java
+ common.SSOUtilImpA
+SSO_project/test_case/SignUpTc.java
+ SSO_project.test_case.SignUpTc
+SSO_admin_portal/action/AddUserA.java
+ SSO_admin_portal.action.AddUserA
+SSO_project/action/implement_action/SignUpImpA.java
+ SSO_project.action.implement_action.SignUpImpA
+SSO_project/data_test/DataTestSSO.java
+ SSO_project.data_test.DataTestSSO

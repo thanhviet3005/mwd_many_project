@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <!--    <test name="FirstTest" verbose="1">-->
+    <test name="FirstTest">
+        <parameter name="myBrowser" value="chrome" />
+        <classes>
+            <class name="base_test.InitialSetup"/>
+<!--            <class name="SSO_project.test_case.ForgotPwTc"/>-->
+<!--            <class name="SSO_project.test_case.LoginTc"/>-->
+<!--            <class name="SSO_project.temp"/>-->
+<!--            <class name="SSO_project.test_case.SignUpTc"/>-->
+<!--            <class name="SSO_project.test_case.ActiveCodeTc"/>-->
+            <class name="SSO_admin_portal.test_case.AddUserTc"/>
+<!--            <class name="SSO_admin_portal.temp2"/>-->
+        </classes>
+    </test>
+</suite>
