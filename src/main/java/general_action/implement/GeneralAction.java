@@ -1,11 +1,10 @@
 package general_action.implement;
 
+import common.*;
 import general_action.IGeneralAction;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
-import common.ExtentReportManager;
-import common.LogReport;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,20 +12,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class GeneralImpA implements IGeneralAction {
+public class GeneralAction implements IGeneralAction {
     /**
      * 1. Purpose: Verify a text message content on the page as the designed, and the result is logged to a particular step on
      * report.
      */
     public void verifyTextDisplay(String expectedText, WebElement webElement, boolean isInputField) {
         if (isInputField) {
-            verifyTextAndLogResult(expectedText, webElement.getAttribute("value"));
+            verifyTextIsTheSame(expectedText, webElement.getAttribute("value"));
         } else {
-            verifyTextAndLogResult(expectedText, webElement.getText());
+            verifyTextIsTheSame(expectedText, webElement.getText());
         }
     }
 
-    private void verifyTextAndLogResult(String expectedText, String actualText){
+    public void verifyTextIsTheSame(String expectedText, String actualText){
         if (expectedText.equals(actualText)) {
             System.out.println("Test passed");
             ExtentReportManager.subStep.log(Status.PASS, MarkupHelper.createLabel("Expected result: " + expectedText + "<br>" +
@@ -60,7 +59,7 @@ public class GeneralImpA implements IGeneralAction {
                     ExtentColor.GREEN));
             LogReport.logImage64ToReport(true);
         } else {
-            ExtentReportManager.subStep.log(Status.FAIL, MarkupHelper.createLabel(elementName + " does not display",
+            ExtentReportManager.subStep.log(Status.FAIL, MarkupHelper.createLabel(elementName + " hide",
                     ExtentColor.ORANGE));
             LogReport.logImage64ToReport(false);
         }
@@ -68,9 +67,8 @@ public class GeneralImpA implements IGeneralAction {
 
     @Override
     public void verifyElementHidden(By by, WebDriver webDriver, String elementName) {
-        boolean isHide = !webDriver.findElements(by).isEmpty() && !webDriver.findElement(by).isDisplayed();
-        if (webDriver.findElements(by).isEmpty() || isHide){
-            ExtentReportManager.subStep.log(Status.PASS, MarkupHelper.createLabel(elementName + " does not display",
+        if (webDriver.findElements(by).isEmpty()){
+            ExtentReportManager.subStep.log(Status.PASS, MarkupHelper.createLabel(elementName + " hide",
                     ExtentColor.GREEN));
             LogReport.logImage64ToReport(true);
         }else {
@@ -91,9 +89,9 @@ public class GeneralImpA implements IGeneralAction {
 
     @Override
     public void setupWebdriverTimeOut(WebDriver webDriver) {
-        webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().pageLoadTimeout(240, TimeUnit.SECONDS);
-        webDriver.manage().timeouts().setScriptTimeout(20, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
     }
 
     @Override
@@ -102,5 +100,8 @@ public class GeneralImpA implements IGeneralAction {
         webDriverWait.until(ExpectedConditions.visibilityOf(webElement));
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
+
+
+
 
 }

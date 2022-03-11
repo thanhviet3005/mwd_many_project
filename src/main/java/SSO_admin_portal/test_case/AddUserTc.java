@@ -11,7 +11,7 @@ import SSO_project.entity.UserAccount;
 import base_test.BaseTest;
 import common.*;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import org.testng.annotations.Test;
 
 public class AddUserTc extends BaseTest {
@@ -40,7 +40,7 @@ public class AddUserTc extends BaseTest {
         IAddUserAction addUserA = new AddUserImpA();
         GeneralPO generalPO = new GeneralPO(Constant.webDriver);
         UserManagementPO userManagementPO = new UserManagementPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         DataTestSSO dataTestSSO = new DataTestSSO();
         UserAccount userAccount = dataTestSSO.inactivated_SSO_account;
         ISSOUtilA utilA = new SSOUtilImpA();
@@ -117,7 +117,7 @@ public class AddUserTc extends BaseTest {
         INavigateAction navigateA = new NavigateImpA();
         GeneralPO generalPO = new GeneralPO(Constant.webDriver);
         UserManagementPO userPO = new UserManagementPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ISSOUtilA utilA = new SSOUtilImpA();
         try {
             LogReport.logMainStep("1. Open the pop up 'Add new user'");
@@ -183,7 +183,7 @@ public class AddUserTc extends BaseTest {
         INavigateAction navigateA = new NavigateImpA();
         GeneralPO generalPO = new GeneralPO(Constant.webDriver);
         UserManagementPO userPO = new UserManagementPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ISSOUtilA utilA = new SSOUtilImpA();
 
         try {
@@ -254,7 +254,7 @@ public class AddUserTc extends BaseTest {
         INavigateAction navigateA = new NavigateImpA();
         GeneralPO generalPO = new GeneralPO(Constant.webDriver);
         UserManagementPO userPO = new UserManagementPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
 
         try {
             LogReport.logMainStep("1. Open the pop up 'Add new user'");

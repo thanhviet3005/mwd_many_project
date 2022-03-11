@@ -37,6 +37,8 @@ public class LoginPO {
     public WebElement labelEmailErrorMsg;
     @FindBy(xpath = "//label[@for='password']/following-sibling::label[@class='sc-pfmka2-0 gTWVky']")
     public WebElement labelPwErrorMsg;
+    @FindBy(xpath = "//label[@for='password']//following-sibling::div//button[@type='button']")
+    public WebElement btnShowPw;
 
     public By labelEmailErrorMsgBy = By.xpath("//label[@for='email']/following-sibling::label[@class='sc-pfmka2-0 gTWVky']");
 

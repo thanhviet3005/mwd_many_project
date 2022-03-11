@@ -3,14 +3,14 @@ package SSO_project.action.implement_action;
 import SSO_project.action.IActiveAccountAction;
 import SSO_project.page_object.ActiveAccountPO;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import org.openqa.selenium.WebDriver;
 
 public class ActiveAccountAction implements IActiveAccountAction {
 
     @Override
     public void checkUIActiveAccountPage(WebDriver webDriver, ActiveAccountPO activeAccount) {
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         generalA.verifyElementEnable(activeAccount.inputActiveCode, "The input field 'Active code'");
         generalA.verifyElementEnable(activeAccount.btnActiveAccount, "The button 'Activate your account'");
         generalA.verifyElementEnable(activeAccount.aHere, "The link 'here'");

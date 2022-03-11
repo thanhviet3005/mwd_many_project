@@ -8,10 +8,10 @@ public class ChangePasswordAction implements IChangePwAction {
     @Override
     public void checkErrorMsgOfChangePwPage(ChangePwPO changePwPO, UserAccount userAccount, String newPw, String confirmPw) {
         changePwPO.inputOldPw.sendKeys(userAccount.getPassword());
-        changePwPO.btnShowOldPw.click();
         changePwPO.inputNewPw.sendKeys(newPw);
-        changePwPO.btnShowNewPw.click();
         changePwPO.inputConfirmPw.sendKeys(confirmPw);
+        changePwPO.btnShowOldPw.click();
+        changePwPO.btnShowNewPw.click();
         changePwPO.btnShowConfirmPw.click();
         changePwPO.h1Title.click();
     }

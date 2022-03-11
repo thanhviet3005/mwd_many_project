@@ -6,7 +6,7 @@ import SSO_project.action.implement_action.ForgotPasswordAction;
 import SSO_project.page_object.LoginPO;
 import SSO_project.page_object.TestArchitectPO;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import SSO_project.action.implement_action.NavigateAction;
 import SSO_project.data_test.DataTestSSO;
 import SSO_project.page_object.ForgotPwPO;
@@ -71,11 +71,11 @@ public class ForgotPwTc extends BaseTest {
             dataProviderClass = DataTestSSO.class,
             dataProvider = "getDataToCheckFieldEmail")
     public void TC02_Verifying_the_error_messages_display_after_entering_the_invalid_emails
-    (String invalidEmail, String errorMessage) {
+    (String email, String errorMessage) {
         System.out.println("Test case 02: Verifying the error messages display proper after entering the invalid emails");
         INavigateAction navigateA = new NavigateAction();
         IForgotPwAction forgotPwA = new ForgotPasswordAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ForgotPwPO forgotPwPO = new ForgotPwPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
@@ -86,20 +86,21 @@ public class ForgotPwTc extends BaseTest {
             LogReport.logSubStep("Select the hyper link 'Forgot password?'");
             navigateA.goToForgotPasswordPage(testArchitectPO, loginPO);
 
-            LogReport.logMainStep("2. Input the invalid emails, then press the key 'Enter', eg: " + invalidEmail);
-            if (invalidEmail.equals("")){
+            LogReport.logMainStep("2. Input the invalid emails, then press the key 'Enter', eg: " + email);
+            if (email.equals("")){
                 LogReport.logSubStep("Enter an empty text to the field 'Email'");
             }else {
-                LogReport.logSubStep("Enter an invalid email to the field 'Email', eg: " + invalidEmail);
+                LogReport.logSubStep("Enter an invalid email to the field 'Email', eg: " + email);
             }
-            forgotPwA.submitRequestGetPassword(forgotPwPO, invalidEmail);
+            forgotPwA.submitRequestGetPassword(forgotPwPO, email);
 
             LogReport.logMainStep("Step 3: Verifying the error message display below the field 'Email'");
-            if(!invalidEmail.startsWith(" ")){
-                generalA.verifyTextDisplay(errorMessage, forgotPwPO.labelErrorEmail, false);
+            generalA.verifyTextDisplay(errorMessage, forgotPwPO.labelErrorEmail, false);
+            if(email.startsWith(" ")){
+                generalA.verifyTextDisplay(email.trim(), forgotPwPO.inputEmail, true);
+                generalA.verifyElementHidden(forgotPwPO.svgIconWarningEmailBy, Constant.webDriver, "The icon 'Warning'");
             }else {
-                generalA.verifyElementHidden(forgotPwPO.labelErrorEmailBy, Constant.webDriver, "The label error for the field 'Email'");
-                generalA.verifyTextDisplay(invalidEmail.trim(), forgotPwPO.inputEmail, true);
+                generalA.verifyElementDisplayed(forgotPwPO.svgIconWarningEmail, "The icon 'Warning'");
             }
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -128,7 +129,7 @@ public class ForgotPwTc extends BaseTest {
         INavigateAction navigateA = new NavigateAction();
         DataTestSSO dataTest = new DataTestSSO();
         IForgotPwAction forgotPwA = new ForgotPasswordAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         ForgotPwPO forgotPwPO = new ForgotPwPO(Constant.webDriver);
@@ -140,7 +141,8 @@ public class ForgotPwTc extends BaseTest {
             navigateA.goToForgotPasswordPage(testArchitectPO, loginPO);
 
             LogReport.logMainStep("2. Submit request with a valid email successful");
-            LogReport.logSubStep("Enter an registered email to the field 'Email', eg: " + dataTest.inactivated_SSO_account);
+            LogReport.logSubStep("Enter an registered email to the field 'Email', eg: "
+                    + dataTest.inactivated_SSO_account.getEmail());
             LogReport.logSubStep("Select the button 'Submit'");
             forgotPwA.submitRequestGetPassword(forgotPwPO, dataTest.inactivated_SSO_account.getEmail());
 

@@ -18,19 +18,19 @@ public class ChangePwPO {
     public WebElement labelOldPw;
     @FindBy(id = "oldPassword")
     public WebElement inputOldPw;
-    @FindBy(xpath = "//label[@for='oldPassword']//parent::div[@class='sc-rs2qxh-5 hHUjrq']//child::button[@type='button']")
+    @FindBy(xpath = "//label[@for='oldPassword']//following-sibling::div//button[@type='button']")
     public WebElement btnShowOldPw;
     @FindBy(css = "label[for='password']")
     public WebElement labelNewPw;
     @FindBy(id = "password")
     public WebElement inputNewPw;
-    @FindBy(xpath = "//label[@for='password']//parent::div[@class='sc-rs2qxh-5 hHUjrq']//child::button[@type='button']")
+    @FindBy(xpath = "//label[@for='password']//following-sibling::div//button[@type='button']")
     public WebElement btnShowNewPw;
     @FindBy(css = "label[for='confirm']")
     public WebElement labelConfirmPw;
     @FindBy(id = "confirm")
     public WebElement inputConfirmPw;
-    @FindBy(xpath = "//label[@for='confirm']//parent::div[@class='sc-rs2qxh-5 hHUjrq']//child::button[@type='button']")
+    @FindBy(xpath = "//label[@for='confirm']//following-sibling::div//button[@type='button']")
     public WebElement btnShowConfirmPw;
     @FindBy(css = "button[type='submit']")
     public WebElement btnSubmit;

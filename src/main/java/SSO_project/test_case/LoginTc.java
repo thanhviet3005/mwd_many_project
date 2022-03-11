@@ -3,7 +3,7 @@ package SSO_project.test_case;
 import SSO_project.action.ILoginAction;
 import SSO_project.action.INavigateAction;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import SSO_project.action.implement_action.LoginAction;
 import SSO_project.action.implement_action.NavigateAction;
 import SSO_project.data_test.DataTestSSO;
@@ -71,13 +71,12 @@ public class LoginTc extends BaseTest {
             description = "Verify the error messages display when login with invalid accounts",
             dataProviderClass = DataTestSSO.class,
             dataProvider = "getDataToTestLoginPage")
-    public void TC02_Verify_the_error_messages_display_when_signing_in_by_an_invalid_account(String email,
-                                                                                             String password,
-                                                                                             String errorMsgExpected) {
+    public void TC02_Verify_the_error_messages_display_when_signing_in_by_an_invalid_account
+    (String email, String password, String errorMsgExpected) {
         System.out.println("Test case 02: Verify the error messages display when signing in by an invalid account");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         DataTestSSO dataTest = new DataTestSSO();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
@@ -133,7 +132,7 @@ public class LoginTc extends BaseTest {
         System.out.println("Test case 03: Verify login successful with an account already in use");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         try {
@@ -184,7 +183,7 @@ public class LoginTc extends BaseTest {
         System.out.println("Test case 04: Verify the account is still 'login' after re-opening page 'Home' on the new tab");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         try {
@@ -224,8 +223,7 @@ public class LoginTc extends BaseTest {
     }
 
     /**
-     * NOTES:  At the step 4, the auto bot is prevented by the recaptcha 3 so that this case should do by the manually.
-     * This source code should be reference.
+     * This source code should be reference, owing to the featured log in with option 'Remember me' does not affective with auto
      * Test case 05: Verify the account name displays in the new window after login with option 'Remember me'
      * <p>
      * 1. Login successfully, then close this window
@@ -243,7 +241,7 @@ public class LoginTc extends BaseTest {
      *  + Click the button 'Login'
      * 3. Verify the account name still displays on the navigation bar
      */
-    @Test(priority = 5,
+    @Test(priority = 5, enabled = false,
             testName = "Test case 05: Verify the account name displays in the new window after login with option 'Remember me'",
             description = "Verify the account name displays after opening the new window without signing in again",
             dataProviderClass = DataTestSSO.class,
@@ -251,7 +249,7 @@ public class LoginTc extends BaseTest {
     public void TC05_Verify_the_account_name_displays_in_the_new_window_after_login_with_option_Remember_me(UserAccount userAccount) {
         System.out.println("Test case 05: Verify the account name displays in the new window after login with option 'Remember me'");
         INavigateAction navigateA = new NavigateAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ILoginAction loginA = new LoginAction();
         try {
             LogReport.logMainStep("1. Login successfully, then close this window");
