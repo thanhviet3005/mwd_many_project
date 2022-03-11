@@ -290,6 +290,36 @@ public class LeaveAMessageTC extends BaseTest {
         }
     }
 
+//    /**
+//     * Test case 05: Verify the error message displays proper after selecting the attached file
+//     * 1. Go to the page 'Leave a message'
+//     *  + Open and enter the url http://frontend.taportal.com:8080/user to the browser address
+//     *  + Press the key 'Enter'
+//     *  + Select the tab 'Leave a message'
+//     *
+//     *
+//     *
+//     *
+//     * 2. Enter a text value to the field 'Phone'
+//     * + Enter a text value to the field 'Phone'
+//     * + Click any points on the screen, eg: Click the title page
+//     * 3. Verify the error message of the field 'email' displays proper
+//     * 4. Repeat step 2, 3 with these phone values
+//     * + it is empty values
+//     * + it has 10-15 letters, however that consists a/ some letters
+//     * -> Expected: The error message displays: Please enter a valid phone number
+//     * + it has 10-15 letters, however that consists a/ a few special letters,
+//     * -> Expected: The error message displays: Please enter a valid phone number
+//     * + less than 10 characters
+//     * -> Expected: The error message displays: Phone numbers must be from 10 to 15 characters.
+//     * + greater than 15 characters
+//     * -> Expected: The error message displays: Phone numbers must be from 10 to 15 characters.
+//     * + it has 10-15 numbers, however, it does not has the letter '+' at the beginning
+//     * -> Expected: The error message does not appear
+//     * + it has 10-15 numbers, and also has the letter '+' at the beginning
+//     * -> Expected: The error message does not appear
+//     */
+
 
 
 

@@ -66,6 +66,9 @@ public class LeaveAMessagePO {
     public WebElement labelErrorMsgPhone;
     public By labelErrorMsgPhoneBy = By.xpath("//input[@id='phone']//parent::div//following-sibling::label");
 
+    @FindBy(xpath = "//button[@title='Close']//parent::div//preceding-sibling::div[normalize-space(text())]")
+    public WebElement divConfirmMsg;
+
     public By svgIconWarningEmailBy = By.xpath("//input[@id='email']//following-sibling::*[name() = 'svg' and @data-icon='exclamation-triangle']");
     public By labelErrorMsgEmailBy = By.xpath("//input[@id='email']//parent::div//following-sibling::label");
 
