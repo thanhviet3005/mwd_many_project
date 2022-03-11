@@ -11,4 +11,11 @@ public class NavigateAction implements INavigateAction {
         webDriver.get(URL.frontEndTaUserPortarUrl);
         userPortalPO.spanLeaveAMessage.click();
     }
+
+    @Override
+    public void goToChangePasswordPage(WebDriver webDriver, UserPortalPO userPortalPO) {
+        webDriver.get(URL.frontEndTaUserPortarUrl);
+        userPortalPO.svgAccountMenu.click();
+        userPortalPO.aChangePw.click();
+    }
 }

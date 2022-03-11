@@ -42,14 +42,14 @@ projects/TA_web/page_object/temp_2.java
  projects.TA_web.page_object.temp_2
 common/URL.java
  common.URL
-projects/TA_web/action/implement_action/NavigateAction.java
- projects.TA_web.action.implement_action.NavigateAction
+SSO_project/action/implement_action/LoginAction.java
+ SSO_project.action.implement_action.LoginAction
 SSO_admin_portal/action/IAddUserAction.java
  SSO_admin_portal.action.IAddUserAction
 SSO_project/action/INavigateAction.java
  SSO_project.action.INavigateAction
-projects/TA_web/page_object/user_portal/LeaveAMessagePO.java
- projects.TA_web.page_object.user_portal.LeaveAMessagePO
+base_test/BaseTest.java
+ base_test.BaseTest
 common/ISSOUtilA.java
  common.ISSOUtilA
 SSO_project/action/IForgotPwAction.java
@@ -60,8 +60,8 @@ SSO_project/action/implement_action/ResetPasswordAction.java
  SSO_project.action.implement_action.ResetPasswordAction
 general_action/implement/GeneralSearchingAction.java
  general_action.implement.GeneralSearchingAction
-projects/TA_web/action/INavigateAction.java
- projects.TA_web.action.INavigateAction
+general_action/implement/GeneralAction.java
+ general_action.implement.GeneralAction
 projects/Pre_Test_Sele_2/page_object/GoogleHomePO.java
  projects.Pre_Test_Sele_2.page_object.GoogleHomePO
 SSO_project/action/IActiveAccountAction.java
@@ -104,45 +104,59 @@ common/SSOUtilImpA.java
  common.SSOUtilImpA
 SSO_project/page_object/SignUpPO.java
  SSO_project.page_object.SignUpPO
-projects/TA_web/page_object/user_portal/UserPortalPO.java
- projects.TA_web.page_object.user_portal.UserPortalPO
+SSO_project/action/implement_action/ForgotPasswordAction.java
+ SSO_project.action.implement_action.ForgotPasswordAction
 common/TimeUtil.java
  common.TimeUtil
 SSO_admin_portal/page_object/GeneralPO.java
  SSO_admin_portal.page_object.GeneralPO
 SSO_project/action/implement_action/SignUpAction.java
  SSO_project.action.implement_action.SignUpAction
-SSO_project/test_case/ActiveCodeTc.java
- SSO_project.test_case.ActiveCodeTc
+SSO_project/action/implement_action/ActiveAccountAction.java
+ SSO_project.action.implement_action.ActiveAccountAction
 projects/Pre_Test_Sele_2/test_case/SearchingResultTc.java
  projects.Pre_Test_Sele_2.test_case.SearchingResultTc
+projects/TA_web/action/implement_action/NavigateAction.java
+ projects.TA_web.action.implement_action.NavigateAction
+SSO_project/test_case/ActiveCodeTc.java
+ SSO_project.test_case.ActiveCodeTc
+projects/TA_web/page_object/user_portal/ChangePasswordPO.java
+ projects.TA_web.page_object.user_portal.ChangePasswordPO
 SSO_admin_portal/test_case/AddUserTc.java
  SSO_admin_portal.test_case.AddUserTc
+projects/TA_web/action/implement_action/EditProfileAction.java
+ projects.TA_web.action.implement_action.EditProfileAction
 SSO_project/temp.java
  SSO_project.temp
+projects/TA_web/action/IChangePasswordAction.java
+ projects.TA_web.action.IChangePasswordAction
 SSO_project/test_case/ResetPasswordTc.java
  SSO_project.test_case.ResetPasswordTc
+projects/TA_web/action/implement_action/ChangePasswordAction.java
+ projects.TA_web.action.implement_action.ChangePasswordAction
+projects/TA_web/action/INavigateAction.java
+ projects.TA_web.action.INavigateAction
 SSO_project/test_case/ChangePwTc.java
  SSO_project.test_case.ChangePwTc
 SSO_project/test_case/LoginTc.java
  SSO_project.test_case.LoginTc
+projects/TA_web/page_object/user_portal/LeaveAMessagePO.java
+ projects.TA_web.page_object.user_portal.LeaveAMessagePO
+projects/TA_web/test_case/user_portal/EditProfileTc.java
+ projects.TA_web.test_case.user_portal.EditProfileTc
+projects/TA_web/page_object/user_portal/EditProfilePO.java
+ projects.TA_web.page_object.user_portal.EditProfilePO
 SSO_project/test_case/ForgotPwTc.java
  SSO_project.test_case.ForgotPwTc
-base_test/BaseTest.java
- base_test.BaseTest
 SSO_project/test_case/SignUpTc.java
  SSO_project.test_case.SignUpTc
-SSO_project/action/implement_action/ForgotPasswordAction.java
- SSO_project.action.implement_action.ForgotPasswordAction
+projects/TA_web/page_object/user_portal/UserPortalPO.java
+ projects.TA_web.page_object.user_portal.UserPortalPO
 projects/TA_web/test_case/user_portal/LeaveAMessageTC.java
  projects.TA_web.test_case.user_portal.LeaveAMessageTC
-general_action/implement/GeneralAction.java
- general_action.implement.GeneralAction
+projects/TA_web/action/IEditProfileAction.java
+ projects.TA_web.action.IEditProfileAction
 projects/TA_web/data_test/DataTestTAWeb.java
  projects.TA_web.data_test.DataTestTAWeb
 SSO_project/data_test/DataTestSSO.java
  SSO_project.data_test.DataTestSSO
-SSO_project/action/implement_action/ActiveAccountAction.java
- SSO_project.action.implement_action.ActiveAccountAction
-SSO_project/action/implement_action/LoginAction.java
- SSO_project.action.implement_action.LoginAction

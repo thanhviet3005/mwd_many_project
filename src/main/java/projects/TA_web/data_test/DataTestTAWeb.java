@@ -20,6 +20,16 @@ public class DataTestTAWeb extends DataTestSSO {
     public String thMessage = "MESSAGE";
     public String thStatus = "STATUS";
 
+    // page 'Change password'
+    public String h1Title = "Change Password";
+    public String labelPassword = "Password*";
+    public String labelNewPassword = "New password*";
+    public String labelConfirmPw = "Confirm new password*";
+    public String placeholderTextForPw = "Please enter your password";
+    public String placeholderTextForNewPw = "Please enter your new password";
+    public String placeholderTextForConfirmPw = "Please confirm your new password";
+
+
     @DataProvider
     public Object[] getDataForFieldPhone() {
         Object[][] data = new Object[9][2];

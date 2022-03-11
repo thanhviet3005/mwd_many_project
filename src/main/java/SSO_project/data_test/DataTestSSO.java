@@ -49,7 +49,7 @@ public class DataTestSSO {
     // valid phone number keyword
     public String valid_phone_1 = "0909999990";
     public String valid_phone_2 = "+84 0905 231118";
-    public String phone_has_space_at_beginning_ending = " 0905 231 118 ";
+    public String phone_has_space_at_beginning_ending = " +44 905 231118";
 
     // valid first name keyword
     public String name_by_unicode_text = "Khánh らが 123";
@@ -121,9 +121,16 @@ public class DataTestSSO {
     public String error_msg_invalid_email = "Please enter a valid email.";
     public String error_msg_email_no_existing_in_database = "Email not existing in database.";
 
+    // attached file error message
+    public String error_msg_huge_size = "File size must be < 5MB.";
+    public String error_msg_wrong_file_type = "The file must be a file of type: jpeg, jpg, png";
+
     // Register page, the first / last name
     public String error_msg_special_letters_for_name = "Please remove special characters.";
     public String error_msg_long_string = "Please enter no more than 100 characters.";
+
+    // [TA web][TA portal] page Leave a message, success and failed message
+    public String error_msg_send_msg_failed = "The message has been sent unsuccessfully.";
 
     // Login page
     public String error_msg_wrong_email_or_pw = "Incorrect email or password. Please try again!";
