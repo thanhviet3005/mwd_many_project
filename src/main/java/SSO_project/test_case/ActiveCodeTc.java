@@ -17,7 +17,7 @@ import common.ExtentReportManager;
 import common.LogReport;
 import common.SSOUtilImpA;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import org.testng.annotations.Test;
 
 public class ActiveCodeTc extends BaseTest {
@@ -54,7 +54,7 @@ public class ActiveCodeTc extends BaseTest {
         System.out.println("Test case 01: Verify UI items on the page 'Activated account'");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ActiveAccountPO activeAccountPO = new ActiveAccountPO(Constant.webDriver);
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         IActiveAccountAction activeAccountA = new ActiveAccountAction();
@@ -124,7 +124,7 @@ public class ActiveCodeTc extends BaseTest {
         System.out.println("Test case 02: Verify the error message appears clearly after submitting an invalid active code");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ActiveAccountPO activeAccountPO = new ActiveAccountPO(Constant.webDriver);
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         IActiveAccountAction activeAccountA = new ActiveAccountAction();

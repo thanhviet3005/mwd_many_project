@@ -2,7 +2,7 @@ package SSO_project.action.implement_action;
 
 import SSO_project.action.INavigateAction;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import SSO_project.action.ILoginAction;
 import SSO_project.entity.UserAccount;
 import SSO_project.page_object.LoginPO;
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginAction implements ILoginAction {
 
     public void checkLoginPageGUI(LoginPO loginPO) {
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         generalA.verifyElementDisplayed(loginPO.imgLogoLogiGear, "The logo image 'LogiGear'");
         generalA.verifyElementDisplayed(loginPO.h1Title, "The title 'Welcome to LogiGear'");
         generalA.verifyElementDisplayed(loginPO.labelEmail, "The label 'Email*'");
@@ -30,8 +30,9 @@ public class LoginAction implements ILoginAction {
     }
 
     public void loginSSO(LoginPO loginPO, UserAccount userAccount) {
-        loginPO.inputEmail.sendKeys(userAccount.getEmail());
         loginPO.inputPassword.sendKeys(userAccount.getPassword());
+        loginPO.inputEmail.sendKeys(userAccount.getEmail());
+        loginPO.btnShowPw.click();
         loginPO.btnLogin.click();
     }
 
@@ -46,7 +47,7 @@ public class LoginAction implements ILoginAction {
     public void loginWithRememberMe(WebDriver webDriver, UserAccount userAccount) {
         TestArchitectPO testArchitectPO = new TestArchitectPO(webDriver);
         LoginPO loginPO = new LoginPO(webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
 
         // go to the page 'Login'
         webDriver.manage().window().maximize();

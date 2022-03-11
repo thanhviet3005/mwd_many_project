@@ -6,7 +6,6 @@ import org.testng.annotations.DataProvider;
 
 public class DataTestSSO {
     // invalid email keyword
-    public String email_empty = "";
     public String email_missing_symbol = "testlogigear#logigear.com";
     public String email_missing_domainName = "testlogigear@";
     public String email_username_is_missing = "@testlogigear.com";
@@ -50,22 +49,22 @@ public class DataTestSSO {
     // valid phone number keyword
     public String valid_phone_1 = "0909999990";
     public String valid_phone_2 = "+84 0905 231118";
-    public String phone_has_space_at_begining_ending = " +44 7911 1234 ";
+    public String phone_has_space_at_beginning_ending = " 0905 231 118 ";
 
     // valid first name keyword
     public String name_by_unicode_text = "Khánh らが 123";
     public String name_contain_special_char = "Test $@/[~<;`/*-+,./;'[]\\-=_+{}|:<>?`~#%";
-    public String name_extensive_text = "Our codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editor";
+    public String name_extensive_text = "Our codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editorOur codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editor";
     public String name_long_text_display = "Our codeless automation tool allows you to rapidly scale and mai";
 
     public String text_white_space_at_begining_ending = "  TEst    ";
 
     public UserAccount activated_SSO_account = new UserAccount("internal testing only",
-            "please ignored", "qatesting82@yopmail.com", "pass-02468",
+            "please ignored", "qatesting64@yopmail.com", "pass-02468",
             "pass-02468", "Logigear Test", "Logigear", "Uganda", "Abim", "0909999990");
 
     public UserAccount inactivated_SSO_account = new UserAccount("internal testing only", "please ignored",
-            "qatesting95@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
+            "qatesting113@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
 
     // phone number error message
@@ -75,12 +74,12 @@ public class DataTestSSO {
     // valid account, however it is an never register account
     public UserAccount valid_account_all_fields_available = new UserAccount("internal testing only", "please ignored",
             "qatestinglogigear" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss") + "@gmail.com",
-            "pass-2468", "pass-2468", "Logigear Test", "Logigear",
+            "pass-02468", "pass-2468", "Logigear Test", "Logigear",
             "Germany", "Berlin", "0795232226");
 
     public UserAccount valid_account_empty_optional_fields = new UserAccount("internal testing only", "please ignored",
             "qatestinglogigear" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss") + "@gmail.com",
-            "pass-2468", "pass-2468", "", "",
+            "pass-02468", "pass-2468", "", "",
             "", "", "");
 
     // error message for the empty field
@@ -99,7 +98,7 @@ public class DataTestSSO {
     public String error_msg_same_pw = "Your new password is same as your old password. Please use another password.";
     public String success_msg = "Success!";
     public String error_msg_confirm_pw = "Confirm password value must be the same password.";
-    public String error_msg_current_pw_wrong = "Incorrect old password. Please try again.";
+    public String error_msg_current_pw_wrong = "Your current password cannot match";
 
     // Reminder page
     public String textContent = "To verify your identity, a security code has been sent to you. Please check the link in the email or coppy and pass the security code here:";
@@ -129,12 +128,15 @@ public class DataTestSSO {
     // Login page
     public String error_msg_wrong_email_or_pw = "Incorrect email or password. Please try again!";
 
+    // extensive text
+    public String text_284_characters = "Are you looking for a Test Automation tool that can bring all of your team members into a collaborative Automation production process? If so, TestArchitect is a great fit. With TestArchitect, you can leverage a smaller programming staff to support a much larger non-programming staff.";
+
     public DataTestSSO() {
     }
 
     @DataProvider
     public Object[][] getDataToCheckFieldEmail() {
-        Object[][] data = new Object[12][2];
+        Object[][] data = new Object[11][2];
         // row 1, letter '#' instead of '@'
         data[0][0] = email_missing_symbol;
         data[0][1] = error_msg_invalid_email;
@@ -166,11 +168,8 @@ public class DataTestSSO {
         data[9][0] = empty_text;
         data[9][1] = error_msg_empty_field;
         // row 11, email is a valid value, nevertheless, it has never registered before
-        data[10][0] = email_never_register_before;
-        data[10][1] = empty_text;
-        // row 12, email has never registered before
-        data[11][0] = email_white_space_at_begining_and_ending;
-        data[11][1] = empty_text;
+        data[10][0] = email_white_space_at_begining_and_ending;
+        data[10][1] = error_msg_email_no_existing_in_database;
         return data;
     }
 
@@ -362,7 +361,7 @@ public class DataTestSSO {
         data[7][2] = "";
         // row 8, the phone text is valid numbers
         data[8][0] = data[0][0];
-        data[8][1] = phone_has_space_at_begining_ending;
+        data[8][1] = phone_has_space_at_beginning_ending;
         data[8][2] = "";
         return data;
     }
@@ -379,8 +378,8 @@ public class DataTestSSO {
     public Object[] getDataForFieldName() {
         Object[][] data = new Object[4][3];
         // row 1, the texts are long
-        data[0][0] = name_extensive_text;
-        data[0][1] = name_long_text_display;
+        data[0][0] = text_284_characters;
+        data[0][1] = text_284_characters.substring(0, 200);
         data[0][2] = "";
         // row 2, the texts consist white space letters at the beginning and ending places
         data[1][0] = text_white_space_at_begining_ending;
@@ -486,55 +485,56 @@ public class DataTestSSO {
         return data;
     }
 
+    // the maximum number of columns of an 2 ways array is 4
     @DataProvider
     public Object[] getDataToCheckChangePw() {
         Object[][] data = new Object[11][4];
-        // row 1, the password text is empty
+        // row 1, the password text is empty    -> ok
         data[0][0] = inactivated_SSO_account;
         data[0][1] = empty_text;
         data[0][2] = empty_text;
         data[0][3] = error_msg_empty_field;
-        // row 2, the password text is only numbers
+        // row 2, the password text is only numbers     -> ok
         data[1][0] = inactivated_SSO_account;
         data[1][1] = pw_only_number;
-        data[1][2] = data[1][1];
+        data[1][2] = pw_only_number;
         data[1][3] = error_msg_message_pw;
-        // row 3, the password text is only letters
+        // row 3, the password text is only letters     -> ok
         data[2][0] = inactivated_SSO_account;
         data[2][1] = pw_only_string;
-        data[2][2] = data[2][1];
+        data[2][2] = pw_only_string;
         data[2][3] = error_msg_message_pw;
-        // row 4, the password text is less than 8 characters
+        // row 4, the password text is less than 8 characters   -> ok
         data[3][0] = inactivated_SSO_account;
         data[3][1] = pw_not_enough_length;
-        data[3][2] = data[3][1];
-        data[3][3] = error_msg_message_pw;
-        // row 5, the password text is valid and it consist a large number of special letters
+        data[3][2] = pw_not_enough_length;
+        data[3][3] = error_msg_short_Pw;
+        // row 5, the password text is valid and it consist a large number of special letters   -> ok
         data[4][0] = inactivated_SSO_account;
         data[4][1] = pw_contain_special_char;
-        data[4][2] = data[3][1];
+        data[4][2] = pw_contain_special_char;
         data[4][3] = error_msg_message_pw;
-        // row 6, the password text consists a/a few white space letters between other letters
+        // row 6, the password text consists a/a few white space letters between other letters  -> ok
         data[5][0] = inactivated_SSO_account;
         data[5][1] = pw_has_whitespace;
-        data[5][2] = data[3][1];
+        data[5][2] = pw_has_whitespace;
         data[5][3] = error_msg_message_pw;
         // row 7, the password text is valid and it consist a large number of special letters
         data[6][0] = inactivated_SSO_account;
         data[6][1] = pw_valid_strong;
-        data[6][2] = data[3][1];
+        data[6][2] = pw_valid_strong;
         data[6][3] = empty_text;
         // row 8, new password, confirm password are same as the current password
         data[7][0] = activated_SSO_account;
         data[7][1] = activated_SSO_account.getPassword();
-        data[7][2] = data[7][1];
+        data[7][2] = activated_SSO_account.getPassword();
         data[7][3] = error_msg_same_pw;
-        // row 9, new password, confirm password is more than 128 letters
+        // row 9, new password, confirm password are greater than 100 letters
         data[8][0] = inactivated_SSO_account;
         data[8][1] = pw_is_over_128_letters;
-        data[8][2] = data[8][1];
+        data[8][2] = pw_is_over_128_letters;
         data[8][3] = empty_text;
-        // row 10, new password, confirm password is more than 128 letters
+        // row 10, new password, confirm password differences
         data[9][0] = activated_SSO_account;
         data[9][1] = pw_valid_strong;
         data[9][2] = pw_activated_strong;
@@ -607,3 +607,13 @@ public class DataTestSSO {
 
 
 }
+
+/*
+    public UserAccount activated_SSO_account = new UserAccount("internal testing only",
+            "please ignored", "qatesting82@yopmail.com", "pass-02468",
+            "pass-02468", "Logigear Test", "Logigear", "Uganda", "Abim", "0909999990");
+
+    public UserAccount inactivated_SSO_account = new UserAccount("internal testing only", "please ignored",
+            "qatesting95@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
+            "Logigear Test", "Uganda", "Abim", "0909999990");
+ */

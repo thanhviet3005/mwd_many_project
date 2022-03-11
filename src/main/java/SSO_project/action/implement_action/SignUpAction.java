@@ -98,21 +98,25 @@ public class SignUpAction implements ISignUpAction {
 
     @Override
     public void goToFinalForm(SignUpPO signUpPO, UserAccount userAccount) {
+        signUpPO.inputPassword.sendKeys(userAccount.getPassword());
+        signUpPO.inputConfirmPW.sendKeys(userAccount.getConfirmPw());
         signUpPO.inputFirstName.sendKeys(userAccount.getFirstName());
         signUpPO.inputLastName.sendKeys(userAccount.getLastName());
         signUpPO.inputEmail.sendKeys(userAccount.getEmail());
-        signUpPO.inputPassword.sendKeys(userAccount.getPassword());
-        signUpPO.inputConfirmPW.sendKeys(userAccount.getConfirmPw());
+        signUpPO.btnShowPw.click();
+        signUpPO.btnShowConfirmPw.click();
         signUpPO.btnNext.click();
     }
 
     @Override
     public void enterValuesToFirstForm(SignUpPO signUpPO, UserAccount userAccount) {
         signUpPO.inputFirstName.sendKeys(userAccount.getFirstName());
-        signUpPO.inputLastName.sendKeys(userAccount.getLastName());
-        signUpPO.inputEmail.sendKeys(userAccount.getEmail());
         signUpPO.inputPassword.sendKeys(userAccount.getPassword());
         signUpPO.inputConfirmPW.sendKeys(userAccount.getConfirmPw());
+        signUpPO.inputLastName.sendKeys(userAccount.getLastName());
+        signUpPO.inputEmail.sendKeys(userAccount.getEmail());
+        signUpPO.btnShowPw.click();
+        signUpPO.btnShowConfirmPw.click();
     }
 
     @Override

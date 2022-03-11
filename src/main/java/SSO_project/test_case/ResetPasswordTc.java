@@ -12,7 +12,7 @@ import common.ExtentReportManager;
 import common.LogReport;
 import common.SSOUtilImpA;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import org.testng.annotations.Test;
 
 public class ResetPasswordTc extends BaseTest {
@@ -50,7 +50,7 @@ public class ResetPasswordTc extends BaseTest {
     (String newPw, String confirmPw, String errorMsgExpected) {
         System.out.println("Test case 01 : Verify error messages show on proper when entering values on the page 'Reset password'");
         INavigateAction navigateA = new NavigateAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         DataTestSSO dataTestSSO = new DataTestSSO();
         IResetPasswordAction resetPwA = new ResetPasswordAction();
         ResetPasswordPO resetPwPO = new ResetPasswordPO(Constant.webDriver);

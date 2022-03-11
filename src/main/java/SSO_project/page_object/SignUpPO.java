@@ -50,9 +50,9 @@ public class SignUpPO {
     public WebElement labelErrorPw;
     @FindBy(xpath = "//label[@for='new_password_repeat']/following-sibling::label[@class='sc-pfmka2-0 gTWVky']")
     public WebElement labelErrorConfirmedPw;
-    @FindBy(xpath = "//label[@for='new_password']//parent::div[@class='sc-rs2qxh-5 mHTWN']//child::button[@type='button']")
+    @FindBy(xpath = "//label[@for='new_password']//following-sibling::div//button[@type='button']")
     public WebElement btnShowPw;
-    @FindBy(xpath = "//label[@for='new_password_repeat']//parent::div[@class='sc-rs2qxh-5 mHTWN']//child::button[@type='button']")
+    @FindBy(xpath = "//label[@for='new_password_repeat']//following-sibling::div//button[@type='button']")
     public WebElement btnShowConfirmPw;
 
     @FindBy(xpath = "//input[@id='first_name']//following-sibling::*[name() = 'svg' and @data-icon='exclamation-triangle']")

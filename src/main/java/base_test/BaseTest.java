@@ -4,7 +4,7 @@ import com.aventstack.extentreports.Status;
 import common.Constant;
 import common.ExtentReportManager;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +18,7 @@ import java.lang.reflect.Method;
 
 public class BaseTest {
     private static String browserName;
+
     @BeforeSuite
     public void setBeforeSuite() {
         System.out.println("setBeforeSuite");
@@ -68,12 +69,12 @@ public class BaseTest {
                 Constant.webDriver = new EdgeDriver();
                 break;
         }
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         generalA.setupWebdriverTimeOut(Constant.webDriver);
         Constant.webDriver.manage().window().maximize();
 
         System.out.println("setBeforeMethod");
-        System.out.println("method name: " +  method.getName());
+        System.out.println("method name: " + method.getName());
         String testNameFromTestAnnotation = method.getAnnotation(Test.class).testName();
         ExtentReportManager.generalTestResult = ExtentReportManager.extentReports.createTest(testNameFromTestAnnotation);
         String testDescription = method.getAnnotation(Test.class).description();
@@ -89,14 +90,14 @@ public class BaseTest {
         if (result.getStatus() == ITestResult.SKIP) {
             ExtentReportManager.extentTest.log(Status.SKIP, "Test skipped " + result.getThrowable());
         }
-//        ExtentReportManager.extentReports.flush();
+        ExtentReportManager.extentReports.flush();
         Constant.webDriver.close();
     }
 
     @AfterClass
     public void setAfterClass() {
         System.out.println("setAfterClass");
-        ExtentReportManager.extentReports.flush();
+//        ExtentReportManager.extentReports.flush();
     }
 
     @AfterTest
@@ -108,7 +109,10 @@ public class BaseTest {
     @AfterSuite
     public void setAfterSuite() {
         System.out.println("setAfterSuite");
-        Constant.webDriver.quit();
+        if (!BaseTest.browserName.equals("firefox")) {
+            Constant.webDriver.quit();
+        }
+//        Constant.webDriver.manage().deleteAllCookies();
     }
 
 }

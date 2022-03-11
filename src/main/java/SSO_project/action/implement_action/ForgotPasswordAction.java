@@ -4,12 +4,12 @@ import SSO_project.action.IForgotPwAction;
 
 import SSO_project.page_object.ForgotPwPO;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 
 public class ForgotPasswordAction implements IForgotPwAction {
     @Override
     public void checkForgotPwPageGUI(ForgotPwPO forgotPwPO) {
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         generalA.verifyElementDisplayed(forgotPwPO.imgLogoLogiGear, "The logo image 'LogiGear'");
         generalA.verifyElementDisplayed(forgotPwPO.h1Title, "The title of page 'Forgot password'");
         generalA.verifyElementDisplayed(forgotPwPO.labelEmail, "The label 'Email'");

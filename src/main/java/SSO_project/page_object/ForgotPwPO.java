@@ -22,10 +22,13 @@ public class ForgotPwPO {
     public WebElement lnkSignIn;
     @FindBy(css = "label[class='sc-pfmka2-0 gTWVky']")
     public WebElement labelErrorEmail;
+    @FindBy(xpath = "//input[@id='email']//following-sibling::*[name() = 'svg' and @data-icon='exclamation-triangle']")
+    public WebElement svgIconWarningEmail;
     @FindBy(xpath = "//p[contains(text(), 'An reset password link has been sent to you via email.')]")
     public WebElement pSuccess;
 
     public By labelErrorEmailBy = By.cssSelector("label[class='sc-pfmka2-0 gTWVky']");
+    public By svgIconWarningEmailBy = By.xpath("//input[@id='email']//following-sibling::*[name() = 'svg' and @data-icon='exclamation-triangle']");
 
     /* ****  Constructor  **** */
     public ForgotPwPO(WebDriver webDriver){

@@ -16,7 +16,7 @@ import SSO_project.page_object.TestArchitectPO;
 import base_test.BaseTest;
 import common.*;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import org.testng.annotations.Test;
 
 public class ChangePwTc extends BaseTest {
@@ -40,15 +40,41 @@ public class ChangePwTc extends BaseTest {
      *  + Click any points on the screen, except the button 'Submit'
      * 4. Verify error messages and icon 'Warning' display proper when entering values to change password
      * 5. Repeat step 3,4 with these values:
-     *  + new empty password
-     *  + only number for new password
-     *  + only letter value for new password
-     *  + short string for new password
-     *  + only special string value for new password
-     *  + having space character in value to the 'New password' field
-     *  + valid value for new password, eg: #F123%Test$/[~<;`/*-+,./;'[]\-=_+{}|:<>?`~
+     *  + new empty password for 'Password' and 'confirm password'
+     *      Expected:  Error messages and icons 'Warning' of both 2 fields show on
+     *  + only number for 'Password' and 'confirm password'
+     *      Expected:
+     *          - Only the error message and icon 'Warning' of the field 'New password' shows on
+     *          - the error message and icon 'Warning' of the field 'Confirm password' hide
+     *  + only letter values for 'Password' and 'confirm password'
+     *      Expected:
+     *      - Only the error message and icon 'Warning' of the field 'New password' shows on
+     *      - the error message and icon 'Warning' of the field 'Confirm password' hide
+     *  + short strings for 'Password' and 'confirm password'
+     *      Expected:
+     *      - Only the error message and icon 'Warning' of the field 'New password' shows on
+     *      - the error message and icon 'Warning' of the field 'Confirm password' hide
+     *  + only special letters for 'Password' and 'confirm password'
+     *      Expected:
+     *      - Only the error message and icon 'Warning' of the field 'New password' shows on
+     *      - the error message and icon 'Warning' of the field 'Confirm password' hide
+     *  + having white space letters between other letters for 'Password' and 'confirm password'
+     *      Expected:
+     *      - Only the error message and icon 'Warning' of the field 'New password' shows on
+     *      - the error message and icon 'Warning' of the field 'Confirm password' hide
+     *  + valid value for 'Password' and 'confirm password', eg: #F123%Test$/[~<;`/*-+,./;'[]\-=_+{}|:<>?`~
+     *      Expected:
+     *      - The error messages and icons 'Warning' of both 2 fields hide
      *  + new password, confirm password are same as the current password
+     *      Expected:
+     *      - The error messages and icons 'Warning' of both 2 fields hide
      *  + the text to 'Password' field is over 128 letters
+     *      Expected:
+     *      - The error messages and icons 'Warning' of both 2 fields hide
+     *  + Values of fields 'Password' and 'Confirm password' difference
+     *      Expected:
+     *          - the error message and icon 'Warning' of the field 'New password' hide
+     *          - the error message and icon 'Warning' of the field 'Confirm password' show on
      *
      */
     @Test(priority = 1,
@@ -59,17 +85,22 @@ public class ChangePwTc extends BaseTest {
     public void TC01_Verify_error_messages_show_on_proper_when_entering_invalid_values_to_the_field_Password
     (UserAccount userAccount, String newPw, String confirmPw, String errorMsgExpected) {
         System.out.println("Test case 01 : Verify error messages show on proper when entering invalid values to the field 'Password'");
+        System.out.println("email: " + userAccount.getEmail() + "\n"
+                + "old password: " + userAccount.getPassword() + "\n"
+                + "new password: " + newPw + "\n"
+                + "confirm password: " + confirmPw + "\n"
+                + "error message new password: " + errorMsgExpected);
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         ChangePwPO changePwPO = new ChangePwPO(Constant.webDriver);
         IChangePwAction changePwA = new ChangePasswordAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         DataTestSSO dataTestSSO = new DataTestSSO();
 
         try {
-            LogReport.logMainStep("1. Login with an inactivated account");
+            LogReport.logMainStep("1. Login with a valid account");
             LogReport.logSubStep("Launch the web browser");
             LogReport.logSubStep("Navigate to https://stage1.testarchitect.com/");
             LogReport.logSubStep("Select the button 'Login' on the navigation bar");
@@ -94,35 +125,45 @@ public class ChangePwTc extends BaseTest {
             changePwA.checkErrorMsgOfChangePwPage(changePwPO, userAccount, newPw, confirmPw);
 
             LogReport.logMainStep("4. Verify error messages and icon 'Warning' display proper when entering values to change password");
-            /*
-            case 1: 'Password' and 'Confirm password' are empty.
-            case 2: Error message expected is empty, that means input values are valid
-            case 3: 'New password', 'Confirm password' and current password are at the same
-            case 4: 'New password' and 'Confirm password' difference
-            case 5: Other cases
-             */
-            if (newPw.equals("") && confirmPw.equals("")){
-                generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorNewPw, false);
-                generalA.verifyElementDisplayed(changePwPO.svgIconWarningNewPw,
-                        "The icon 'Warning' of the field 'New password'");
-                generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelConfirmPw, false);
-                generalA.verifyElementDisplayed(changePwPO.svgIconWarningConfirmPw,
-                        "The icon 'Warning' of the field 'Confirm password'");
-            }else if(errorMsgExpected.equals("")){
-                generalA.verifyElementHidden(changePwPO.labelErrorNewPwBy, Constant.webDriver
-                        , "The error message for the field 'New password'");
-                generalA.verifyElementHidden(changePwPO.svgIconWarningNewPwBy, Constant.webDriver,
-                        "The icon 'Warning' for the field 'New password'");
-            }else if(newPw.equals(confirmPw) && newPw.equals(userAccount.getPassword())
-                    || errorMsgExpected.equals(dataTestSSO.error_msg_current_pw_wrong)){
-                generalA.verifyTextDisplay(errorMsgExpected, changePwPO.divErrorMsgCurrentPw, false);
-            }else if(!newPw.equals(confirmPw)){
-                generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorConfirmPw, false);
-                generalA.verifyElementDisplayed(changePwPO.svgIconWarningConfirmPw
-                        , "The icon 'Warning' of the field 'Confirm password'");
-            }else {
-                generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorNewPw, false);
-                generalA.verifyElementDisplayed(changePwPO.svgIconWarningNewPw, "The icon 'Warning' of the field 'New password'");
+            for (int i = 0; i < 1; i++){
+                // 'New password', 'Confirm password' are empty
+                if(newPw.equals("") && confirmPw.equals("")){
+                    generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorNewPw, false);
+                    generalA.verifyElementDisplayed(changePwPO.svgIconWarningNewPw,"The icon 'Warning' of the field 'New password'");
+                    generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorConfirmPw, false);
+                    generalA.verifyElementDisplayed(changePwPO.svgIconWarningConfirmPw,"The icon 'Warning' of the field 'Confirm password'");
+                }
+                // 'New password', 'Confirm password' are at the same
+                else if(newPw.equals(confirmPw)){
+                    // case 1: 'New password', 'Confirm password' and current password are at the same
+                    // case 2: 'New password', 'Confirm password' are at the same, and the current password is wrong
+                    // case 3: New pw length is greater than 100 letters
+                    // case 4: 'New password', 'Confirm password' are at the same and invalid
+                    if (newPw.equals(userAccount.getPassword()) || errorMsgExpected.equals(dataTestSSO.error_msg_current_pw_wrong)){
+                        changePwPO.btnSubmit.click();
+                        generalA.verifyTextDisplay(errorMsgExpected, changePwPO.divErrorMsgCurrentPw, false);
+                    }else if(newPw.length() > 100){
+                        generalA.verifyTextDisplay(newPw.substring(0, 100), changePwPO.inputNewPw, true);
+                        generalA.verifyTextDisplay(newPw.substring(0, 100), changePwPO.inputConfirmPw, true);
+                    }else if(!errorMsgExpected.equals("")){
+                        generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorNewPw, false);
+                        generalA.verifyElementDisplayed(changePwPO.svgIconWarningNewPw, "The icon 'Warning' of the field 'New password'");
+                        generalA.verifyElementHidden(changePwPO.labelErrorConfirmPwBy, Constant.webDriver, "The error message for the field 'Confirm password'");
+                        generalA.verifyElementHidden(changePwPO.svgIconWarningConfirmPwBy, Constant.webDriver, "The icon 'Warning' for the field 'Confirm password'");
+                        continue;
+                    }
+                    generalA.verifyElementHidden(changePwPO.labelErrorNewPwBy, Constant.webDriver, "The error message for the field 'New password'");
+                    generalA.verifyElementHidden(changePwPO.svgIconWarningNewPwBy, Constant.webDriver, "The icon 'Warning' for the field 'New password'");
+                    generalA.verifyElementHidden(changePwPO.labelErrorConfirmPwBy, Constant.webDriver, "The error message for the field 'Confirm password'");
+                    generalA.verifyElementHidden(changePwPO.svgIconWarningConfirmPwBy, Constant.webDriver, "The icon 'Warning' for the field 'Confirm password'");
+                }
+                // 'New password' and 'Confirm password' difference
+                else {
+                    generalA.verifyElementHidden(changePwPO.labelErrorNewPwBy, Constant.webDriver, "The error message for the field 'New password'");
+                    generalA.verifyElementHidden(changePwPO.svgIconWarningNewPwBy, Constant.webDriver, "The icon 'Warning' for the field 'New password'");
+                    generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorConfirmPw, false);
+                    generalA.verifyElementDisplayed(changePwPO.svgIconWarningConfirmPw, "The icon 'Warning' of the field 'Confirm password'");
+                }
             }
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -130,6 +171,8 @@ public class ChangePwTc extends BaseTest {
             exception.printStackTrace();
         }
     }
+
+    // chay lai case 1 de check xem co okay hay chua
 
     /**
      * Test case 02 : Verify updating password successfully by valid values
@@ -177,7 +220,7 @@ public class ChangePwTc extends BaseTest {
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         ChangePwPO changePwPO = new ChangePwPO(Constant.webDriver);
         IChangePwAction changePwA = new ChangePasswordAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         try {
             LogReport.logMainStep("1. Login with a valid account");
             LogReport.logSubStep("Launch the web browser");
@@ -200,11 +243,9 @@ public class ChangePwTc extends BaseTest {
             LogReport.logSubStep("Enter values to the field 'Confirm Password* ', eg: " + confirmPw);
             changePwA.changePw(changePwPO, userAccount, newPw, confirmPw);
 
-            LogReport.logMainStep("4. Verify the successful message display clearly");
-            LogReport.logSubStep("The successful message display clearly");
-            LogReport.logSubStep("The browser back to the page 'Home', the tab 'account name' still displays");
+            LogReport.logMainStep("4. Verify the successful message shows on");
+            LogReport.logSubStep("The successful message displays clearly");
             generalA.verifyElementDisplayed(changePwPO.h1SuccessText, "The successful message");
-            generalA.verifyElementDisplayed(testArchitectPO.accountName, "The tab 'account name' still");
 
             LogReport.logMainStep("5. Log out of the current account");
             LogReport.logSubStep("Select the tab 'Account name'");
@@ -214,13 +255,14 @@ public class ChangePwTc extends BaseTest {
             LogReport.logMainStep("6. Login with current account again");
             LogReport.logSubStep("Select the button 'Login' on the page 'Home'");
             LogReport.logSubStep("Enter the email of the inactivated account, eg: " + userAccount.getEmail());
-            LogReport.logSubStep("Enter the new password of the inactivated account: " + userAccount.getPassword());
+            LogReport.logSubStep("Enter the new password of the inactivated account: " + newPw);
             LogReport.logSubStep("Select the button 'Login'");
+            testArchitectPO.btnLogin.click();
             userAccount.setPassword(newPw);
             loginA.loginSSO(loginPO, userAccount);
 
             LogReport.logMainStep("7. Verify login successful with new password");
-            generalA.verifyElementDisplayed(testArchitectPO.accountName, "The account name");
+            generalA.verifyElementDisplayed(testArchitectPO.accountName, "The account name on the page 'Home'");
 
             // change password to previous password, no log to report
             testArchitectPO.accountName.click();

@@ -16,7 +16,7 @@ import common.ExtentReportManager;
 import common.LogReport;
 import common.SSOUtilImpA;
 import general_action.IGeneralAction;
-import general_action.implement.GeneralImpA;
+import general_action.implement.GeneralAction;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
@@ -37,14 +37,14 @@ public class SignUpTc extends BaseTest {
      * + Select the button 'Create free account'
      * 3. Verify the error message shows on the field 'Email'
      */
-    @Test(priority = 1, enabled = false,
+    @Test(priority = 1,
             testName = "Test case 01: Verify the error message displays when signing up new account with an email already in use",
             description = "Description: Verify the error message appears below the field 'Email' when signing up new account with an email already in use")
     public void TC01_Verify_the_error_message_displays_when_signing_up_new_account_with_an_email_already_in_use() {
         System.out.println("Test case 01: Verify the error message displays when signing up new account with an email already in use");
         INavigateAction navigateA = new NavigateAction();
         ISignUpAction signUpA = new SignUpAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
@@ -84,10 +84,10 @@ public class SignUpTc extends BaseTest {
      * + Select the link 'Sign up here'
      * 2. Enter an email value to the field 'Email'
      * + Enter the email value
-     * + Press the key 'Enter'
+     * + Click any points on the screen, except the button 'Next', eg: Click the title page
      * 3. Verify the error message of the field 'email' displays proper
      */
-    @Test(priority = 2, enabled = false,
+    @Test(priority = 2,
             testName = "Test case 02: Verify the error message displays or hides that is belong to the email values",
             description = "Description: Verify the error message display appropriate with the email values",
             dataProviderClass = DataTestSSO.class,
@@ -96,7 +96,7 @@ public class SignUpTc extends BaseTest {
     (String email, String errorMsgExpected) {
         System.out.println("Test case 02: Verify the error message display or hide that is belong to the email values");
         INavigateAction navigateA = new NavigateAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
@@ -110,9 +110,9 @@ public class SignUpTc extends BaseTest {
 
             LogReport.logMainStep("2. Enter an email value to the field 'Email'");
             LogReport.logSubStep("Enter the email value, eg: " + email);
-            LogReport.logSubStep("Press the key 'Enter'");
+            LogReport.logSubStep("Click any points on the screen, except the button 'Next', eg: Click the title page");
             signUpPO.inputEmail.sendKeys(email);
-            signUpPO.inputEmail.sendKeys(Keys.ENTER);
+            signUpPO.h1Title.click();
 
             LogReport.logMainStep("3. Verify the error message shows on the field 'Email'");
             if (!errorMsgExpected.equals("")) {
@@ -138,7 +138,7 @@ public class SignUpTc extends BaseTest {
      * 2. Enter a text to the field 'Password'
      * 3. Verify the error message displays appropriate
      */
-    @Test(priority = 3, enabled = false,
+    @Test(priority = 3,
             testName = "Test case 03 : Verify the error message shows on appropriate after entering an invalid/ valid password to the field 'Password'",
             description = "Description: Verify the error message display appropriate with an invalid password",
             dataProviderClass = DataTestSSO.class,
@@ -147,7 +147,7 @@ public class SignUpTc extends BaseTest {
     (String invalidPw, String errorMsgExpected) {
         System.out.println("Test case 03 : Verify the error message appears after entering an invalid password to the field 'Password'");
         INavigateAction navigateA = new NavigateAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
@@ -197,7 +197,7 @@ public class SignUpTc extends BaseTest {
      * + Press the key 'Enter'
      * 4. Verify the error message of the field 'Confirm password' display appropriate
      */
-    @Test(priority = 4, enabled = false,
+    @Test(priority = 4,
             testName = "Test case 04 : Verify the error message shows on appropriate when the value of the field 'Confirm password' and 'Password' are different",
             description = "Description: Verify the error message displays corresponding each values of the field 'Confirm password'",
             dataProviderClass = DataTestSSO.class,
@@ -206,7 +206,7 @@ public class SignUpTc extends BaseTest {
     (String password, String confirmPw, String errorMsgExpected) {
         System.out.println("Test case 04 : Verify the error message shows on appropriate when the value of the field 'Confirm password' and 'Password' are different");
         INavigateAction navigateA = new NavigateAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
@@ -274,7 +274,7 @@ public class SignUpTc extends BaseTest {
      * + it has 10-15 numbers, and also has the letter '+' at the beginning
      * -> Expected: The error message does not appear
      */
-    @Test(priority = 5, enabled = false,
+    @Test(priority = 5,
             testName = "Test case 05: Verify the error message displays appropriate when entering any values to the field 'Phone'",
             description = "Description: Verify the error message displays corresponding each values of the field 'Phone'",
             dataProviderClass = DataTestSSO.class,
@@ -283,7 +283,7 @@ public class SignUpTc extends BaseTest {
     (UserAccount userAccount, String phone, String errorMsgExpected) {
         System.out.println("Test case 05: Verify the error message displays appropriate when entering any values to the field 'Phone'");
         INavigateAction navigateA = new NavigateAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
@@ -351,7 +351,7 @@ public class SignUpTc extends BaseTest {
      * + Enter a invalid value to the field 'Phone'
      * + Verify the error message of the field 'Phone' displays clearly
      */
-    @Test(priority = 6, enabled = false,
+    @Test(priority = 6,
             testName = "Test case 06: Verify GUI for the 'Sign up' page",
             description = "Description: Verify the UI items of the page 'Sign up'",
             dataProviderClass = DataTestSSO.class,
@@ -363,7 +363,7 @@ public class SignUpTc extends BaseTest {
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
         ISignUpAction signUpA = new SignUpAction();
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         try {
             LogReport.logMainStep("1. Go to the page 'Register'");
             LogReport.logSubStep("Launch the web browser");
@@ -427,7 +427,7 @@ public class SignUpTc extends BaseTest {
      * + Enter texts consist special character to these field, eg: "Test #.,{}'" and press Enter
      * -> Expected result: The error message: 'Please remove special characters.' displays
      */
-    @Test(priority = 7, enabled = false,
+    @Test(priority = 7,
             testName = "Test case 07: Verify the error message display appropriate when entering values to the field 'First name', 'Last name'",
             description = "Description: Verify the UI error message display appropriate corresponding with each of text that is entered ",
             dataProviderClass = DataTestSSO.class,
@@ -438,7 +438,7 @@ public class SignUpTc extends BaseTest {
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         try {
             LogReport.logMainStep("1. Go to the page 'Register'");
             LogReport.logSubStep("Launch the web browser");
@@ -490,7 +490,7 @@ public class SignUpTc extends BaseTest {
      * + The text on the field 'Title' displays only 50 letters
      * + The text on the field 'Company' displays only 100 letters
      */
-    @Test(priority = 8, enabled = false,
+    @Test(priority = 8,
             testName = "Test case 08: Verify all texts display proper on fields 'Title', 'Company' when entering a few extensive texts",
             description = "Description: Verify number of letters displays on field 'Title', 'Company' has limits",
             dataProviderClass = DataTestSSO.class,
@@ -502,7 +502,7 @@ public class SignUpTc extends BaseTest {
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ISignUpAction signUpA = new SignUpAction();
         try {
             LogReport.logMainStep("1. Go to the page 'Register'");
@@ -530,9 +530,9 @@ public class SignUpTc extends BaseTest {
 
             LogReport.logMainStep("4. Verify texts on the field 'Title', 'Company' shows on proper");
             LogReport.logSubStep("The text on the field 'Title' displays only 50 first letters");
-            generalA.verifyTextDisplay(extensiveText.substring(0, 49), signUpPO.inputTitle, true);
-            LogReport.logSubStep("The text on the field 'Company' displays only 100 first letters");
-            generalA.verifyTextDisplay(extensiveText.substring(0, 99), signUpPO.inputCompany, true);
+            generalA.verifyTextDisplay(extensiveText.substring(0, 50), signUpPO.inputTitle, true);
+            LogReport.logSubStep("The text on the field 'Company' displays only 50 first letters");
+            generalA.verifyTextDisplay(extensiveText.substring(0, 50), signUpPO.inputCompany, true);
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -569,7 +569,7 @@ public class SignUpTc extends BaseTest {
      * + Select the button 'Create free account'
      * 4. Verify the page 'Thanks you' displays
      */
-    @Test(priority = 9, enabled = false,
+    @Test(priority = 9,
             testName = "Test case 09: Verify the page 'Thank you' shows on after signing up successful",
             description = "Description: Verify the page 'Thank you' shows on after signing up successful",
             dataProviderClass = DataTestSSO.class,
@@ -581,7 +581,7 @@ public class SignUpTc extends BaseTest {
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
         ThankYouPO thankYouPO = new ThankYouPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ISignUpAction signUpA = new SignUpAction();
         try {
             LogReport.logMainStep("1. Go to the page 'Register'");
@@ -661,7 +661,7 @@ public class SignUpTc extends BaseTest {
      * + The option on the field 'State'
      * + The text on the field 'Phone'
      */
-    @Test(priority = 10, enabled = false,
+    @Test(priority = 10,
             testName = "Test case 10: Verify all values on the final form still display after backing the first form",
             description = "Description: Verify all values on the final form still display after backing the first form " +
                     "then go to the final form",
@@ -673,7 +673,7 @@ public class SignUpTc extends BaseTest {
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ISignUpAction signUpA = new SignUpAction();
         try {
             LogReport.logMainStep("1. Go to the page 'Register'");
@@ -765,7 +765,7 @@ public class SignUpTc extends BaseTest {
         TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         SignUpPO signUpPO = new SignUpPO(Constant.webDriver);
-        IGeneralAction generalA = new GeneralImpA();
+        IGeneralAction generalA = new GeneralAction();
         ISignUpAction signUpA = new SignUpAction();
 
         try {
