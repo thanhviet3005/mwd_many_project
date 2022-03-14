@@ -1,6 +1,7 @@
 package projects.TA_web.data_test;
 
 import SSO_project.data_test.DataTestSSO;
+import SSO_project.entity.UserAccount;
 import org.testng.annotations.DataProvider;
 
 public class DataTestTAWeb extends DataTestSSO {
@@ -21,14 +22,19 @@ public class DataTestTAWeb extends DataTestSSO {
     public String thStatus = "STATUS";
 
     // page 'Change password'
-    public String h1Title = "Change Password";
+    public String h1TitleChangePassword = "Change Password";
     public String labelPassword = "Password*";
     public String labelNewPassword = "New password*";
     public String labelConfirmPw = "Confirm new password*";
     public String placeholderTextForPw = "Please enter your password";
     public String placeholderTextForNewPw = "Please enter your new password";
     public String placeholderTextForConfirmPw = "Please confirm your new password";
+    public String btnSubmit = "Submit";
+    public String btnCancel = "Cancel";
 
+    public UserAccount inactivated_SSO_account_for_server_23 = new UserAccount("internal testing only", "please ignored",
+            "qatesting116@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
+            "Logigear Test", "Uganda", "Abim", "0909999990");
 
     @DataProvider
     public Object[] getDataForFieldPhone() {
@@ -63,6 +69,67 @@ public class DataTestTAWeb extends DataTestSSO {
         return data;
     }
 
+    // the maximum number of columns of an 2 ways array is 4
+    @DataProvider
+    public Object[] getDataToCheckChangePwPage() {
+        Object[][] data = new Object[11][4];
+        // row 1, the password text is empty    -> ok
+        data[0][0] = inactivated_SSO_account_for_server_23;
+        data[0][1] = empty_text;
+        data[0][2] = empty_text;
+        data[0][3] = error_msg_empty_field;
+        // row 2, the password text is only numbers     -> ok
+        data[1][0] = inactivated_SSO_account_for_server_23;
+        data[1][1] = pw_only_number;
+        data[1][2] = pw_only_number;
+        data[1][3] = error_msg_message_pw;
+        // row 3, the password text is only letters     -> ok
+        data[2][0] = inactivated_SSO_account_for_server_23;
+        data[2][1] = pw_only_string;
+        data[2][2] = pw_only_string;
+        data[2][3] = error_msg_message_pw;
+        // row 4, the password text is less than 8 characters   -> ok
+        data[3][0] = inactivated_SSO_account_for_server_23;
+        data[3][1] = pw_not_enough_length;
+        data[3][2] = pw_not_enough_length;
+        data[3][3] = error_msg_short_Pw;
+        // row 5, the password text is valid and it consist a large number of special letters   -> ok
+        data[4][0] = inactivated_SSO_account_for_server_23;
+        data[4][1] = pw_contain_special_char;
+        data[4][2] = pw_contain_special_char;
+        data[4][3] = error_msg_message_pw;
+        // row 6, the password text consists a/a few white space letters between other letters  -> ok
+        data[5][0] = inactivated_SSO_account_for_server_23;
+        data[5][1] = pw_has_whitespace;
+        data[5][2] = pw_has_whitespace;
+        data[5][3] = error_msg_message_pw;
+        // row 7, the password text is valid and it consist a large number of special letters
+        data[6][0] = inactivated_SSO_account_for_server_23;
+        data[6][1] = pw_valid_strong;
+        data[6][2] = pw_valid_strong;
+        data[6][3] = empty_text;
+        // row 8, new password, confirm password are same as the current password
+        data[7][0] = inactivated_SSO_account_for_server_23;
+        data[7][1] = activated_SSO_account.getPassword();
+        data[7][2] = activated_SSO_account.getPassword();
+        data[7][3] = error_msg_same_pw;
+        // row 9, new password, confirm password are greater than 100 letters
+        data[8][0] = inactivated_SSO_account_for_server_23;
+        data[8][1] = pw_is_over_128_letters;
+        data[8][2] = pw_is_over_128_letters;
+        data[8][3] = empty_text;
+        // row 10, new password, confirm password differences
+        data[9][0] = inactivated_SSO_account_for_server_23;
+        data[9][1] = pw_valid_strong;
+        data[9][2] = pw_activated_strong;
+        data[9][3] = error_msg_confirm_pw;
+        // row 11, the current password is wrong
+        data[10][0] = inactivated_SSO_account_for_server_23;
+        data[10][1] = pw_valid_strong;
+        data[10][2] = pw_valid_strong;
+        data[10][3] = error_msg_current_pw_wrong;
+        return data;
+    }
 
 
 
