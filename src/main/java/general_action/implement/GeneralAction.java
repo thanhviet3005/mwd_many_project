@@ -17,15 +17,17 @@ public class GeneralAction implements IGeneralAction {
      * 1. Purpose: Verify a text message content on the page as the designed, and the result is logged to a particular step on
      * report.
      */
+    @Override
     public void verifyTextDisplay(String expectedText, WebElement webElement, boolean isInputField) {
         if (isInputField) {
-            verifyTextIsTheSame(expectedText, webElement.getAttribute("value"));
+            verifyTextEqual(expectedText, webElement.getAttribute("value"));
         } else {
-            verifyTextIsTheSame(expectedText, webElement.getText());
+            verifyTextEqual(expectedText, webElement.getText());
         }
     }
 
-    public void verifyTextIsTheSame(String expectedText, String actualText){
+    @Override
+    public void verifyTextEqual(String expectedText, String actualText){
         if (expectedText.equals(actualText)) {
             System.out.println("Test passed");
             ExtentReportManager.subStep.log(Status.PASS, MarkupHelper.createLabel("Expected result: " + expectedText + "<br>" +
@@ -37,6 +39,11 @@ public class GeneralAction implements IGeneralAction {
                     "Actual result: " + actualText, ExtentColor.ORANGE));
             LogReport.logImage64ToReport(false);
         }
+    }
+
+    @Override
+    public void verifyAttributeText(String expectedText, WebElement webElement, String attribute) {
+        verifyTextEqual(expectedText, webElement.getAttribute(attribute));
     }
 
     @Override

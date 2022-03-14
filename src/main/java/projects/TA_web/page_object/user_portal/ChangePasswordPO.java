@@ -1,5 +1,6 @@
 package projects.TA_web.page_object.user_portal;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,6 +44,13 @@ public class ChangePasswordPO {
     public WebElement labelErrorConfirmPw;
     @FindBy(xpath = "//input[@id='confirm']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']")
     public WebElement svgIconWarningConfirmPw;
+
+    public By labelErrorMessagePwBy = By.xpath("//label[@for='oldPassword']//following-sibling::label");
+    public By svgIconWarningPwBy = By.xpath("//input[@id='oldPassword']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");
+    public By labelErrorMessageNewPwBy = By.xpath("//label[@for='password']//following-sibling::label");
+    public By svgIconWarningNewPwBy = By.xpath("//input[@id='password']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");
+    public By labelErrorConfirmPwBy = By.xpath("//label[@for='confirm']//following-sibling::label");
+    public By svgIconWarningConfirmPwBy = By.xpath("//input[@id='confirm']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");
 
     public ChangePasswordPO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
