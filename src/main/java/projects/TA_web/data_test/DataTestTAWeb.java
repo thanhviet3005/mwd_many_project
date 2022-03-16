@@ -6,11 +6,6 @@ import org.testng.annotations.DataProvider;
 
 public class DataTestTAWeb extends DataTestSSO {
     // page 'Leave a message', form 'Leave a message'
-    public String h5LeaveAMsg = "Leave a Message";
-    public String labelFirstName = "First Name*";
-    public String labelLastName = "Last Name*";
-    public String labelEmail = "Email*";
-    public String labelPhone = "Phone";
     public String labelQuestion = "Question/ Comment";
     public String inputAttachFile = "Attached Files";
     public String btnSendMsg = "Send Message";
@@ -115,8 +110,8 @@ public class DataTestTAWeb extends DataTestSSO {
         data[7][3] = error_msg_same_pw;
         // row 9, new password, confirm password are greater than 100 letters
         data[8][0] = inactivated_SSO_account_for_server_23;
-        data[8][1] = pw_is_over_128_letters;
-        data[8][2] = pw_is_over_128_letters;
+        data[8][1] = pw_is_over_100_letters;
+        data[8][2] = pw_is_over_100_letters;
         data[8][3] = empty_text;
         // row 10, new password, confirm password differences
         data[9][0] = inactivated_SSO_account_for_server_23;
@@ -131,11 +126,84 @@ public class DataTestTAWeb extends DataTestSSO {
         return data;
     }
 
+    @DataProvider
+    public Object[] getDataToCheckChangePwPageForAllEmptyField() {
+        Object[] data = new Object[2];
+        data[0] = inactivated_SSO_account;
+        data[1] = activated_SSO_account;
+        return data;
+    }
 
+    @DataProvider
+    public Object[] getDataToCheckFieldPassword() {
+        Object[][] data = new Object[6][3];
+        // row 1, pw is only numbers
+        data[0][0] = inactivated_SSO_account_for_server_23;
+        data[0][1] = pw_only_number;
+        data[0][3] = error_msg_message_pw;
+        // row 2, pw is only letters
+        data[1][0] = inactivated_SSO_account_for_server_23;
+        data[1][1] = pw_only_string;
+        data[1][3] = error_msg_message_pw;
+        // row 3, pw is less than 8 characters
+        data[2][0] = inactivated_SSO_account_for_server_23;
+        data[2][1] = pw_not_enough_length;
+        data[2][3] = error_msg_short_Pw;
+        // row 4, the password text is valid and it consist a large number of special letters   -> ok
+        data[3][0] = inactivated_SSO_account_for_server_23;
+        data[3][1] = pw_contain_special_char;
+        data[3][3] = error_msg_message_pw;
+        // row 5, the password text consists a/a few white space letters between other letters  -> ok
+        data[4][0] = inactivated_SSO_account_for_server_23;
+        data[4][1] = pw_has_whitespace;
+        data[4][3] = error_msg_message_pw;
+        // row 6, new password, confirm password are greater than 100 letters
+        data[5][0] = inactivated_SSO_account_for_server_23;
+        data[5][1] = pw_is_over_100_letters;
+        data[5][3] = empty_text;
+        return data;
+    }
 
+    @DataProvider
+    public Object[] getDataToCheckErrorMsgWhenSubmittingValidValue() {
+        Object[][] data = new Object[2][3];
+        // row 1, pw is only numbers
+        data[0][0] = inactivated_SSO_account;
+        data[0][1] = inactivated_SSO_account.getPassword();
+        data[0][3] = error_msg_same_pw;
+        // row 2, pw is only letters
+        data[1][0] = activated_SSO_account;
+        data[1][1] = activated_SSO_account.getPassword();
+        data[1][3] = error_msg_current_pw_wrong;
+        return data;
+    }
 
+    @DataProvider
+    public Object[] getDataToCheckErrorMsgNoDisplayWhenEnteringValidValues() {
+        Object[][] data = new Object[2][2];
+        // row 7, the password text is valid and it consist a large number of special letters
+        data[0][0] = inactivated_SSO_account;
+        data[0][1] = pw_valid_strong;
+        // row 11, the current password is wrong
+        data[1][0] = activated_SSO_account;
+        data[1][1] = pw_activated_strong;
+        return data;
+    }
 
-
-
+    @DataProvider
+    public Object[] getDataToCheckFieldConfirmPassword() {
+        Object[][] data = new Object[2][4];
+        // row 1
+        data[0][0] = activated_SSO_account;
+        data[0][1] = pw_valid_strong;
+        data[0][2] = pw_activated_strong;
+        data[0][3] = error_msg_confirm_pw;
+        // row 2
+        data[1][0] = inactivated_SSO_account;
+        data[1][1] = pw_only_number;
+        data[1][2] = pw_not_enough_length;
+        data[1][3] = error_msg_confirm_pw;
+        return data;
+    }
 
 }

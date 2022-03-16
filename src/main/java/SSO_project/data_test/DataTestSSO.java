@@ -22,9 +22,10 @@ public class DataTestSSO {
     public String pw_only_string = "StringPassword";
     public String pw_contain_special_char = "12#$/|().<>,";
     public String pw_has_whitespace = "#Fex123    ;Test-";
+
     public String pw_not_enough_length = "#Fex123";
     public String pw_is_over_100_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345p";
-    public String pw_is_over_128_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345";
+    public String pw_is_130_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345";
 
     // valid password keyword
     public String pw_activated_1 = "pass-2468";
@@ -130,7 +131,8 @@ public class DataTestSSO {
     public String error_msg_long_string = "Please enter no more than 100 characters.";
 
     // [TA web][TA portal] page Leave a message, success and failed message
-    public String error_msg_send_msg_failed = "The message has been sent unsuccessfully.";
+    public String text_send_msg_failed = "The message has been sent unsuccessfully.";
+    public String text_send_message_successful = "The message has been sent successfully.";
 
     // Login page
     public String error_msg_wrong_email_or_pw = "Incorrect email or password. Please try again!";
@@ -279,7 +281,7 @@ public class DataTestSSO {
         data[7][0] = pw_activated_strong;
         data[7][1] = "";
         // row 9, the password text is over 100 letters
-        data[8][0] = pw_is_over_100_letters;
+        data[8][0] = pw_is_130_letters;
         data[8][1] = error_msg_extensive_pw;
         // row 9, the password text is valid
         data[9][0] = pw_activated_1;
@@ -321,7 +323,7 @@ public class DataTestSSO {
         data[5][1] = data[5][0];
         data[5][2] = "";
         // row 7, the password text is over 100 letters
-        data[6][0] = pw_is_over_100_letters;
+        data[6][0] = pw_is_130_letters;
         data[6][1] = data[6][0];
         data[6][2] = "";
         // row 8, the password text is valid and it consist a few special letters
@@ -538,8 +540,8 @@ public class DataTestSSO {
         data[7][3] = error_msg_same_pw;
         // row 9, new password, confirm password are greater than 100 letters
         data[8][0] = inactivated_SSO_account;
-        data[8][1] = pw_is_over_128_letters;
-        data[8][2] = pw_is_over_128_letters;
+        data[8][1] = pw_is_130_letters;
+        data[8][2] = pw_is_130_letters;
         data[8][3] = empty_text;
         // row 10, new password, confirm password differences
         data[9][0] = activated_SSO_account;
@@ -598,8 +600,8 @@ public class DataTestSSO {
         data[5][1] = pw_has_whitespace;
         data[5][2] = error_msg_message_pw;
         // row 7,
-        data[6][0] = pw_is_over_100_letters;
-        data[6][1] = pw_is_over_100_letters;
+        data[6][0] = pw_is_130_letters;
+        data[6][1] = pw_is_130_letters;
         data[6][2] = error_msg_confirm_pw;
         // row 8,
         data[7][0] = pw_activated_1;
