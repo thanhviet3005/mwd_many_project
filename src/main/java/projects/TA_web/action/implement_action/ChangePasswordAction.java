@@ -66,6 +66,30 @@ public class ChangePasswordAction implements IChangePasswordAction {
     }
 
     @Override
+    public void verifyAllErrorMessageDisplay(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTestTAWeb) {
+        generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, changePasswordPO.labelErrorMessagePw, false);
+        generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, changePasswordPO.labelErrorMessageNewPw, false);
+        generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, changePasswordPO.labelErrorConfirmPw, false);
+        generalAction.verifyElementDisplayed(changePasswordPO.svgIconWarningPw, "The icon 'Warning' for the field 'Password'");
+        generalAction.verifyElementDisplayed(changePasswordPO.svgIconWarningNewPw, "The icon 'Warning' for the field 'New password'");
+        generalAction.verifyElementDisplayed(changePasswordPO.svgIconWarningConfirmPw, "The icon 'Warning' for the field 'Confirm password'");
+    }
+
+    @Override
+    public void verifyErrorMessageForPasswordDisplay(ChangePasswordPO changePwPO, String currentPw, String newPw, String errorMsgExpected) {
+        IGeneralAction generalA = new GeneralAction();
+        if (newPw.length() > 100){
+            generalA.verifyTextDisplay(newPw.substring(0, 100), changePwPO.inputNewPw, true);
+            generalA.verifyTextDisplay(newPw.substring(0, 100), changePwPO.inputConfirmPw, true);
+        }else {
+            generalA.verifyTextDisplay(errorMsgExpected, changePwPO.labelErrorMessageNewPw, false);
+            generalA.verifyElementDisplayed(changePwPO.svgIconWarningNewPw, "The icon 'Warning' of the field 'New password'");
+            generalA.verifyElementHidden(changePwPO.labelErrorConfirmPwBy, Constant.webDriver, "The error message for the field 'Confirm password'");
+            generalA.verifyElementHidden(changePwPO.svgIconWarningConfirmPwBy, Constant.webDriver, "The icon 'Warning' for the field 'Confirm password'");
+        }
+    }
+
+    @Override
     public void verifyErrorMessageDisplayProper(UserAccount userAccount, String newPw, String confirmPw, String errorMsgExpected) {
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
         IGeneralAction generalA = new GeneralAction();
@@ -117,5 +141,24 @@ public class ChangePasswordAction implements IChangePasswordAction {
                 generalA.verifyElementDisplayed(changePasswordPO.svgIconWarningConfirmPw, "The icon 'Warning' of the field 'Confirm password'");
             }
         }
+    }
+
+    @Override
+    public void verifyErrorMessageAfterSubmitValidValues(ChangePasswordPO changePasswordPO, UserAccount userAccount, String newPw, String errorMsgExpected) {
+        IChangePasswordAction changePasswordA = new ChangePasswordAction();
+        IGeneralAction generalA = new GeneralAction();
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        if(errorMsgExpected.equals(dataTestTAWeb.error_msg_current_pw_wrong)){
+            userAccount.setPassword(dataTestTAWeb.pw_activated_strong);
+        }
+        changePasswordA.changePassword(changePasswordPO, userAccount, newPw, newPw);
+        verifyAllErrorMessageHidden(generalA, Constant.webDriver, changePasswordPO);
+        // carry on writing script for the error message 'same password or wrong current password'
+    }
+
+    @Override
+    public void verifyErrorMessageWhenNewPwAndConfirmPwDifferences(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, String errorMsgExpected) {
+        generalAction.verifyTextDisplay(errorMsgExpected, changePasswordPO.labelErrorConfirmPw, false);
+        generalAction.verifyElementDisplayed(changePasswordPO.svgIconWarningConfirmPw, "The icon 'Warning' for the field 'Confirm password'");
     }
 }

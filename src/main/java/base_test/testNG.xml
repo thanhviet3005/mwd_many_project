@@ -6,11 +6,11 @@
         <parameter name="myBrowser" value="chrome" />
         <classes>
             <class name="base_test.InitialSetup"/>
-            <class name="SSO_project.test_case.ForgotPwTc"/>
+<!--            <class name="SSO_project.test_case.ForgotPwTc"/>-->
 <!--            <class name="SSO_project.test_case.LoginTc"/>-->
 <!--            <class name="SSO_project.test_case.ChangePwTc"/>-->
 <!--            <class name="SSO_project.temp"/>-->
-<!--            <class name="SSO_project.test_case.SignUpTc"/>-->
+            <class name="SSO_project.test_case.SignUpTc"/>
 <!--            <class name="SSO_project.test_case.ActiveCodeTc"/>-->
 <!--            <class name="SSO_admin_portal.test_case.AddUserTc"/>-->
 <!--            <class name="SSO_admin_portal.temp2"/>-->
