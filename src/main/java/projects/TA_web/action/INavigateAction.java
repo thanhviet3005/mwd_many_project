@@ -1,7 +1,6 @@
 package projects.TA_web.action;
 
 import org.openqa.selenium.WebDriver;
-import projects.TA_web.page_object.user_portal.LoginPO;
 import projects.TA_web.page_object.user_portal.UserPortalPO;
 
 public interface INavigateAction {
