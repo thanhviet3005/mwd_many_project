@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LoginPO {
+public class LoginOn23ServerPO {
     @FindBy(id = "email")
     public WebElement inputEmail;
     @FindBy(id = "password")
@@ -13,7 +13,7 @@ public class LoginPO {
     @FindBy(css = "button[type='submit']")
     public WebElement btnLogin;
 
-    public LoginPO(WebDriver webDriver){
+    public LoginOn23ServerPO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
     }
 

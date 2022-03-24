@@ -2,21 +2,23 @@ package projects.TA_web.data_test;
 
 import SSO_project.data_test.DataTestSSO;
 import SSO_project.entity.UserAccount;
+import common.TimeUtil;
 import org.testng.annotations.DataProvider;
+import projects.TA_web.entity.CouponType;
 
 public class DataTestTAWeb extends DataTestSSO {
-    // page 'Leave a message', form 'Leave a message'
+    // Page 'Leave a message', form 'Leave a message'
     public String labelQuestion = "Question/ Comment";
     public String inputAttachFile = "Attached Files";
     public String btnSendMsg = "Send Message";
 
-    // page 'Leave a message', table 'Message history'
+    // Page 'Leave a message', table 'Message history'
     public String divTableTitle = "Message History";
     public String thDate = "DATE SORTED ASCENDING";
     public String thMessage = "MESSAGE";
     public String thStatus = "STATUS";
 
-    // page 'Change password'
+    // Page 'Change password'
     public String h1TitleChangePassword = "Change Password";
     public String labelPassword = "Password*";
     public String labelNewPassword = "New password*";
@@ -27,9 +29,36 @@ public class DataTestTAWeb extends DataTestSSO {
     public String btnSubmit = "Submit";
     public String btnCancel = "Cancel";
 
+    // Page 'Add/Edit coupon type'
+    public String labelName = "Name*";
+    public String labelLimit = "Limit*";
+    public String labelStatus = "Status*";
+    public String btnSave = "Save";
+
+    // Page 'Manage Coupon Type'
+    public String h5TitlePage = "Manage Coupon Type";
+    public String btnAdd = "Add";
+    public String spanName = "Name";
+    public String spanLimit = "Limit";
+    public String spanStatus = "Status";
+
+    // the dialog 'Delete coupon type'
+    public String h2TitleDeleteDialogCouponType = "Do you want to delete ";
+    public String btnDelete = "Delete";
+
     public UserAccount inactivated_SSO_account_for_server_23 = new UserAccount("internal testing only", "please ignored",
             "qatesting116@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
+
+    public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored 100"
+            , "100", "Active");
+
+    public CouponType valid_coupon_type_inactive = new CouponType("internal testing only please ignored 101"
+            , "120", "InActive");
+
+    public CouponType new_coupon_type_active =
+            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active");
 
     @DataProvider
     public Object[] getDataForFieldPhone() {
@@ -203,6 +232,71 @@ public class DataTestTAWeb extends DataTestSSO {
         data[1][1] = pw_only_number;
         data[1][2] = pw_not_enough_length;
         data[1][3] = error_msg_confirm_pw;
+        return data;
+    }
+
+
+    // page 'Add coupon type'
+    @DataProvider
+    public Object[] getDataToCheckFieldNameOfCouponType() {
+        Object[][] data = new Object[5][4];
+        // row 1, enter nothing to the field
+        data[0][0] = activated_SSO_account;
+        data[0][1] = empty_text;
+        data[0][2] = empty_text;
+        data[0][3] = error_msg_empty_field;
+        // row 2, enter the text consist special letters
+        data[1][0] = activated_SSO_account;
+        data[1][1] = name_contain_special_char;
+        data[1][2] = empty_text;
+        data[1][3] = error_msg_special_letters_for_name;
+        // row 3, enter an extensive text
+        data[2][0] = activated_SSO_account;
+        data[2][1] = text_284_characters;
+        data[2][2] = text_284_characters.substring(0, 200);
+        data[2][3] = empty_text;
+        // row 4, enter the text consist a few white space letters at the beginning and end
+        data[3][0] = activated_SSO_account;
+        data[3][1] = text_white_space_at_begining_ending;
+        data[3][2] = text_white_space_at_begining_ending.trim();
+        data[3][4] = empty_text;
+        // row 5, enter the unicode text
+        data[4][0] = activated_SSO_account;
+        data[4][1] = name_by_unicode_text;
+        data[4][2] = name_by_unicode_text;
+        data[4][3] = empty_text;
+        return data;
+    }
+
+    @DataProvider
+    public Object[] getDataToCheckFieldLimitOfCouponType() {
+        Object[][] data = new Object[5][4];
+        RegexPattern regexPattern = new RegexPattern();
+        // row 1, enter nothing to the field
+        data[0][0] = activated_SSO_account;
+        data[0][1] = empty_text;
+        data[0][2] = empty_text;
+        data[0][3] = error_msg_empty_field;
+        // row 2, enter the text consist special letters
+        data[1][0] = activated_SSO_account;
+        data[1][1] = name_contain_special_char;
+        data[1][2] = empty_text;
+        data[1][3] = empty_text;
+        // row 3, enter an extensive text
+        data[2][0] = activated_SSO_account;
+        data[2][1] = name_by_unicode_text;
+        data[2][2] = regexPattern.textOnlyNumberPattern;
+        data[2][3] = empty_text;
+        // row 4, enter the text consist a few white space letters at the beginning and end
+        data[3][0] = activated_SSO_account;
+        data[3][1] = number_white_space_at_beging_end;
+        data[3][2] = number_white_space_at_beging_end.trim();
+        data[3][4] = empty_text;
+        // row 5, enter the unicode text
+        data[4][0] = activated_SSO_account;
+        data[4][1] = active_code_extensive;
+        data[4][2] = regexPattern.textOnlyNumberPattern;
+        data[4][3] = empty_text;
         return data;
     }
 

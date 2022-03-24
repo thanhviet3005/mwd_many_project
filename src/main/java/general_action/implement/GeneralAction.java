@@ -28,7 +28,7 @@ public class GeneralAction implements IGeneralAction {
 
     @Override
     public void verifyTextEqual(String expectedText, String actualText){
-        if (expectedText.equals(actualText)) {
+        if (expectedText.equals(actualText) || actualText.matches(expectedText)) {
             System.out.println("Test passed");
             ExtentReportManager.subStep.log(Status.PASS, MarkupHelper.createLabel("Expected result: " + expectedText + "<br>" +
                     "Actual result: " + actualText, ExtentColor.GREEN));

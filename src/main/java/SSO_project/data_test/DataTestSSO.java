@@ -59,9 +59,10 @@ public class DataTestSSO {
     public String name_long_text_display = "Our codeless automation tool allows you to rapidly scale and mai";
 
     public String text_white_space_at_begining_ending = "  TEst    ";
+    public String number_white_space_at_beging_end = "  2468    ";
 
     public UserAccount activated_SSO_account = new UserAccount("internal testing only",
-            "please ignored", "qatesting64@yopmail.com", "pass-02468",
+            "please ignored", "qatesting117@yopmail.com", "pass-02468",
             "pass-02468", "Logigear Test", "Logigear", "Uganda", "Abim", "0909999990");
 
     public UserAccount inactivated_SSO_account = new UserAccount("internal testing only", "please ignored",
@@ -137,8 +138,19 @@ public class DataTestSSO {
     // Login page
     public String error_msg_wrong_email_or_pw = "Incorrect email or password. Please try again!";
 
+    // error message for field 'limit for a number'
+    public String error_msg_number_must_more_than_1 = "Must more than 1.";
+
+    // error message for field 'Name'
+    public String error_msg_name_existed = "";
+
     // extensive text
     public String text_284_characters = "Are you looking for a Test Automation tool that can bring all of your team members into a collaborative Automation production process? If so, TestArchitect is a great fit. With TestArchitect, you can leverage a smaller programming staff to support a much larger non-programming staff.";
+
+    // success message for TA Admin Portal
+    public String success_msg_update_coupon_type = "The Coupon Type has been updated successfully.";
+    public String success_msg_add_coupon_type = "The Coupon Type has been added successfully.";
+    public String success_msg_delete_coupon_type = "The Coupon Type has been deleted successfully.";
 
     public DataTestSSO() {
     }

@@ -6,7 +6,6 @@ import SSO_project.entity.UserAccount;
 import common.*;
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
-import org.apache.commons.logging.Log;
 import org.testng.annotations.Test;
 import projects.TA_web.action.IChangePasswordAction;
 import projects.TA_web.action.ILoginAction;
@@ -16,7 +15,7 @@ import projects.TA_web.action.implement_action.LoginAction;
 import projects.TA_web.action.implement_action.NavigateAction;
 import projects.TA_web.data_test.DataTestTAWeb;
 import projects.TA_web.page_object.user_portal.ChangePasswordPO;
-import projects.TA_web.page_object.user_portal.LoginPO;
+import projects.TA_web.page_object.user_portal.LoginOn23ServerPO;
 import projects.TA_web.page_object.user_portal.UserPortalPO;
 
 public class ChangePasswordTc {
@@ -44,7 +43,7 @@ public class ChangePasswordTc {
             description = "Verify all UI item's text show on the page")
     public void TC01_Verify_the_UI_items_on_the_page_Change_password(){
         INavigateAction navigateA = new NavigateAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         ILoginAction loginA = new LoginAction();
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
@@ -158,7 +157,7 @@ public class ChangePasswordTc {
                 + "error message new password: " + errorMsgExpected);
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
 
@@ -218,7 +217,7 @@ public class ChangePasswordTc {
         System.out.println("Test case 01 : Verify error messages show on proper when entering invalid values to the field 'Password'");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
@@ -308,7 +307,7 @@ public class ChangePasswordTc {
         System.out.println("Test case 03 : Verify error messages for the field 'New password' display without submitting");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
         ChangePasswordPO changePasswordPO = new ChangePasswordPO(Constant.webDriver);
@@ -386,7 +385,7 @@ public class ChangePasswordTc {
         System.out.println("Test case 04 : Verify error messages appear after submitting with valid values");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
         ChangePasswordPO changePasswordPO = new ChangePasswordPO(Constant.webDriver);
@@ -456,7 +455,7 @@ public class ChangePasswordTc {
         System.out.println("Test case 05 : Verify error messages appear after submitting with valid values");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
         ChangePasswordPO changePasswordPO = new ChangePasswordPO(Constant.webDriver);
@@ -528,7 +527,7 @@ public class ChangePasswordTc {
         System.out.println("Test case 05 : Verify error messages do not display when entering valid values to all fields");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
         ChangePasswordPO changePasswordPO = new ChangePasswordPO(Constant.webDriver);
@@ -595,7 +594,7 @@ public class ChangePasswordTc {
         System.out.println("Test case 07 : Verify successful message display when change password successful");
         INavigateAction navigateA = new NavigateAction();
         ILoginAction loginA = new LoginAction();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        LoginOn23ServerPO loginPO = new LoginOn23ServerPO(Constant.webDriver);
         UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
         IChangePasswordAction changePwA = new ChangePasswordAction();
         ChangePasswordPO changePasswordPO = new ChangePasswordPO(Constant.webDriver);

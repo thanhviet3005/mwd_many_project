@@ -47,4 +47,9 @@ public class NavigateAction implements INavigateAction {
     public void goToResetPasswordPage() {
         Constant.webDriver.navigate().to(URL.resetPwSSOUrl);
     }
+
+    @Override
+    public void goToPage(WebDriver webDriver, String url) {
+        webDriver.get(url);
+    }
 }
