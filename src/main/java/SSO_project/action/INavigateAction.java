@@ -11,4 +11,5 @@ public interface INavigateAction {
     void gotoTAPage();
     void gotoChangePwPageAfterLogin(WebDriver webDriver, TestArchitectPO testArchitectPO);
     void goToResetPasswordPage();
+    void goToUpdateProfilePage (WebDriver webDriver, TestArchitectPO testArchitectPO);
 }

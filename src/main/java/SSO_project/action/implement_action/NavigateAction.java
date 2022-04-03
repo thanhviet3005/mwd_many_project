@@ -1,6 +1,7 @@
 package SSO_project.action.implement_action;
 
 import SSO_project.action.INavigateAction;
+import SSO_project.entity.UserAccount;
 import SSO_project.page_object.LoginPO;
 import SSO_project.page_object.TestArchitectPO;
 import common.Constant;
@@ -18,7 +19,8 @@ public class NavigateAction implements INavigateAction {
 
     @Override
     public void goToLoginPage(TestArchitectPO testArchitectPO) {
-        Constant.webDriver.navigate().to(URL.taURL);
+        //Constant.webDriver.navigate().to(URL.taURL);
+        Constant.webDriver.navigate().to(URL.ta_stageURL);
         testArchitectPO.btnLogin.click();
     }
 
@@ -46,5 +48,13 @@ public class NavigateAction implements INavigateAction {
     @Override
     public void goToResetPasswordPage() {
         Constant.webDriver.navigate().to(URL.resetPwSSOUrl);
+    }
+
+    @Override
+    public  void goToUpdateProfilePage(WebDriver webDriver, TestArchitectPO testArchitectPO){
+        ISSOUtilA ssoUtilA = new SSOUtilImpA();
+        ssoUtilA.waitElementInteraction(webDriver, testArchitectPO.accountName, 50);
+        ssoUtilA.hoverMenuAndClickItem(webDriver, testArchitectPO.accountName, testArchitectPO.optUpdateProfile);
+
     }
 }
