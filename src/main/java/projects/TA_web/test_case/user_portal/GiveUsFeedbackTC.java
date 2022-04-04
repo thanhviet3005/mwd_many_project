@@ -1,20 +1,26 @@
 package projects.TA_web.test_case.user_portal;
 
-import SSO_project.data_test.DataTestSSO;
 import base_test.BaseTest;
-import common.Constant;
-import common.ExtentReportManager;
-import common.LogReport;
-import common.SSOUtilImpA;
-import general_action.implement.GeneralAction;
-import org.testng.annotations.Test;
-import projects.TA_web.action.INavigateAction;
-import projects.TA_web.action.implement_action.NavigateAction;
-import projects.TA_web.data_test.DataTestTAWeb;
-import projects.TA_web.page_object.user_portal.LeaveAMessagePO;
-import projects.TA_web.page_object.user_portal.UserPortalPO;
 
 public class LeaveAMessageTC extends BaseTest {
+    /**
+     * Test case 01: Verify UI items on the page 'Leave a message'
+     * 1. Go to the page Login
+     *  + Open the web browser
+     *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
+     *  + Press the key 'Enter' on the keyboard
+     *  + Select the button 'Login'
+     * 2. Login with valid account
+     *  + Enter the email
+     *  + Enter the password
+     *  + Select the button 'Login'
+     * 3. Go to the page 'Give us feedback'
+     *  + Select the account menu
+     *  + Select the tab 'Manage my account'
+     *  + Select the menu 'Account'
+     *  + Select the option 'Change password'
+     */
+
 //
 //    /**
 //     * Test case 01: Verify the UI of the page 'Leave a message'
