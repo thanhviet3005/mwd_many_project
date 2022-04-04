@@ -56,5 +56,7 @@ public class NavigateAction implements INavigateAction {
         ssoUtilA.waitElementInteraction(webDriver, testArchitectPO.accountName, 50);
         ssoUtilA.hoverMenuAndClickItem(webDriver, testArchitectPO.accountName, testArchitectPO.optUpdateProfile);
 
+    public void goToPage(WebDriver webDriver, String url) {
+        webDriver.get(url);
     }
 }

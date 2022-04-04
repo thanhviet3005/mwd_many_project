@@ -25,8 +25,14 @@ public class UserPortalPO {
     public WebElement spanLeaveAMessage;
     @FindBy(xpath = "//nav//li//span[text()='Leave a message']//parent::div//preceding-sibling::*[name()='svg' and @data-testid='ChatOutlinedIcon']")
     public WebElement svgIconLeaveAMessage;
-    @FindBy(xpath = "")
-    public WebElement linkGoToAdminPage;
+    @FindBy(xpath = "//span[text()='Go To Admin Page']")
+    public WebElement spanGoToAdminPage;
+    @FindBy(xpath = "//header//button//*[name()='svg' and @data-testid='ArrowDropDownIcon']")
+    public WebElement svgAccountMenu;
+    @FindBy(xpath = "//li//a[text()='Change Password']")
+    public WebElement aChangePw;
+    @FindBy(xpath = "//li//a[text()='Logout']")
+    public WebElement aLogout;
 
     public UserPortalPO (WebDriver webDriver){
         PageFactory.initElements(webDriver, this);

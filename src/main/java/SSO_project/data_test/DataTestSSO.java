@@ -25,9 +25,10 @@ public class DataTestSSO {
     public String pw_only_string = "StringPassword";
     public String pw_contain_special_char = "12#$/|().<>,";
     public String pw_has_whitespace = "#Fex123    ;Test-";
+
     public String pw_not_enough_length = "#Fex123";
     public String pw_is_over_100_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345p";
-    public String pw_is_over_128_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345";
+    public String pw_is_130_letters = "pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345pass-12345";
 
     // valid password keyword
     public String pw_activated_1 = "pass-2468";
@@ -52,7 +53,7 @@ public class DataTestSSO {
     // valid phone number keyword
     public String valid_phone_1 = "0909999990";
     public String valid_phone_2 = "+84 0905 231118";
-    public String phone_has_space_at_beginning_ending = " 0905 231 118 ";
+    public String phone_has_space_at_beginning_ending = " +44 905 231118";
 
     // valid first name keyword
     public String name_by_unicode_text = "Khánh らが 123";
@@ -61,9 +62,10 @@ public class DataTestSSO {
     public String name_long_text_display = "Our codeless automation tool allows you to rapidly scale and mai";
 
     public String text_white_space_at_begining_ending = "  TEst    ";
+    public String number_white_space_at_beging_end = "  2468    ";
 
     public UserAccount activated_SSO_account = new UserAccount("internal testing only",
-            "please ignored", "qatesting64@yopmail.com", "pass-02468",
+            "please ignored", "qatesting117@yopmail.com", "pass-02468",
             "pass-02468", "Logigear Test", "Logigear", "Uganda", "Abim", "0909999990");
 
     public UserAccount inactivated_SSO_account = new UserAccount("internal testing only", "please ignored",
@@ -126,15 +128,34 @@ public class DataTestSSO {
     public String error_msg_invalid_email = "Please enter a valid email.";
     public String error_msg_email_no_existing_in_database = "Email not existing in database.";
 
+    // attached file error message
+    public String error_msg_huge_size = "File size must be < 5MB.";
+    public String error_msg_wrong_file_type = "The file must be a file of type: jpeg, jpg, png";
+
     // Register page, the first / last name
     public String error_msg_special_letters_for_name = "Please remove special characters.";
     public String error_msg_long_string = "Please enter no more than 100 characters.";
 
+    // [TA web][TA portal] page Leave a message, success and failed message
+    public String text_send_msg_failed = "The message has been sent unsuccessfully.";
+    public String text_send_message_successful = "The message has been sent successfully.";
+
     // Login page
     public String error_msg_wrong_email_or_pw = "Incorrect email or password. Please try again!";
 
+    // error message for field 'limit for a number'
+    public String error_msg_number_must_more_than_1 = "Must more than 1.";
+
+    // error message for field 'Name'
+    public String error_msg_name_existed = "";
+
     // extensive text
     public String text_284_characters = "Are you looking for a Test Automation tool that can bring all of your team members into a collaborative Automation production process? If so, TestArchitect is a great fit. With TestArchitect, you can leverage a smaller programming staff to support a much larger non-programming staff.";
+
+    // success message for TA Admin Portal
+    public String success_msg_update_coupon_type = "The Coupon Type has been updated successfully.";
+    public String success_msg_add_coupon_type = "The Coupon Type has been added successfully.";
+    public String success_msg_delete_coupon_type = "The Coupon Type has been deleted successfully.";
 
     public DataTestSSO() {
     }
@@ -277,7 +298,7 @@ public class DataTestSSO {
         data[7][0] = pw_activated_strong;
         data[7][1] = "";
         // row 9, the password text is over 100 letters
-        data[8][0] = pw_is_over_100_letters;
+        data[8][0] = pw_is_130_letters;
         data[8][1] = error_msg_extensive_pw;
         // row 9, the password text is valid
         data[9][0] = pw_activated_1;
@@ -319,7 +340,7 @@ public class DataTestSSO {
         data[5][1] = data[5][0];
         data[5][2] = "";
         // row 7, the password text is over 100 letters
-        data[6][0] = pw_is_over_100_letters;
+        data[6][0] = pw_is_130_letters;
         data[6][1] = data[6][0];
         data[6][2] = "";
         // row 8, the password text is valid and it consist a few special letters
@@ -536,8 +557,8 @@ public class DataTestSSO {
         data[7][3] = error_msg_same_pw;
         // row 9, new password, confirm password are greater than 100 letters
         data[8][0] = inactivated_SSO_account;
-        data[8][1] = pw_is_over_128_letters;
-        data[8][2] = pw_is_over_128_letters;
+        data[8][1] = pw_is_130_letters;
+        data[8][2] = pw_is_130_letters;
         data[8][3] = empty_text;
         // row 10, new password, confirm password differences
         data[9][0] = activated_SSO_account;
@@ -596,8 +617,8 @@ public class DataTestSSO {
         data[5][1] = pw_has_whitespace;
         data[5][2] = error_msg_message_pw;
         // row 7,
-        data[6][0] = pw_is_over_100_letters;
-        data[6][1] = pw_is_over_100_letters;
+        data[6][0] = pw_is_130_letters;
+        data[6][1] = pw_is_130_letters;
         data[6][2] = error_msg_confirm_pw;
         // row 8,
         data[7][0] = pw_activated_1;
