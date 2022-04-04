@@ -2,7 +2,7 @@ package projects.TA_web.test_case.user_portal;
 
 import base_test.BaseTest;
 
-public class LeaveAMessageTC extends BaseTest {
+public class GiveUsFeedbackTC extends BaseTest {
     /**
      * Test case 01: Verify UI items on the page 'Leave a message'
      * 1. Go to the page Login
@@ -19,7 +19,40 @@ public class LeaveAMessageTC extends BaseTest {
      *  + Select the tab 'Manage my account'
      *  + Select the menu 'Account'
      *  + Select the option 'Change password'
+     * 4. Verify UI items
+     *  + Title: Give Us Feedback, Message History
+     *  + Label: Question/ Comment
+     *  + Buttons: Attached Files, Send Message
+     *  + Table headers: Date, Message, Status
+     *  + Pagination section
      */
+
+    /**
+     * Test case 02: Verify the error messages appear properly when selecting attached unfit images filetypes
+     * 1. Go to the page Login
+     *  + Open the web browser
+     *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
+     *  + Press the key 'Enter' on the keyboard
+     *  + Select the button 'Login'
+     * 2. Login with valid account
+     *  + Enter the email
+     *  + Enter the password
+     *  + Select the button 'Login'
+     * 3. Go to the page 'Give us feedback'
+     *  + Select the account menu
+     *  + Select the tab 'Manage my account'
+     *  + Select the menu 'Account'
+     *  + Select the option 'Change password'
+     * 4. Attach a few unfit images filetypes, then verify the error messages appear
+     *  + Select a text file, eg: file .docs
+     *  + Verify the error message that it is 'The file must be a file of type: jpeg, jpg, png'
+     *  + Select an image file with giant size, eg: 10mb
+     *  + Verify the error message display that it is 'File size must be < 5MB.'
+     *  + Select an appropriate image, eg: file size is <5mb, and file type is jpeg
+     *  + Verify the error message does not display
+     */
+
+
 
 //
 //    /**

@@ -105,7 +105,7 @@ public class DataTestSSO {
     public String error_msg_same_pw = "Your new password is same as your old password. Please use another password.";
     public String success_msg = "Success!";
     public String error_msg_confirm_pw = "Confirm password value must be the same password.";
-    public String error_msg_current_pw_wrong = "Your current password cannot match";
+    public String error_msg_current_pw_wrong = "Your current password cannot match.";
 
     // Reminder page
     public String textContent = "To verify your identity, a security code has been sent to you. Please check the link in the email or coppy and pass the security code here:";
@@ -156,6 +156,10 @@ public class DataTestSSO {
     public String success_msg_update_coupon_type = "The Coupon Type has been updated successfully.";
     public String success_msg_add_coupon_type = "The Coupon Type has been added successfully.";
     public String success_msg_delete_coupon_type = "The Coupon Type has been deleted successfully.";
+
+    // message for TA User Portal
+    public String success_msg_change_pw = "Your password has been changed successfully.";
+    public String failed_msg_change_pw = "Your new password is same as your old password. Please use another password.";
 
     public DataTestSSO() {
     }

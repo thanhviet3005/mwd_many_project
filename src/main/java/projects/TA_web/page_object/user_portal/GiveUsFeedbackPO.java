@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class LeaveAMessagePO {
+public class GiveUsFeedbackPO {
     /* ****  Locator & Element **** */
     @FindBy(css = "h5[id='tableTitle']")
     public WebElement h5Title;
@@ -37,7 +37,7 @@ public class LeaveAMessagePO {
     public WebElement navPaginationArea;
 
     /* ****  Constructor  **** */
-    public LeaveAMessagePO(WebDriver webDriver){
+    public GiveUsFeedbackPO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
     }
 

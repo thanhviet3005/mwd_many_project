@@ -46,9 +46,15 @@ public class DataTestTAWeb extends DataTestSSO {
     public String h2TitleDeleteDialogCouponType = "Do you want to delete ";
     public String btnDelete = "Delete";
 
-    public UserAccount inactivated_SSO_account_for_server_23 = new UserAccount("internal testing only", "please ignored",
-            "qatesting116@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
+    public UserAccount activated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
+            "qatesting119@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
+
+    public UserAccount inactivated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
+            "qatesting118@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
+            "Logigear Test", "Uganda", "Abim", "0909999990");
+    // referral link from account qatesting118@yopmail.com/ pass-02468
+    public String referralLink = "https://sso-stage1.logigear.com/register?referralCode=1649040169";
 
     public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored 100"
             , "100", "Active");
@@ -98,57 +104,57 @@ public class DataTestTAWeb extends DataTestSSO {
     public Object[] getDataToCheckChangePwPage() {
         Object[][] data = new Object[11][4];
         // row 1, the password text is empty    -> ok
-        data[0][0] = inactivated_SSO_account_for_server_23;
+        data[0][0] = inactivated_SSO_account_portal_staging;
         data[0][1] = empty_text;
         data[0][2] = empty_text;
         data[0][3] = error_msg_empty_field;
         // row 2, the password text is only numbers     -> ok
-        data[1][0] = inactivated_SSO_account_for_server_23;
+        data[1][0] = inactivated_SSO_account_portal_staging;
         data[1][1] = pw_only_number;
         data[1][2] = pw_only_number;
         data[1][3] = error_msg_message_pw;
         // row 3, the password text is only letters     -> ok
-        data[2][0] = inactivated_SSO_account_for_server_23;
+        data[2][0] = inactivated_SSO_account_portal_staging;
         data[2][1] = pw_only_string;
         data[2][2] = pw_only_string;
         data[2][3] = error_msg_message_pw;
         // row 4, the password text is less than 8 characters   -> ok
-        data[3][0] = inactivated_SSO_account_for_server_23;
+        data[3][0] = inactivated_SSO_account_portal_staging;
         data[3][1] = pw_not_enough_length;
         data[3][2] = pw_not_enough_length;
         data[3][3] = error_msg_short_Pw;
         // row 5, the password text is valid and it consist a large number of special letters   -> ok
-        data[4][0] = inactivated_SSO_account_for_server_23;
+        data[4][0] = inactivated_SSO_account_portal_staging;
         data[4][1] = pw_contain_special_char;
         data[4][2] = pw_contain_special_char;
         data[4][3] = error_msg_message_pw;
         // row 6, the password text consists a/a few white space letters between other letters  -> ok
-        data[5][0] = inactivated_SSO_account_for_server_23;
+        data[5][0] = inactivated_SSO_account_portal_staging;
         data[5][1] = pw_has_whitespace;
         data[5][2] = pw_has_whitespace;
         data[5][3] = error_msg_message_pw;
         // row 7, the password text is valid and it consist a large number of special letters
-        data[6][0] = inactivated_SSO_account_for_server_23;
+        data[6][0] = inactivated_SSO_account_portal_staging;
         data[6][1] = pw_valid_strong;
         data[6][2] = pw_valid_strong;
         data[6][3] = empty_text;
         // row 8, new password, confirm password are same as the current password
-        data[7][0] = inactivated_SSO_account_for_server_23;
+        data[7][0] = inactivated_SSO_account_portal_staging;
         data[7][1] = activated_SSO_account.getPassword();
         data[7][2] = activated_SSO_account.getPassword();
         data[7][3] = error_msg_same_pw;
         // row 9, new password, confirm password are greater than 100 letters
-        data[8][0] = inactivated_SSO_account_for_server_23;
+        data[8][0] = inactivated_SSO_account_portal_staging;
         data[8][1] = pw_is_over_100_letters;
         data[8][2] = pw_is_over_100_letters;
         data[8][3] = empty_text;
         // row 10, new password, confirm password differences
-        data[9][0] = inactivated_SSO_account_for_server_23;
+        data[9][0] = inactivated_SSO_account_portal_staging;
         data[9][1] = pw_valid_strong;
         data[9][2] = pw_activated_strong;
         data[9][3] = error_msg_confirm_pw;
         // row 11, the current password is wrong
-        data[10][0] = inactivated_SSO_account_for_server_23;
+        data[10][0] = inactivated_SSO_account_portal_staging;
         data[10][1] = pw_valid_strong;
         data[10][2] = pw_valid_strong;
         data[10][3] = error_msg_current_pw_wrong;
@@ -158,8 +164,8 @@ public class DataTestTAWeb extends DataTestSSO {
     @DataProvider
     public Object[] getDataToCheckChangePwPageForAllEmptyField() {
         Object[] data = new Object[2];
-        data[0] = inactivated_SSO_account;
-        data[1] = activated_SSO_account;
+        data[0] = inactivated_SSO_account_portal_staging;
+        data[1] = activated_SSO_account_portal_staging;
         return data;
     }
 
@@ -167,29 +173,29 @@ public class DataTestTAWeb extends DataTestSSO {
     public Object[] getDataToCheckFieldPassword() {
         Object[][] data = new Object[6][3];
         // row 1, pw is only numbers
-        data[0][0] = inactivated_SSO_account_for_server_23;
+        data[0][0] = inactivated_SSO_account_portal_staging;
         data[0][1] = pw_only_number;
-        data[0][3] = error_msg_message_pw;
+        data[0][2] = error_msg_message_pw;
         // row 2, pw is only letters
-        data[1][0] = inactivated_SSO_account_for_server_23;
+        data[1][0] = inactivated_SSO_account_portal_staging;
         data[1][1] = pw_only_string;
-        data[1][3] = error_msg_message_pw;
+        data[1][2] = error_msg_message_pw;
         // row 3, pw is less than 8 characters
-        data[2][0] = inactivated_SSO_account_for_server_23;
+        data[2][0] = activated_SSO_account_portal_staging;
         data[2][1] = pw_not_enough_length;
-        data[2][3] = error_msg_short_Pw;
+        data[2][2] = error_msg_short_Pw;
         // row 4, the password text is valid and it consist a large number of special letters   -> ok
-        data[3][0] = inactivated_SSO_account_for_server_23;
+        data[3][0] = inactivated_SSO_account_portal_staging;
         data[3][1] = pw_contain_special_char;
-        data[3][3] = error_msg_message_pw;
+        data[3][2] = error_msg_message_pw;
         // row 5, the password text consists a/a few white space letters between other letters  -> ok
-        data[4][0] = inactivated_SSO_account_for_server_23;
+        data[4][0] = activated_SSO_account_portal_staging;
         data[4][1] = pw_has_whitespace;
-        data[4][3] = error_msg_message_pw;
+        data[4][2] = error_msg_message_pw;
         // row 6, new password, confirm password are greater than 100 letters
-        data[5][0] = inactivated_SSO_account_for_server_23;
+        data[5][0] = inactivated_SSO_account_portal_staging;
         data[5][1] = pw_is_over_100_letters;
-        data[5][3] = empty_text;
+        data[5][2] = empty_text;
         return data;
     }
 
@@ -197,13 +203,13 @@ public class DataTestTAWeb extends DataTestSSO {
     public Object[] getDataToCheckErrorMsgWhenSubmittingValidValue() {
         Object[][] data = new Object[2][3];
         // row 1, pw is only numbers
-        data[0][0] = inactivated_SSO_account;
-        data[0][1] = inactivated_SSO_account.getPassword();
-        data[0][3] = error_msg_same_pw;
+        data[0][0] = inactivated_SSO_account_portal_staging;
+        data[0][1] = inactivated_SSO_account_portal_staging.getPassword();
+        data[0][2] = error_msg_same_pw;
         // row 2, pw is only letters
-        data[1][0] = activated_SSO_account;
-        data[1][1] = activated_SSO_account.getPassword();
-        data[1][3] = error_msg_current_pw_wrong;
+        data[1][0] = activated_SSO_account_portal_staging;
+        data[1][1] = activated_SSO_account_portal_staging.getPassword();
+        data[1][2] = error_msg_current_pw_wrong;
         return data;
     }
 
@@ -211,10 +217,10 @@ public class DataTestTAWeb extends DataTestSSO {
     public Object[] getDataToCheckErrorMsgNoDisplayWhenEnteringValidValues() {
         Object[][] data = new Object[2][2];
         // row 7, the password text is valid and it consist a large number of special letters
-        data[0][0] = inactivated_SSO_account;
+        data[0][0] = inactivated_SSO_account_portal_staging;
         data[0][1] = pw_valid_strong;
         // row 11, the current password is wrong
-        data[1][0] = activated_SSO_account;
+        data[1][0] = activated_SSO_account_portal_staging;
         data[1][1] = pw_activated_strong;
         return data;
     }
@@ -223,17 +229,29 @@ public class DataTestTAWeb extends DataTestSSO {
     public Object[] getDataToCheckFieldConfirmPassword() {
         Object[][] data = new Object[2][4];
         // row 1
-        data[0][0] = activated_SSO_account;
+        data[0][0] = activated_SSO_account_portal_staging;
         data[0][1] = pw_valid_strong;
         data[0][2] = pw_activated_strong;
         data[0][3] = error_msg_confirm_pw;
         // row 2
-        data[1][0] = inactivated_SSO_account;
+        data[1][0] = inactivated_SSO_account_portal_staging;
         data[1][1] = pw_only_number;
         data[1][2] = pw_not_enough_length;
         data[1][3] = error_msg_confirm_pw;
         return data;
     }
+
+//    @DataProvider
+//    public Object[] getDataToUpdatePasswordSuccessful() {
+//        Object[][] data = new Object[2][2];
+//        // row 7, the password text is valid and it consist a large number of special letters
+//        data[0][0] = inactivated_SSO_account_portal_staging;
+//        data[0][2] = pw_valid_strong;
+//        // row 11, the current password is wrong
+//        data[1][0] = activated_SSO_account_portal_staging;
+//        data[1][1] = pw_activated_strong;
+//        return data;
+//    }
 
 
     // page 'Add coupon type'
