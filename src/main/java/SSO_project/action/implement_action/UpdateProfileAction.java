@@ -14,6 +14,7 @@ public class UpdateProfileAction implements IUpdateProfileAction {
 
 
     @Override
+    // update pdf and image absolute file path corresponding to your PC
     public void UploadAvatar(UpdateProfilePO updateProfilePO, boolean isImage) {
         IGeneralAction generalAction = new GeneralAction();
         if (isImage==true){

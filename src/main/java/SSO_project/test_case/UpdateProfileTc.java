@@ -28,8 +28,8 @@ public class UpdateProfileTc extends BaseTest {
     *
     *
     * */
-    @Test(priority = 1,testName = "Verify GUI after load page successfully",
-
+    @Test(priority = 1,
+            testName = "Verify GUI after load page successfully",
             description = "Verify GUI after load page successfully",
             dataProviderClass = DataTestSSO.class,
             dataProvider = "getDataToCheckUIUpdateProfilePage")
