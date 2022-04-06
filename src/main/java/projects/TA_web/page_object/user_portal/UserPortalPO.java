@@ -33,6 +33,8 @@ public class UserPortalPO {
     public WebElement aChangePw;
     @FindBy(xpath = "//li//a[text()='Logout']")
     public WebElement aLogout;
+    @FindBy(xpath = "//li//a[text()='My Profile']")
+    public WebElement aMyProfile;
 
     public UserPortalPO (WebDriver webDriver){
         PageFactory.initElements(webDriver, this);

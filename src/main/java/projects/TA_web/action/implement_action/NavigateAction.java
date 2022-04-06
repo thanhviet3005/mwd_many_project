@@ -19,6 +19,6 @@ public class NavigateAction implements INavigateAction {
 
     @Override
     public void goToLoginPage(WebDriver webDriver) {
-        webDriver.get(URL.loginPageOnServer23Url);
+        webDriver.get(URL.LoginTaUserPortal);
     }
 }

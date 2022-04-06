@@ -4,11 +4,14 @@ import SSO_project.action.IUpdateProfileAction;
 import SSO_project.entity.UserAccount;
 import SSO_project.page_object.LoginPO;
 import SSO_project.page_object.UpdateProfilePO;
+import common.Constant;
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UpdateProfileAction implements IUpdateProfileAction {
 
@@ -17,12 +20,13 @@ public class UpdateProfileAction implements IUpdateProfileAction {
     // update pdf and image absolute file path corresponding to your PC
     public void UploadAvatar(UpdateProfilePO updateProfilePO, boolean isImage) {
         IGeneralAction generalAction = new GeneralAction();
-        if (isImage==true){
-        updateProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\superman.jpg");
-        updateProfilePO.btnSubmit.click();
-        } else {
-            updateProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf");
+        if (!isImage){
+            updateProfilePO.uploadAvatar.sendKeys("D:\\ta-portal\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf");
             generalAction.verifyElementDisplayed(updateProfilePO.labelErrorMsgUploadImg,"Error message upload image");
+        } else {
+            updateProfilePO.uploadAvatar.sendKeys("D:\\ta-portal\\src\\main\\java\\SSO_project\\data_test\\superman.jpg");
+            updateProfilePO.btnSubmit.click();
+
         }
     }
 

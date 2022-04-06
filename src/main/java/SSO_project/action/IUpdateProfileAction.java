@@ -8,7 +8,6 @@ public interface IUpdateProfileAction {
 
     void UploadAvatar (UpdateProfilePO updateProfilePO,boolean isImage);
     void UpdateFields(UpdateProfilePO updateProfilePO,String textInput);
-
     void checkAllFieldsDisplayed(IGeneralAction generalAction, UpdateProfilePO updateProfilePO);
     void checkAllErrorMsg(IGeneralAction generalAction, WebDriver webDriver, UpdateProfilePO updateProfilePO);
 }
