@@ -14,7 +14,6 @@ import common.LogReport;
 import common.SSOUtilImpA;
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
-import org.apache.commons.logging.Log;
 import org.testng.annotations.Test;
 import projects.TA_web.action.IAddCouponTypeAction;
 import projects.TA_web.action.IEditCouponTypeAction;
@@ -84,7 +83,13 @@ public class EditCouponTypeTC extends BaseTest {
             LogReport.logSubStep("");
 
             LogReport.logMainStep("4. Verify all UI items on form 'Edit' display fully");
-            addCouponTypeAction.verifyUIAddPage(generalAction, addCouponTypePO);
+            LogReport.logSubStep("<b>Verify all labels names and title: 'Name', 'Limit', 'Status', 'Add coupon type'<b>");
+            addCouponTypeAction.verifyAllLabelsAndTitle(generalAction, addCouponTypePO);
+            LogReport.logSubStep("<b>Verify all input fields and selection fields: 'Name', 'Limit', 'Status'<b>");
+            addCouponTypeAction.verifyAllInputFields(generalAction, addCouponTypePO);
+            LogReport.logSubStep("<b>Verify all names of buttons: 'Save', 'Cancel'<b>");
+            addCouponTypeAction.verifyAllButton(generalAction, addCouponTypePO);
+
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -386,7 +391,7 @@ public class EditCouponTypeTC extends BaseTest {
         UserAccount user = dataTestTAWeb.activated_SSO_account;
         ILoginAction loginAction = new LoginAction();
         LoginPO loginPO = new LoginPO(Constant.webDriver);
-        CouponType couponType = dataTestTAWeb.new_coupon_type_active;
+        CouponType couponType = dataTestTAWeb.valid_coupon_type_active;
         IEditCouponTypeAction editCouponTypeAction = new EditCouponTypeAction();
         EditCouponTypePO editCouponTypePO = new EditCouponTypePO(Constant.webDriver);
         IGeneralAction generalAction = new GeneralAction();

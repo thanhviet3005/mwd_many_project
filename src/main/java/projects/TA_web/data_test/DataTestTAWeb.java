@@ -53,18 +53,28 @@ public class DataTestTAWeb extends DataTestSSO {
     public UserAccount inactivated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting118@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
+
+    public UserAccount admin_SSO_account_portal_staging = new UserAccount("thien1111", "thien1",
+            "thien.kieu@logigear.com", "abc123!@#", "abc123!@#", "sdfsf",
+            "abc111", "Aruba", "Aruba", "11111111111111");
+
     // referral link from account qatesting118@yopmail.com/ pass-02468
     public String referralLink = "https://sso-stage1.logigear.com/register?referralCode=1649040169";
 
-    public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored 100"
+    public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
             , "100", "Active");
-
-    public CouponType valid_coupon_type_inactive = new CouponType("internal testing only please ignored 101"
+    public CouponType valid_coupon_type_inactive = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
             , "120", "InActive");
-
-    public CouponType new_coupon_type_active =
-            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active");
+    public CouponType coupon_type_empty_field = new CouponType("", "", "", "");
+//    public CouponType coupon_type_active = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss"), "100", "Active");
+    public CouponType coupon_type_has_image_jpeg = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", file_path_image_valid_jpeg);
+    public CouponType coupon_type_has_image_png = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", file_path_image_valid_png);
+    public CouponType coupon_type_has_image_jfif = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", file_path_image_valid_jfif);
+    public CouponType coupon_type_has_huge_image = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", file_path_image_larger_than_10mbs);
 
     @DataProvider
     public Object[] getDataForFieldPhone() {
@@ -241,45 +251,32 @@ public class DataTestTAWeb extends DataTestSSO {
         return data;
     }
 
-//    @DataProvider
-//    public Object[] getDataToUpdatePasswordSuccessful() {
-//        Object[][] data = new Object[2][2];
-//        // row 7, the password text is valid and it consist a large number of special letters
-//        data[0][0] = inactivated_SSO_account_portal_staging;
-//        data[0][2] = pw_valid_strong;
-//        // row 11, the current password is wrong
-//        data[1][0] = activated_SSO_account_portal_staging;
-//        data[1][1] = pw_activated_strong;
-//        return data;
-//    }
-
-
     // page 'Add coupon type'
     @DataProvider
     public Object[] getDataToCheckFieldNameOfCouponType() {
         Object[][] data = new Object[5][4];
         // row 1, enter nothing to the field
-        data[0][0] = activated_SSO_account;
+        data[0][0] = admin_SSO_account_portal_staging;
         data[0][1] = empty_text;
         data[0][2] = empty_text;
         data[0][3] = error_msg_empty_field;
         // row 2, enter the text consist special letters
-        data[1][0] = activated_SSO_account;
+        data[1][0] = admin_SSO_account_portal_staging;
         data[1][1] = name_contain_special_char;
         data[1][2] = empty_text;
         data[1][3] = error_msg_special_letters_for_name;
         // row 3, enter an extensive text
-        data[2][0] = activated_SSO_account;
+        data[2][0] = admin_SSO_account_portal_staging;
         data[2][1] = text_284_characters;
         data[2][2] = text_284_characters.substring(0, 200);
         data[2][3] = empty_text;
         // row 4, enter the text consist a few white space letters at the beginning and end
-        data[3][0] = activated_SSO_account;
+        data[3][0] = admin_SSO_account_portal_staging;
         data[3][1] = text_white_space_at_begining_ending;
         data[3][2] = text_white_space_at_begining_ending.trim();
-        data[3][4] = empty_text;
+        data[3][3] = empty_text;
         // row 5, enter the unicode text
-        data[4][0] = activated_SSO_account;
+        data[4][0] = admin_SSO_account_portal_staging;
         data[4][1] = name_by_unicode_text;
         data[4][2] = name_by_unicode_text;
         data[4][3] = empty_text;
@@ -309,7 +306,7 @@ public class DataTestTAWeb extends DataTestSSO {
         data[3][0] = activated_SSO_account;
         data[3][1] = number_white_space_at_beging_end;
         data[3][2] = number_white_space_at_beging_end.trim();
-        data[3][4] = empty_text;
+        data[3][3] = empty_text;
         // row 5, enter the unicode text
         data[4][0] = activated_SSO_account;
         data[4][1] = active_code_extensive;
@@ -317,5 +314,24 @@ public class DataTestTAWeb extends DataTestSSO {
         data[4][3] = empty_text;
         return data;
     }
+
+    @DataProvider
+    public Object[] getDataToCreateNewCouponTypeSuccessfully() {
+        Object[][] data = new Object[3][3];
+        // row 1, coupon type has an image that it is the file type .jpeg
+        data[0][0] = activated_SSO_account_portal_staging;
+        data[0][1] = coupon_type_has_image_jpeg;
+        data[0][2] = success_msg_add_coupon_type;
+        // row 2, coupon type has an image that it is the file type .png
+        data[1][0] = activated_SSO_account_portal_staging;
+        data[1][1] = coupon_type_has_image_png;
+        data[1][2] = success_msg_add_coupon_type;
+        // row 2, coupon type has an image that it is the file type .jfif
+        data[2][0] = activated_SSO_account_portal_staging;
+        data[2][1] = coupon_type_has_image_jfif;
+        data[2][2] = success_msg_add_coupon_type;
+        return data;
+    }
+
 
 }

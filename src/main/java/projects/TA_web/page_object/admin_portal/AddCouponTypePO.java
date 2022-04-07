@@ -19,6 +19,12 @@ public class AddCouponTypePO {
     public WebElement labelStatus;
     @FindBy(id = "demo-simple-select")
     public WebElement divSelectStatus;
+    @FindBy(css = "label[for='contained-button-file']")
+    public WebElement labelBtnUploadImage;
+    @FindBy(id = "contained-button-file")
+    public WebElement inputUploadImage;
+    @FindBy(xpath = "//img[@alt='coupon icon']")
+    public WebElement imgImageDisplay;
     @FindBy(xpath = "//button[text()='Save']")
     public WebElement btnSave;
     @FindBy(xpath = "//button[text()='Cancel']")
@@ -35,6 +41,8 @@ public class AddCouponTypePO {
     public WebElement svgIconWarningForLimit;
     @FindBy(xpath = "//form//div[@role='alert']")
     public WebElement divErrorMsgExistedValue;
+    @FindBy(xpath = "//label[@for='contained-button-file']//following-sibling::label")
+    public WebElement labelErrorMsgImage;
 
     public By labelErrorMsgForNameBy = By.xpath("//label[@for='name']//following-sibling::div//label");
     public By svgIconWarningForNameBy = By.xpath("//input[@id='name']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");

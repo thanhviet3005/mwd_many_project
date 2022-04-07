@@ -51,10 +51,11 @@ public class NavigateAction implements INavigateAction {
     }
 
     @Override
-    public  void goToUpdateProfilePage(WebDriver webDriver, TestArchitectPO testArchitectPO){
+    public  void goToUpdateProfilePage(WebDriver webDriver, TestArchitectPO testArchitectPO) {
         ISSOUtilA ssoUtilA = new SSOUtilImpA();
         ssoUtilA.waitElementInteraction(webDriver, testArchitectPO.accountName, 50);
         ssoUtilA.hoverMenuAndClickItem(webDriver, testArchitectPO.accountName, testArchitectPO.optUpdateProfile);
+    }
 
     public void goToPage(WebDriver webDriver, String url) {
         webDriver.get(url);

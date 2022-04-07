@@ -91,6 +91,7 @@ public class DataTestSSO {
 
     // error message for the empty field
     public String error_msg_empty_field = "This field is required.";
+    public String error_msg_empty_image_field = "The image is required.";
 
     // empty text
     public String empty_text = "";
@@ -160,6 +161,12 @@ public class DataTestSSO {
     // message for TA User Portal
     public String success_msg_change_pw = "Your password has been changed successfully.";
     public String failed_msg_change_pw = "Your new password is same as your old password. Please use another password.";
+
+    // image for testing
+    public String file_path_image_valid_jpeg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\cute-cat-icon-vector.jpg";
+    public String file_path_image_valid_png = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\phoenix funny.png";
+    public String file_path_image_valid_jfif = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\images.jfif";
+    public String file_path_image_larger_than_10mbs = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\vocabulary_popular.jpg";
 
     public DataTestSSO() {
     }
