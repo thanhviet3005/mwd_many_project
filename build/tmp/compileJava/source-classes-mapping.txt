@@ -1,137 +1,41 @@
-SSO_admin_portal/action/implement_action/AddUserImpA.java
- SSO_admin_portal.action.implement_action.AddUserImpA
 SSO_project/action/IResetPasswordAction.java
  SSO_project.action.IResetPasswordAction
 projects/Pre_Test_Sele_2/page_object/YoutubeVideoPO.java
  projects.Pre_Test_Sele_2.page_object.YoutubeVideoPO
-SSO_admin_portal/action/INavigateAction.java
- SSO_admin_portal.action.INavigateAction
-common/Constant.java
- common.Constant
+SSO_project/temp.java
+ SSO_project.temp
 SSO_project/entity/UserAccount.java
  SSO_project.entity.UserAccount
-SSO_project/page_object/ActiveAccountPO.java
- SSO_project.page_object.ActiveAccountPO
-projects/TA_web/action/implement_action/EditProfileAction.java
- projects.TA_web.action.implement_action.EditProfileAction
-projects/TA_web/test_case/user_portal/EditProfileTc.java
- projects.TA_web.test_case.user_portal.EditProfileTc
-projects/TA_web/test_case/temp_3.java
- projects.TA_web.test_case.temp_3
-SSO_project/action/implement_action/LogoutAction.java
- SSO_project.action.implement_action.LogoutAction
-SSO_admin_portal/temp2.java
- SSO_admin_portal.temp2
-SSO_project/page_object/ForgotPwPO.java
- SSO_project.page_object.ForgotPwPO
-common/ExtentReportManager.java
- common.ExtentReportManager
-common/SSOUtilImpA.java
- common.SSOUtilImpA
-projects/Pre_Test_Sele_2/action/ISearchAction.java
- projects.Pre_Test_Sele_2.action.ISearchAction
-SSO_project/page_object/ResetPasswordPO.java
- SSO_project.page_object.ResetPasswordPO
-base_test/InitialSetup.java
- base_test.InitialSetup
-projects/Pre_Test_Sele_2/temp2.java
- projects.Pre_Test_Sele_2.temp2
-projects/TA_web/action/IEditProfileAction.java
- projects.TA_web.action.IEditProfileAction
-SSO_project/action/implement_action/ChangePasswordAction.java
- SSO_project.action.implement_action.ChangePasswordAction
-projects/TA_web/page_object/user_portal/UserPortalPO.java
- projects.TA_web.page_object.user_portal.UserPortalPO
-common/TimeUtil.java
- common.TimeUtil
-SSO_admin_portal/action/IAddUserAction.java
- SSO_admin_portal.action.IAddUserAction
-SSO_project/action/ISignUpAction.java
- SSO_project.action.ISignUpAction
-SSO_admin_portal/page_object/GeneralPO.java
- SSO_admin_portal.page_object.GeneralPO
-common/ISSOUtilA.java
- common.ISSOUtilA
-SSO_project/action/IForgotPwAction.java
- SSO_project.action.IForgotPwAction
-SSO_project/action/ILogoutAction.java
- SSO_project.action.ILogoutAction
-SSO_project/action/implement_action/ResetPasswordAction.java
- SSO_project.action.implement_action.ResetPasswordAction
-general_action/implement/GeneralSearchingAction.java
- general_action.implement.GeneralSearchingAction
-projects/TA_web/page_object/user_portal/EditProfilePO.java
- projects.TA_web.page_object.user_portal.EditProfilePO
-projects/Pre_Test_Sele_2/page_object/GoogleHomePO.java
- projects.Pre_Test_Sele_2.page_object.GoogleHomePO
-SSO_project/action/IActiveAccountAction.java
- SSO_project.action.IActiveAccountAction
-SSO_project/page_object/ChangePwPO.java
- SSO_project.page_object.ChangePwPO
-SSO_project/page_object/SendActivePO.java
- SSO_project.page_object.SendActivePO
-SSO_project/action/IChangePwAction.java
- SSO_project.action.IChangePwAction
-general_action/IGeneralSearchingAction.java
- general_action.IGeneralSearchingAction
-general_action/IGeneralAction.java
- general_action.IGeneralAction
-SSO_project/action/implement_action/SignUpAction.java
- SSO_project.action.implement_action.SignUpAction
-common/LogReport.java
- common.LogReport
-projects/Pre_Test_Sele_2/action/INavigateAction.java
- projects.Pre_Test_Sele_2.action.INavigateAction
-SSO_project/page_object/SignUpPO.java
- SSO_project.page_object.SignUpPO
-SSO_project/page_object/ThankYouPO.java
- SSO_project.page_object.ThankYouPO
-projects/Pre_Test_Sele_2/action/implement_action/SearchAction.java
- projects.Pre_Test_Sele_2.action.implement_action.SearchAction
-projects/Pre_Test_Sele_2/page_object/SearchingResultPO.java
- projects.Pre_Test_Sele_2.page_object.SearchingResultPO
-SSO_project/page_object/TestArchitectPO.java
- SSO_project.page_object.TestArchitectPO
-SSO_admin_portal/page_object/UserManagementPO.java
- SSO_admin_portal.page_object.UserManagementPO
-projects/TA_web/action/implement_action/GiveUsFeedbackAction.java
- projects.TA_web.action.implement_action.GiveUsFeedbackAction
-SSO_project/test_case/LoginTc.java
- SSO_project.test_case.LoginTc
-projects/TA_web/page_object/admin_portal/AdminPortalPo.java
- projects.TA_web.page_object.admin_portal.AdminPortalPo
-SSO_project/data_test/DataTestSSO.java
- SSO_project.data_test.DataTestSSO
+projects/TA_web/action/IDeleteCouponTypeAction.java
+ projects.TA_web.action.IDeleteCouponTypeAction
 projects/TA_web/action/implement_action/EditCouponTypeAction.java
  projects.TA_web.action.implement_action.EditCouponTypeAction
-SSO_project/action/implement_action/ForgotPasswordAction.java
- SSO_project.action.implement_action.ForgotPasswordAction
+SSO_project/test_case/ChangePwTc.java
+ SSO_project.test_case.ChangePwTc
 base_test/BaseTest.java
  base_test.BaseTest
-projects/TA_web/test_case/user_portal/GiveUsFeedbackTC.java
- projects.TA_web.test_case.user_portal.GiveUsFeedbackTC
+SSO_project/test_case/SignUpTc.java
+ SSO_project.test_case.SignUpTc
+SSO_project/action/implement_action/UpdateProfileAction.java
+ SSO_project.action.implement_action.UpdateProfileAction
+SSO_admin_portal/temp2.java
+ SSO_admin_portal.temp2
 SSO_project/action/ILoginAction.java
  SSO_project.action.ILoginAction
-general_action/implement/GeneralAction.java
- general_action.implement.GeneralAction
 SSO_project/page_object/LoginPO.java
  SSO_project.page_object.LoginPO
-projects/TA_web/action/implement_action/LoginAction.java
- projects.TA_web.action.implement_action.LoginAction
-projects/TA_web/test_case/admin_portal/DeleteCouponTypeTc.java
- projects.TA_web.test_case.admin_portal.DeleteCouponTypeTc
-projects/TA_web/test_case/admin_portal/AddCouponTypeTC.java
- projects.TA_web.test_case.admin_portal.AddCouponTypeTC
-SSO_project/action/implement_action/ActiveAccountAction.java
- SSO_project.action.implement_action.ActiveAccountAction
+projects/Pre_Test_Sele_2/action/implement_action/NavigateAction.java
+ projects.Pre_Test_Sele_2.action.implement_action.NavigateAction
+SSO_project/action/implement_action/LoginAction.java
+ SSO_project.action.implement_action.LoginAction
+SSO_project/page_object/UpdateProfilePO.java
+ SSO_project.page_object.UpdateProfilePO
+general_action/implement/GeneralSearchingAction.java
+ general_action.implement.GeneralSearchingAction
 projects/TA_web/entity/CouponType.java
  projects.TA_web.entity.CouponType
-projects/TA_web/action/implement_action/AddCouponTypeAction.java
- projects.TA_web.action.implement_action.AddCouponTypeAction
-projects/TA_web/action/IChangePasswordAction.java
- projects.TA_web.action.IChangePasswordAction
-projects/TA_web/page_object/user_portal/LoginOn23ServerPO.java
- projects.TA_web.page_object.user_portal.LoginOn23ServerPO
+projects/TA_web/action/implement_action/NavigateAction.java
+ projects.TA_web.action.implement_action.NavigateAction
 projects/TA_web/page_object/admin_portal/EditCouponTypePO.java
  projects.TA_web.page_object.admin_portal.EditCouponTypePO
 projects/TA_web/page_object/admin_portal/AddCouponTypePO.java
@@ -140,59 +44,163 @@ projects/TA_web/page_object/user_portal/ChangePasswordPO.java
  projects.TA_web.page_object.user_portal.ChangePasswordPO
 SSO_project/action/INavigateAction.java
  SSO_project.action.INavigateAction
-projects/Pre_Test_Sele_2/test_case/SearchingResultTc.java
- projects.Pre_Test_Sele_2.test_case.SearchingResultTc
-projects/TA_web/data_test/RegexPattern.java
- projects.TA_web.data_test.RegexPattern
-SSO_project/test_case/SignUpTc.java
- SSO_project.test_case.SignUpTc
-projects/TA_web/action/INavigateAction.java
- projects.TA_web.action.INavigateAction
-projects/TA_web/action/IAddCouponTypeAction.java
- projects.TA_web.action.IAddCouponTypeAction
-projects/TA_web/page_object/admin_portal/ManageCouponTypePO.java
- projects.TA_web.page_object.admin_portal.ManageCouponTypePO
-projects/TA_web/action/ILoginAction.java
- projects.TA_web.action.ILoginAction
-projects/TA_web/action/IGiveUsFeedbackAction.java
- projects.TA_web.action.IGiveUsFeedbackAction
-projects/TA_web/page_object/user_portal/GiveUsFeedbackPO.java
- projects.TA_web.page_object.user_portal.GiveUsFeedbackPO
-projects/TA_web/action/implement_action/DeleteCouponTypeAction.java
- projects.TA_web.action.implement_action.DeleteCouponTypeAction
-projects/TA_web/action/IDeleteCouponTypeAction.java
- projects.TA_web.action.IDeleteCouponTypeAction
-projects/TA_web/action/IEditCouponTypeAction.java
- projects.TA_web.action.IEditCouponTypeAction
-projects/TA_web/data_test/DataTestTAWeb.java
- projects.TA_web.data_test.DataTestTAWeb
-SSO_project/test_case/ActiveCodeTc.java
- SSO_project.test_case.ActiveCodeTc
-SSO_project/test_case/ChangePwTc.java
- SSO_project.test_case.ChangePwTc
 SSO_admin_portal/test_case/AddUserTc.java
  SSO_admin_portal.test_case.AddUserTc
-SSO_project/test_case/ForgotPwTc.java
- SSO_project.test_case.ForgotPwTc
-SSO_project/temp.java
- SSO_project.temp
+SSO_project/action/IForgotPwAction.java
+ SSO_project.action.IForgotPwAction
+SSO_project/action/ILogoutAction.java
+ SSO_project.action.ILogoutAction
 SSO_project/test_case/ResetPasswordTc.java
  SSO_project.test_case.ResetPasswordTc
-projects/TA_web/test_case/admin_portal/EditCouponTypeTC.java
- projects.TA_web.test_case.admin_portal.EditCouponTypeTC
-projects/Pre_Test_Sele_2/action/implement_action/NavigateAction.java
- projects.Pre_Test_Sele_2.action.implement_action.NavigateAction
-common/URL.java
- common.URL
-projects/TA_web/action/implement_action/NavigateAction.java
- projects.TA_web.action.implement_action.NavigateAction
-SSO_project/action/implement_action/LoginAction.java
- SSO_project.action.implement_action.LoginAction
-projects/TA_web/test_case/user_portal/ChangePasswordTc.java
- projects.TA_web.test_case.user_portal.ChangePasswordTc
-SSO_admin_portal/action/implement_action/NavigateImpA.java
- SSO_admin_portal.action.implement_action.NavigateImpA
-projects/TA_web/action/implement_action/ChangePasswordAction.java
- projects.TA_web.action.implement_action.ChangePasswordAction
+projects/Pre_Test_Sele_2/page_object/GoogleHomePO.java
+ projects.Pre_Test_Sele_2.page_object.GoogleHomePO
+SSO_project/page_object/ChangePwPO.java
+ SSO_project.page_object.ChangePwPO
+SSO_project/test_case/ForgotPwTc.java
+ SSO_project.test_case.ForgotPwTc
+SSO_project/test_case/UpdateProfileTc.java
+ SSO_project.test_case.UpdateProfileTc
+projects/TA_web/page_object/admin_portal/ManageCouponTypePO.java
+ projects.TA_web.page_object.admin_portal.ManageCouponTypePO
+projects/Pre_Test_Sele_2/action/INavigateAction.java
+ projects.Pre_Test_Sele_2.action.INavigateAction
+SSO_project/action/ISignUpAction.java
+ SSO_project.action.ISignUpAction
+projects/Pre_Test_Sele_2/action/implement_action/SearchAction.java
+ projects.Pre_Test_Sele_2.action.implement_action.SearchAction
+SSO_project/page_object/ActiveAccountPO.java
+ SSO_project.page_object.ActiveAccountPO
+SSO_project/page_object/TestArchitectPO.java
+ SSO_project.page_object.TestArchitectPO
+SSO_project/test_case/LoginTc.java
+ SSO_project.test_case.LoginTc
+common/Constant.java
+ common.Constant
+SSO_project/page_object/ForgotPwPO.java
+ SSO_project.page_object.ForgotPwPO
+SSO_project/action/implement_action/ForgotPasswordAction.java
+ SSO_project.action.implement_action.ForgotPasswordAction
+projects/TA_web/data_test/RegexPattern.java
+ projects.TA_web.data_test.RegexPattern
+projects/TA_web/test_case/user_portal/GiveUsFeedbackTC.java
+ projects.TA_web.test_case.user_portal.GiveUsFeedbackTC
+SSO_project/data_test/DataTestSSO.java
+ SSO_project.data_test.DataTestSSO
+SSO_project/page_object/SignUpPO.java
+ SSO_project.page_object.SignUpPO
+common/ExtentReportManager.java
+ common.ExtentReportManager
+projects/TA_web/page_object/user_portal/GiveUsFeedbackPO.java
+ projects.TA_web.page_object.user_portal.GiveUsFeedbackPO
+SSO_project/action/implement_action/ChangePasswordAction.java
+ SSO_project.action.implement_action.ChangePasswordAction
+common/TimeUtil.java
+ common.TimeUtil
+projects/TA_web/page_object/user_portal/EditProfilePO.java
+ projects.TA_web.page_object.user_portal.EditProfilePO
+SSO_project/page_object/ResetPasswordPO.java
+ SSO_project.page_object.ResetPasswordPO
+projects/TA_web/test_case/temp_3.java
+ projects.TA_web.test_case.temp_3
+SSO_project/action/implement_action/ActiveAccountAction.java
+ SSO_project.action.implement_action.ActiveAccountAction
+projects/TA_web/page_object/user_portal/LoginOn23ServerPO.java
+ projects.TA_web.page_object.user_portal.LoginOn23ServerPO
+common/ISSOUtilA.java
+ common.ISSOUtilA
+general_action/IGeneralAction.java
+ general_action.IGeneralAction
+SSO_admin_portal/action/implement_action/AddUserImpA.java
+ SSO_admin_portal.action.implement_action.AddUserImpA
+projects/TA_web/action/implement_action/GiveUsFeedbackAction.java
+ projects.TA_web.action.implement_action.GiveUsFeedbackAction
+SSO_admin_portal/action/INavigateAction.java
+ SSO_admin_portal.action.INavigateAction
+projects/TA_web/action/implement_action/EditProfileAction.java
+ projects.TA_web.action.implement_action.EditProfileAction
+projects/TA_web/test_case/user_portal/EditProfileTc.java
+ projects.TA_web.test_case.user_portal.EditProfileTc
+SSO_project/action/IUpdateProfileAction.java
+ SSO_project.action.IUpdateProfileAction
+SSO_project/action/implement_action/SignUpAction.java
+ SSO_project.action.implement_action.SignUpAction
+general_action/implement/GeneralAction.java
+ general_action.implement.GeneralAction
+projects/Pre_Test_Sele_2/action/ISearchAction.java
+ projects.Pre_Test_Sele_2.action.ISearchAction
+projects/Pre_Test_Sele_2/temp2.java
+ projects.Pre_Test_Sele_2.temp2
 SSO_project/action/implement_action/NavigateAction.java
  SSO_project.action.implement_action.NavigateAction
+common/URL.java
+ common.URL
+SSO_admin_portal/action/IAddUserAction.java
+ SSO_admin_portal.action.IAddUserAction
+projects/Pre_Test_Sele_2/test_case/SearchingResultTc.java
+ projects.Pre_Test_Sele_2.test_case.SearchingResultTc
+SSO_project/action/implement_action/ResetPasswordAction.java
+ SSO_project.action.implement_action.ResetPasswordAction
+projects/TA_web/action/INavigateAction.java
+ projects.TA_web.action.INavigateAction
+SSO_project/action/IActiveAccountAction.java
+ SSO_project.action.IActiveAccountAction
+projects/TA_web/page_object/admin_portal/AdminPortalPO.java
+ projects.TA_web.page_object.admin_portal.AdminPortalPO
+SSO_project/action/IChangePwAction.java
+ SSO_project.action.IChangePwAction
+projects/TA_web/action/ILoginAction.java
+ projects.TA_web.action.ILoginAction
+general_action/IGeneralSearchingAction.java
+ general_action.IGeneralSearchingAction
+projects/TA_web/action/IGiveUsFeedbackAction.java
+ projects.TA_web.action.IGiveUsFeedbackAction
+SSO_project/page_object/SendActivePO.java
+ SSO_project.page_object.SendActivePO
+common/LogReport.java
+ common.LogReport
+projects/TA_web/action/implement_action/LoginAction.java
+ projects.TA_web.action.implement_action.LoginAction
+SSO_project/page_object/ThankYouPO.java
+ SSO_project.page_object.ThankYouPO
+projects/Pre_Test_Sele_2/page_object/SearchingResultPO.java
+ projects.Pre_Test_Sele_2.page_object.SearchingResultPO
+projects/TA_web/action/IEditCouponTypeAction.java
+ projects.TA_web.action.IEditCouponTypeAction
+SSO_admin_portal/page_object/UserManagementPO.java
+ SSO_admin_portal.page_object.UserManagementPO
+common/SSOUtilImpA.java
+ common.SSOUtilImpA
+projects/TA_web/action/IAddCouponTypeAction.java
+ projects.TA_web.action.IAddCouponTypeAction
+projects/TA_web/page_object/user_portal/UserPortalPO.java
+ projects.TA_web.page_object.user_portal.UserPortalPO
+projects/TA_web/action/IEditProfileAction.java
+ projects.TA_web.action.IEditProfileAction
+SSO_admin_portal/page_object/GeneralPO.java
+ SSO_admin_portal.page_object.GeneralPO
+SSO_admin_portal/action/implement_action/NavigateImpA.java
+ SSO_admin_portal.action.implement_action.NavigateImpA
+SSO_project/action/implement_action/LogoutAction.java
+ SSO_project.action.implement_action.LogoutAction
+base_test/InitialSetup.java
+ base_test.InitialSetup
+SSO_project/test_case/ActiveCodeTc.java
+ SSO_project.test_case.ActiveCodeTc
+projects/TA_web/test_case/admin_portal/EditCouponTypeTC.java
+ projects.TA_web.test_case.admin_portal.EditCouponTypeTC
+projects/TA_web/action/implement_action/AddCouponTypeAction.java
+ projects.TA_web.action.implement_action.AddCouponTypeAction
+projects/TA_web/action/implement_action/DeleteCouponTypeAction.java
+ projects.TA_web.action.implement_action.DeleteCouponTypeAction
+projects/TA_web/data_test/DataTestTAWeb.java
+ projects.TA_web.data_test.DataTestTAWeb
+projects/TA_web/test_case/admin_portal/AddCouponTypeTC.java
+ projects.TA_web.test_case.admin_portal.AddCouponTypeTC
+projects/TA_web/test_case/admin_portal/DeleteCouponTypeTc.java
+ projects.TA_web.test_case.admin_portal.DeleteCouponTypeTc
+projects/TA_web/test_case/user_portal/ChangePasswordTc.java
+ projects.TA_web.test_case.user_portal.ChangePasswordTc
+projects/TA_web/action/IChangePasswordAction.java
+ projects.TA_web.action.IChangePasswordAction
+projects/TA_web/action/implement_action/ChangePasswordAction.java
+ projects.TA_web.action.implement_action.ChangePasswordAction
