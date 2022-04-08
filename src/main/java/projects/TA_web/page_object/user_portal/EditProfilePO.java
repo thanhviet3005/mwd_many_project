@@ -7,8 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class EditProfilePO {
 
-    @FindBy (xpath = "//button[text() = 'Edit Profile']")
-    public WebElement btnEditProfile;
     @FindBy(xpath = "//input[@id='firstName']")
     public  WebElement inputFirstName;
     @FindBy(xpath = "//input[@id='lastName']")
@@ -36,7 +34,9 @@ public class EditProfilePO {
     public  WebElement labelCountry;
     @FindBy (xpath = "//label[.='State']")
     public  WebElement labelState;
-    @FindBy(xpath="//label[@for='phone']")
+    @FindBy (xpath = "//select[@name='rcrs-region']")
+    public  WebElement inputState;
+    @FindBy(xpath="//label[.='Phone']")
     public  WebElement labelPhone;
 
     @FindBy(xpath = "//label[.='First Name*']/following-sibling::div//label[@class='sc-pfmka2-0 gTWVky']")
@@ -45,9 +45,16 @@ public class EditProfilePO {
     public WebElement labelErrorMsgLastName;
     @FindBy(xpath="//label[text()='Phone']/following-sibling::div//label[@class='sc-pfmka2-0 gTWVky']")
     public WebElement labelErrorMsgPhone;
-    @FindBy(xpath = "//div[@class='MuiAlert-message css-1w0ym84']")
+    @FindBy(xpath = "//label[@class='sc-pfmka2-0 gTWVky']")
     public  WebElement labelErrorMsgUploadImg;
-
+    @FindBy (xpath = "//button[text()='Save']")
+    public WebElement btnSave;
+    @FindBy (xpath = "//button[text()='Cancel']")
+    public WebElement btnCancelEditProfile;
+    @FindBy(xpath = "//input[@id='uploadAvatar']")
+    public WebElement uploadAvatar;
+    @FindBy (xpath = "//div[text()='Your profile has been updated successfully.']")
+    public  WebElement divSuccessgUploadAvatar;
     public  EditProfilePO(WebDriver webDriver){
         PageFactory.initElements(webDriver,this);
     }

@@ -7,5 +7,6 @@ public interface INavigateAction {
     void goToLeaveAMessagePage(WebDriver webDriver, UserPortalPO userPortalPO) ;
     void goToChangePasswordPage(WebDriver webDriver, UserPortalPO userPortalPO);
     void goToLoginPage(WebDriver webDriver);
+    void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO) throws InterruptedException;
 
 }

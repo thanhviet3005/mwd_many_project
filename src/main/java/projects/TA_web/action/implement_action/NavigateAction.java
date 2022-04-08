@@ -21,4 +21,14 @@ public class NavigateAction implements INavigateAction {
     public void goToLoginPage(WebDriver webDriver) {
         webDriver.get(URL.LoginTaUserPortal);
     }
+
+    @Override
+    public void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO) throws InterruptedException {
+        userPortalPO.svgAccountMenu.click();
+        userPortalPO.aMyProfile.click();
+        userPortalPO.btnEditProfile.click();
+
+    }
+
+
 }

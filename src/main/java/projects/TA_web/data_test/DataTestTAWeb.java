@@ -50,6 +50,11 @@ public class DataTestTAWeb extends DataTestSSO {
             "qatesting116@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
 
+    public UserAccount account_test_edit_profile = new UserAccount("aa","bb","tester_logi_2@yopmail.com",
+            "tester_logi_2","tester_logi_2","aa","abc","Uganda",
+            "Abim", "0909999990");
+
+
     public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored 100"
             , "100", "Active");
 

@@ -21,10 +21,10 @@ public class UpdateProfileAction implements IUpdateProfileAction {
     public void UploadAvatar(UpdateProfilePO updateProfilePO, boolean isImage) {
         IGeneralAction generalAction = new GeneralAction();
         if (!isImage){
-            updateProfilePO.uploadAvatar.sendKeys("D:\\ta-portal\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf");
+            updateProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf");
             generalAction.verifyElementDisplayed(updateProfilePO.labelErrorMsgUploadImg,"Error message upload image");
         } else {
-            updateProfilePO.uploadAvatar.sendKeys("D:\\ta-portal\\src\\main\\java\\SSO_project\\data_test\\superman.jpg");
+            updateProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\superman.jpg  ");
             updateProfilePO.btnSubmit.click();
 
         }
