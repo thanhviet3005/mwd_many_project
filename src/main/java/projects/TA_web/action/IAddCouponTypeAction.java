@@ -5,11 +5,15 @@ import projects.TA_web.entity.CouponType;
 import projects.TA_web.page_object.admin_portal.AddCouponTypePO;
 
 public interface IAddCouponTypeAction {
-    void verifyUIAddPage(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
+    void verifyAllLabelsAndTitle(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
+    void verifyAllInputFields(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
+    void verifyAllButton(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
     void verifyErrorMsgFieldName(AddCouponTypePO addCouponTypePO, String expectedText, String errorMsg);
     void verifyErrorMsgFieldLimit(AddCouponTypePO addCouponTypePO, String expectedText, String errorMsg);
     void addNewCouponType(AddCouponTypePO addCouponTypePO, CouponType couponType);
-    void verifyAddNewCouponTypeSuccess();
+    void addNewCouponTypeWithImage(AddCouponTypePO addCouponTypePO, CouponType couponType);
+    void verifyAddNewCouponTypeSuccess(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
+    void verifyAllErrorMsgForEmptyFields(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
 
 
 }

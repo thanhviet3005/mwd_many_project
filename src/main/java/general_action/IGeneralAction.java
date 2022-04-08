@@ -78,5 +78,7 @@ public interface IGeneralAction {
      */
     void verifyAttributeText(String expectedText, WebElement webElement, String attribute);
 
+    void enterValueOneField(WebElement inputElement, String value, WebElement subElement);
+
 
 }
