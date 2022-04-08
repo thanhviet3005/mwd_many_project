@@ -109,6 +109,13 @@ public class GeneralAction implements IGeneralAction {
     }
 
 
+    @Override
+    public void enterValueOneField(WebElement inputElement, String value, WebElement subElement) {
+        inputElement.clear();
+        inputElement.sendKeys(value);
+        subElement.click();
+    }
+
 
 
 }

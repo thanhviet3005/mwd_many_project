@@ -23,6 +23,9 @@ public class ChangePasswordAction implements IChangePasswordAction {
 
     @Override
     public void changePassword(ChangePasswordPO changePwPO, UserAccount userAccount, String newPw, String confirmPw) {
+        changePwPO.inputPw.clear();
+        changePwPO.inputNewPw.clear();
+        changePwPO.inputConfirmPw.clear();
         changePwPO.inputPw.sendKeys(userAccount.getPassword());
         changePwPO.inputNewPw.sendKeys(newPw);
         changePwPO.inputConfirmPw.sendKeys(confirmPw);
@@ -66,7 +69,7 @@ public class ChangePasswordAction implements IChangePasswordAction {
     }
 
     @Override
-    public void verifyAllErrorMessageDisplay(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTestTAWeb) {
+    public void verifyAllErrorMessageForEmptyFields(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTestTAWeb) {
         generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, changePasswordPO.labelErrorMessagePw, false);
         generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, changePasswordPO.labelErrorMessageNewPw, false);
         generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, changePasswordPO.labelErrorConfirmPw, false);
@@ -144,7 +147,8 @@ public class ChangePasswordAction implements IChangePasswordAction {
     }
 
     @Override
-    public void verifyErrorMessageAfterSubmitValidValues(ChangePasswordPO changePasswordPO, UserAccount userAccount, String newPw, String errorMsgExpected) {
+    public void verifyErrorMessageAfterSubmitValidValues
+            (ChangePasswordPO changePasswordPO, UserAccount userAccount, String newPw, String errorMsgExpected) {
         IChangePasswordAction changePasswordA = new ChangePasswordAction();
         IGeneralAction generalA = new GeneralAction();
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
@@ -152,8 +156,8 @@ public class ChangePasswordAction implements IChangePasswordAction {
             userAccount.setPassword(dataTestTAWeb.pw_activated_strong);
         }
         changePasswordA.changePassword(changePasswordPO, userAccount, newPw, newPw);
+        generalA.verifyTextDisplay(errorMsgExpected, changePasswordPO.divAlertMessage, false);
         verifyAllErrorMessageHidden(generalA, Constant.webDriver, changePasswordPO);
-        // carry on writing script for the error message 'same password or wrong current password'
     }
 
     @Override

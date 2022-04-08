@@ -13,7 +13,7 @@ public interface IChangePasswordAction {
     void verifyButtonName(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTest);
     void verifyPlaceHolderTextDisplay(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTest);
     void verifyAllErrorMessageHidden(IGeneralAction generalAction, WebDriver webDriver, ChangePasswordPO changePasswordPO);
-    void verifyAllErrorMessageDisplay(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTestTAWeb);
+    void verifyAllErrorMessageForEmptyFields(IGeneralAction generalAction, ChangePasswordPO changePasswordPO, DataTestTAWeb dataTestTAWeb);
     void verifyErrorMessageForPasswordDisplay(ChangePasswordPO changePwPO, String currentPw, String newPw, String errorMsgExpected);
     void verifyErrorMessageDisplayProper(UserAccount userAccount, String newPw, String confirmPw, String errorMsgExpected);
     void verifyErrorMessageAfterSubmitValidValues(ChangePasswordPO changePasswordPO, UserAccount userAccount, String newPw, String errorMsgExpected);

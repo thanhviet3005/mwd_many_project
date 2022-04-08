@@ -52,6 +52,9 @@ public class ChangePasswordPO {
     public By labelErrorConfirmPwBy = By.xpath("//label[@for='confirm']//following-sibling::label");
     public By svgIconWarningConfirmPwBy = By.xpath("//input[@id='confirm']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");
 
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement divAlertMessage;
+
     public ChangePasswordPO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
     }
