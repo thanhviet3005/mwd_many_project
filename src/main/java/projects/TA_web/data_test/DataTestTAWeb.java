@@ -55,8 +55,7 @@ public class DataTestTAWeb extends DataTestSSO {
             "Abim", "0909999990");
 
 
-    public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored 100"
-            , "100", "Active");
+
     public UserAccount inactivated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting118@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");

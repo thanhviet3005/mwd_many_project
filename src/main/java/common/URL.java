@@ -9,7 +9,7 @@ public class URL {
     public static String frontEndTaUserPortarUrl = "http://frontend.taportal.com:8080/user";
     public  static String ta_stageURL="https://stage1.testarchitect.com/";
 
-    public static String loginPageOnServer23Url = "http://sso.logigear.com:8080/?host_url=http%3A%2F%2Fsso.logigear.com%3A8080%2Fbackend%2Fssoframework%2Fauthorize%3Fclient_id%3Dtaportal%26scope%3Dtest%26state%3Dtaportal1647238866861%26redirect_uri%3Dhttp%3A%2F%2Ffrontend.taportal.com%3A8080%2Flogin%26response_type%3Dcode";
+    public static String loginPageOnServer23Url = "http://sso-local.logigear.com:8080/?host_url=http%3A%2F%2Fsso-local.logigear.com%3A8080%2Fbackend%2Fv3%2Fauthorize%3Fclient_id%3Dtaportal%26scope%3Dtest%26state%3Dtaportal1649404366612%26redirect_uri%3Dhttp%3A%2F%2Fportal-local.testarchitect.com%3A8080%2Flogin%26response_type%3Dcode";
     public static String stage1TAURL = "https://stage1.testarchitect.com/";
 
     public static String LoginTaUserPortal ="https://sso-stage1.logigear.com/?host_url=https%3A%2F%2Fsso-stage1.logigear.com%2Fbackend%2Fv3%2Fauthorize%3Fclient_id%3Dtaportal%26scope%3Dtest%26state%3Dtaportal1649128155194%26redirect_uri%3Dhttps%3A%2F%2Fportal-stage1.testarchitect.com%2Flogin%26response_type%3Dcode";

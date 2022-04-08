@@ -171,8 +171,8 @@ public class EditProfileTc extends BaseTest {
             LogReport.logSubStep("Select the tab 'My Profile'");
             LogReport.logSubStep("Click button Edit Profile in My Profile Page'");
             navigateAction.goToEditProfileUserPage(Constant.webDriver, userPortalPO);
-           /* LogReport.logMainStep("Verify invalid image type ");
-            editProfileAction.UploadAvatar(editProfilePO,false);*/
+            LogReport.logMainStep("Verify invalid image type ");
+            editProfileAction.UploadAvatar(editProfilePO,false);
             LogReport.logMainStep("Verify valid image type");
             editProfileAction.UploadAvatar(editProfilePO,true);
 
@@ -183,7 +183,7 @@ public class EditProfileTc extends BaseTest {
                     exception.printStackTrace();
         }
 
-    }
+   }
 
     @Test(priority = 4,enabled = false,
             testName = "Verify error message on phone field",

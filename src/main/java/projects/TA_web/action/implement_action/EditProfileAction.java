@@ -1,26 +1,34 @@
 package projects.TA_web.action.implement_action;
 
+
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
 import org.openqa.selenium.WebDriver;
+
 import projects.TA_web.action.IEditProfileAction;
 import projects.TA_web.page_object.user_portal.EditProfilePO;
+import common.SSOUtilImpA;
 
 public class EditProfileAction implements IEditProfileAction {
 
 
 
     @Override
-    public void UploadAvatar(EditProfilePO editProfilePO, boolean isImage) {
+    public void UploadAvatar(EditProfilePO editProfilePO, boolean isImage) throws InterruptedException {
         IGeneralAction generalAction = new GeneralAction();
+        SSOUtilImpA ssoUtilImpA = new SSOUtilImpA();
         if (!isImage){
-            editProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf");
+            String filePath = System.getProperty("user.dir") + "\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf";
+            editProfilePO.uploadAvatar.sendKeys(filePath);
+            /*editProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf")*/;
             generalAction.verifyElementDisplayed(editProfilePO.labelErrorMsgUploadImg,"Invalid image type");
         } else {
-
-            editProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\superman.jpg");
+            String filePath= System.getProperty("user.dir")+ "\\src\\main\\java\\SSO_project\\data_test\\superman.jpg";
+            editProfilePO.uploadAvatar.sendKeys(filePath);
             editProfilePO.btnSave.click();
+            ssoUtilImpA.setThreadSleep(5000);
             generalAction.verifyElementDisplayed(editProfilePO.divSuccessgUploadAvatar," Valid  image type");
+
 
         }
     }
