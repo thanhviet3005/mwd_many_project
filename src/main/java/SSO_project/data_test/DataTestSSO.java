@@ -4,9 +4,6 @@ import SSO_project.entity.UserAccount;
 import common.TimeUtil;
 import org.testng.annotations.DataProvider;
 
-import javax.swing.*;
-import java.awt.*;
-
 public class DataTestSSO {
     // invalid email keyword
     public String email_missing_symbol = "testlogigear#logigear.com";
@@ -58,7 +55,7 @@ public class DataTestSSO {
     // valid first name keyword
     public String name_by_unicode_text = "Khánh らが 123";
     public String name_contain_special_char = "Test $@/[~<;`/*-+,./;'[]\\-=_+{}|:<>?`~#%";
-    public String name_extensive_text = "Our codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editorOur codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editor";
+    public String name_extensive_text_300_letters = "Our codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editorOur codeless automation tool allows you to rapidly scale and maintain tests saving you valuable time Test are easily viewed in spreadsheet like editor";
     public String name_long_text_display = "Our codeless automation tool allows you to rapidly scale and mai";
 
     public String text_white_space_at_begining_ending = "  TEst    ";
@@ -438,7 +435,7 @@ public class DataTestSSO {
         Object[][] data = new Object[1][2];
         // row 1, the texts are long
         data[0][0] = valid_account_all_fields_available;
-        data[0][1] = name_extensive_text;
+        data[0][1] = name_extensive_text_300_letters;
         return data;
     }
 

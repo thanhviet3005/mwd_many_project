@@ -97,7 +97,6 @@ public class AddCouponTypeTC extends BaseTest {
         }
     }
 
-
     /** Test case 2: Verify error message display proper for the field 'Name'
      * 1. Go to the page Login
      *  + Open the web browser

@@ -8,11 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 public class AddCouponPO {
     @FindBy(id = "tableTitle")
     public WebElement h5Title;
-    @FindBy(xpath = "//label[@for= 'name' and text()='Name']")
+    @FindBy(css = "label[for='name'")
     public WebElement labelName;
     @FindBy(id = "name")
     public WebElement inputName;
-    @FindBy(xpath = "//label[@for= 'type' and text()='Type']")
+    @FindBy(css = "label[for='type']")
     public WebElement labelType;
     @FindBy(xpath = "//label[@for='type']//following-sibling::div//div[@id='durationUnit-select']")
     public WebElement divSelectCouponType;
@@ -24,7 +24,7 @@ public class AddCouponPO {
     public WebElement labelValue;
     @FindBy(id = "value")
     public WebElement inputValue;
-    @FindBy(xpath = "//label[@for='valueUnit' and text() ='Unit Name']")
+    @FindBy(css = "label[for='valueUnit']")
     public WebElement labelUnitFirst;
     @FindBy(id = "valueUnit")
     public WebElement divSelectUnitFirst;
@@ -34,24 +34,23 @@ public class AddCouponPO {
     public WebElement liValueUnitOption2;
     @FindBy(xpath = "//div[@id='menu-valueUnit']//li[3]")
     public WebElement liValueUnitOption3;
-
-    @FindBy(xpath = "//label[@for= 'point' and text() = 'Point']")
+    @FindBy(css = "label[for='point']")
     public WebElement labelPoint;
     @FindBy(id = "point")
     public WebElement inputPoint;
-    @FindBy(xpath = "//label[@for='duration' and text()= 'Duration']")
+    @FindBy(css = "label[for='duration']")
     public WebElement labelDuration;
     @FindBy(id = "duration")
     public WebElement inputDuration;
-    @FindBy(xpath = "//label[@for='unitDuration' and text()='Unit Name']")
+    @FindBy(css = "label[for='unitDuration']")
     public WebElement labelUnitDuration;
     @FindBy(xpath = "//label[@for='unitDuration']//following-sibling::div//div[@id='durationUnit-select']")
     public WebElement divSelectUnitDuration;
-    @FindBy(xpath = "//label[@for='status' and text()= 'Status']")
+    @FindBy(css = "label[for='status']")
     public WebElement labelStatus;
     @FindBy(id = "status-select")
     public WebElement divSelectStatus;
-    @FindBy(xpath = "//label[@for='presentee' and text()='Presentee']")
+    @FindBy(css = "label[for='presentee']")
     public WebElement labelPresentee;
     @FindBy(xpath = "//input[@aria-label='B' and @type='radio']")
     public WebElement inputRadioBtnYes;
