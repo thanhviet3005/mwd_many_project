@@ -20,7 +20,6 @@ public class EditProfileAction implements IEditProfileAction {
         if (!isImage){
             String filePath = System.getProperty("user.dir") + "\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf";
             editProfilePO.uploadAvatar.sendKeys(filePath);
-            /*editProfilePO.uploadAvatar.sendKeys("D:\\mwd_many_project\\src\\main\\java\\SSO_project\\data_test\\Dashboard exercises 1.pdf")*/;
             generalAction.verifyElementDisplayed(editProfilePO.labelErrorMsgUploadImg,"Invalid image type");
         } else {
             String filePath= System.getProperty("user.dir")+ "\\src\\main\\java\\SSO_project\\data_test\\superman.jpg";
