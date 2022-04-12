@@ -57,6 +57,7 @@ public class NavigateAction implements INavigateAction {
         ssoUtilA.hoverMenuAndClickItem(webDriver, testArchitectPO.accountName, testArchitectPO.optUpdateProfile);
     }
 
+    @Override
     public void goToPage(WebDriver webDriver, String url) {
         webDriver.get(url);
     }

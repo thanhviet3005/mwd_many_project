@@ -50,6 +50,12 @@ public class DataTestTAWeb extends DataTestSSO {
             "qatesting119@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
 
+    public UserAccount account_test_edit_profile = new UserAccount("aa","bb","tester_logi_2@yopmail.com",
+            "tester_logi_2","tester_logi_2","aa","abc","Uganda",
+            "Abim", "0909999990");
+
+
+
     public UserAccount inactivated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting118@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");

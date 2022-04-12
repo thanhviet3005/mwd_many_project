@@ -22,7 +22,8 @@ public class NavigateAction implements INavigateAction {
 
     @Override
     public void goToLoginPage(WebDriver webDriver) {
-        webDriver.get(URL.portalStage1Ta);
+        webDriver.get(URL.loginPageOnServer23Url);
+        /*webDriver.get(URL.portalStage1Ta);*/
     }
 
     @Override
@@ -34,4 +35,14 @@ public class NavigateAction implements INavigateAction {
         adminPortalPO.spanManageCouponType.click();
         manageCouponTypePO.btnAdd.click();
     }
+
+    @Override
+    public void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO) throws InterruptedException {
+        userPortalPO.svgAccountMenu.click();
+        userPortalPO.aMyProfile.click();
+        userPortalPO.btnEditProfile.click();
+
+    }
+
+
 }

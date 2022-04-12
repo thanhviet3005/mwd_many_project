@@ -89,7 +89,7 @@ public class UpdateProfileTc extends BaseTest {
             loginAction.loginSSO(loginPO,dataTestSSO.valid_account_update_profile);
             navigateAction.goToUpdateProfilePage(Constant.webDriver,testArchitectPO);
             LogReport.logMainStep("Verify input validate ");
-            LogReport.logSubStep("Input values"+textName);
+            LogReport.logSubStep("Input values"+ textName);
             updateProfileAction.UpdateFields(updateProfilePO,textName);
 
             LogReport.logMainStep("4. Verify the error message display appropriate");

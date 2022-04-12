@@ -34,9 +34,10 @@ public class UserPortalPO {
     public WebElement aChangePw;
     @FindBy(xpath = "//a[text()='Logout']")
     public WebElement aLogout;
-    @FindBy(xpath = "//a[text()='My Profile']")
-    public WebElement aUpdateProfile;
-
+    @FindBy(xpath = "//a//li[text()='My Profile']")
+    public WebElement aMyProfile;
+    @FindBy (xpath = "//button[text() = 'Edit Profile']")
+    public WebElement btnEditProfile;
     public UserPortalPO (WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
     }
