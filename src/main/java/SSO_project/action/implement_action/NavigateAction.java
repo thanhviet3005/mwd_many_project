@@ -14,7 +14,7 @@ public class NavigateAction implements INavigateAction {
 
     @Override
     public void gotoTAPage() {
-        Constant.webDriver.get(URL.taURL);
+        Constant.webDriver.get(URL.ta_stageURL);
     }
 
     @Override
@@ -26,14 +26,14 @@ public class NavigateAction implements INavigateAction {
 
     @Override
     public void goToForgotPasswordPage(TestArchitectPO testArchitectPO, LoginPO loginPO) {
-        Constant.webDriver.navigate().to(URL.taURL);
+        Constant.webDriver.navigate().to(URL.ta_stageURL);
         testArchitectPO.btnLogin.click();
         loginPO.linkForgotPw.click();
     }
 
     @Override
     public void goToRegisterPage(TestArchitectPO testArchitectPO, LoginPO loginPO) {
-        Constant.webDriver.navigate().to(URL.taURL);
+        Constant.webDriver.navigate().to(URL.ta_stageURL);
         testArchitectPO.btnLogin.click();
         loginPO.linkSignUp.click();
     }

@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class AdminPortalPO {
+public class AdminPortalPo {
 
     @FindBy(xpath = "//nav//span[text()='Manage Client']")
     public WebElement spanManageClient;
@@ -27,7 +27,7 @@ public class AdminPortalPO {
     @FindBy(xpath = "//button//*[name()='svg' and @data-testid='ArrowDropDownIcon']")
     public WebElement btnMenuAccount;
 
-    public AdminPortalPO(WebDriver webDriver){
+    public AdminPortalPo(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
     }
 

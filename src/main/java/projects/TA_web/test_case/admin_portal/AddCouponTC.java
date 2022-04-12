@@ -40,7 +40,7 @@ public class AddCouponTC extends BaseTest {
      *  + Verify all button names: Save, Cancel
      */
     @Test(priority = 1,
-            testName = "Test case ",
+            testName = "Test case 1: Verify the UI items on the page 'Add coupon'",
             description = "Description: ")
     public void TC04_Verify_error_message_display_when_submitting_the_name_being_already_in_use(){
 
