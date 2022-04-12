@@ -29,22 +29,31 @@ public class DataTestTAWeb extends DataTestSSO {
     public String btnSubmit = "Submit";
     public String btnCancel = "Cancel";
 
-    // Page 'Add/Edit coupon type'
+    // TA portal, Page 'Add/Edit coupon type'
     public String labelName = "Name*";
     public String labelLimit = "Limit*";
     public String labelStatus = "Status*";
     public String btnSave = "Save";
 
-    // Page 'Manage Coupon Type'
+    // TA portal, Page 'Manage Coupon Type'
     public String h5TitlePage = "Manage Coupon Type";
     public String btnAdd = "Add";
     public String spanName = "Name";
     public String spanLimit = "Limit";
     public String spanStatus = "Status";
 
-    // the dialog 'Delete coupon type'
+    // TA portal, the dialog 'Delete coupon type'
     public String h2TitleDeleteDialogCouponType = "Do you want to delete ";
     public String btnDelete = "Delete";
+
+    // TA portal, page 'Manage coupon'
+    public String h5Title = "";
+    public String labelType = "Type*";
+    public String labelValue = "Value*";
+    public String labelUnitFirst = "Unit Name*";
+    public String labelPoint = "Point*";
+    public String labelDuration = "Duration*";
+    public String labelPresentee = "Presentee";
 
     public UserAccount activated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting119@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
@@ -273,8 +282,8 @@ public class DataTestTAWeb extends DataTestSSO {
         data[1][3] = error_msg_special_letters_for_name;
         // row 3, enter an extensive text
         data[2][0] = admin_SSO_account_portal_staging;
-        data[2][1] = text_284_characters;
-        data[2][2] = text_284_characters.substring(0, 200);
+        data[2][1] = name_extensive_text_300_letters;
+        data[2][2] = name_extensive_text_300_letters.substring(0, 200);
         data[2][3] = empty_text;
         // row 4, enter the text consist a few white space letters at the beginning and end
         data[3][0] = admin_SSO_account_portal_staging;

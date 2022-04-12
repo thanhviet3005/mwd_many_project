@@ -1,26 +1,15 @@
 package projects.TA_web.test_case.admin_portal;
 
-import SSO_project.action.ILoginAction;
-import SSO_project.action.implement_action.LoginAction;
-import SSO_project.entity.UserAccount;
-import SSO_project.page_object.LoginPO;
 import base_test.BaseTest;
 import common.Constant;
 import common.ExtentReportManager;
 import common.LogReport;
 import common.SSOUtilImpA;
 import org.testng.annotations.Test;
-import projects.TA_web.action.IAddCouponTypeAction;
-import projects.TA_web.action.INavigateAction;
-import projects.TA_web.action.implement_action.AddCouponTypeAction;
-import projects.TA_web.action.implement_action.NavigateAction;
-import projects.TA_web.data_test.DataTestTAWeb;
-import projects.TA_web.entity.CouponType;
-import projects.TA_web.page_object.admin_portal.AddCouponTypePO;
 
-public class AddCouponTC extends BaseTest {
+public class EditCouponTc extends BaseTest {
 
-    /** Test case 1: Verify the UI items on the page 'Add coupon'
+    /** Test case 1: Verify the UI items on the page 'Edit coupon'
      * 1. Go to the page Login
      *  + Open the web browser
      *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
@@ -31,16 +20,17 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
+     *  + Select icon 'Edit' at random from the data table
      * 4. Verify UI items display, include:
      *  + Verify the title text and all label names: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee
-     *  + Verify all input fields, selection fields: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee
      *  + Verify all button names: Save, Cancel
+     * 5. Verify all values that they are displaying on all fields of the coupon at step 3
      */
     @Test(priority = 1,
-            testName = "Test case 1: Verify the UI items on the page 'Add coupon'",
+            testName = "Test case ",
             description = "Description: ")
     public void TC04_Verify_error_message_display_when_submitting_the_name_being_already_in_use(){
 
@@ -68,7 +58,7 @@ public class AddCouponTC extends BaseTest {
         }
     }
 
-    /** Test case 2: Verify the error messages for empty fields appear fully after creating a new coupon without any values
+    /** Test case 2: Verify the error messages for empty fields appear after the user updates a coupon with empty value
      * 1. Go to the page Login
      *  + Open the web browser
      *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
@@ -79,13 +69,14 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Enter nothing value to all fields
-     *  + Clear all values on all fields
+     *  + Select icon 'Edit' at random from the data table
+     * 4. Update the coupon with empty value for all input fields
+     *  + Clear all values on all input fields
      *  + Select the button 'Save'
-     * 5. Verify the error messages and icon 'Warning' for an empty field appears fully on all required fields
+     * 5. Verify the error messages and icon 'Warning' for an empty field appears fully on all required input fields
      */
 
     /** Test case 3: Verify the error message displays appropriate on the field 'Name*'
@@ -99,10 +90,12 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
+     *  + Select icon 'Edit' at random from the data table
      * 4. Enter value to field 'Name'
+     *  + Clear the field 'Name'
      *  + Enter an invalid value / a valid value to the field 'Name'
      *  + Click any points on the screen, eg: The title page
      * 5. Verify the error messages display or not
@@ -133,10 +126,12 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Enter value to field 'Value'
+     *  + Select icon 'Edit' at random from the data table
+     * 4. Enter a value to field 'Value'
+     *  + Clear the field 'Value'
      *  + Enter an invalid value / a valid value to the field 'Name'
      *  + Click any points on the screen, eg: The title page
      * 5. Verify the error messages display or not
@@ -174,13 +169,15 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
+     *  + Select icon 'Edit' at random from the data table
      * 4. Enter value to field 'Value'
+     *  + Clear the field 'Value'
      *  + Enter an invalid value / a valid value to the field 'Name'
      *  + Click any points on the screen, eg: The title page
-     * 5. Verify the error messages display or not
+     * 5. Verify the error messages that they display appropriately
      * 6. Repeat the steps 4, 5 with these values:
      *  + Enter nothing
      *      - Verify the error message for the empty field and icon 'Warning' display
@@ -215,10 +212,12 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
+     *  + Select icon 'Edit' at random from the data table
      * 4. Enter value to field 'Value'
+     *  + Clear the field 'Duration'
      *  + Enter an invalid value / a valid value to the field 'Name'
      *  + Click any points on the screen, eg: The title page
      * 5. Verify the error messages display or not
@@ -257,11 +256,12 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the password
      *  + Select the button 'Login'
      * 3. Collect all coupon types on the page 'Manage coupon type'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon type'
      *  + Observe all active coupon types
-     * 4. Go to the page 'Add coupon'
+     * 4. Go to the page 'Edit coupon'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
+     *  + Select icon 'Edit' at random from the data table
      * 5. Open the coupon type list
      *  + Select the field 'Type'
      * 6. Verify all the active coupon types from step 3 display fully on the field 'Type'
@@ -274,7 +274,7 @@ public class AddCouponTC extends BaseTest {
      * 9. Verify the in-active coupon at step 7 disappears from list
      */
 
-    /** Test case 8: Verify the error message appears if the user create new coupon is the same to another coupon
+    /** Test case 8: Verify the error message appears, if the user updates the current coupon that it is the same to another coupon
      * 1. Go to the page Login
      *  + Open the web browser
      *  + Enter the URL to the address bar on the browser: stage1.testarchitect.com
@@ -285,10 +285,11 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Create a new coupon is the same to any coupons on the data table 'Manage coupon'
+     *  + Select icon 'Edit' at random from the data table
+     * 4. Update the coupon that it has been selected is the same to any coupons on the data table 'Manage coupon'
      *  + Enter all valid values to all fields, and they are similar another coupon that it is already use
      *  + Select the button 'Save'
      * 5. Verify the error message that it appears to reminder the coupon is existed
@@ -305,10 +306,11 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Observe an active coupon, and it has coupon type's status being 'active'
-     *  + Go to the page 'Manage coupon'
-     *  + Select at random an active coupon, and it has coupon type's status being 'active'
-     * 4. Update a current type's status that it is 'in-active'
+     * 3. Observe at random a coupon that it has status 'active'
+     *  + Select the link 'Go To Admin Page'
+     *  + Select the tab 'Manage coupon'
+     *  + Observe at random a coupon that it has status 'active'
+     * 4. Update a coupon type's status that it is 'in-active', for the coupon at step 3
      *  + Select the coupon type for the coupon from step 3
      *  + Update the coupon type's status being 'in-active'
      * 5. Verify the coupon status at step 3 being 'in-active', and it disappears on the page 'Refer and earn point'
@@ -318,7 +320,7 @@ public class AddCouponTC extends BaseTest {
      *  + Verify this coupon disappear
      */
 
-    /** Notes: This case is tested manual testing
+    /** Notes: This case is tested by manual way
      * Test case 11: Verify the coupon status is updated 'in-active' automatically after the coupon out of duration time
      * 1. Go to the page Login
      *  + Open the web browser
@@ -330,14 +332,11 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Add new coupon
+     * 3. Update a coupon
      *  + Enter valid values to all fields
      *  + Select any duration time, eg: 1-2 hours/days/months
      * 4. Verify the coupon's status to be updated 'in-active' automatically after the coupon out of the duration time
      */
-
-
-
 
 
 }
