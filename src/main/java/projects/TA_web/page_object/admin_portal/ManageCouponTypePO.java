@@ -32,12 +32,13 @@ public class ManageCouponTypePO {
 
     public By h2DialogTitleBy = By.id("modal-modal-title");
 
-    // row 10 on the table
-    @FindBy(xpath = "//th[@id='enhanced-table-checkbox-0'][1]")
-    public WebElement thNameRow1;
-    public By thNameRow1By = By.xpath("//th[@id='enhanced-table-checkbox-0'][1]");
+    // row 1 on the table
+    @FindBy(xpath = "//td[@id='enhanced-table-checkbox-0']")
+    public WebElement tdCouponTypeRow1;
 
-    @FindBy(xpath = "//th[@id='enhanced-table-checkbox-0']//following-sibling::th//button//*[@data-testid='DeleteOutlineIcon']")
+    @FindBy(xpath = "//td[@id='enhanced-table-checkbox-0']//following-sibling::td//*[name()='svg' and @data-testid='ModeEditOutlineOutlinedIcon']")
+    public WebElement svgIconEditRow1;
+    @FindBy(xpath = "//td[@id='enhanced-table-checkbox-0']//following-sibling::td//*[name()='svg' and @data-testid='DeleteOutlineIcon']")
     public WebElement svgIconDeleteRow1;
 
     public ManageCouponTypePO(WebDriver webDriver){

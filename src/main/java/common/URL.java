@@ -14,6 +14,7 @@ public class URL {
 
     public static String LoginTaUserPortal ="https://sso-stage1.logigear.com/?host_url=https%3A%2F%2Fsso-stage1.logigear.com%2Fbackend%2Fv3%2Fauthorize%3Fclient_id%3Dtaportal%26scope%3Dtest%26state%3Dtaportal1649128155194%26redirect_uri%3Dhttps%3A%2F%2Fportal-stage1.testarchitect.com%2Flogin%26response_type%3Dcode";
     public static String portalStage1Ta = "https://portal-stage1.testarchitect.com/";
+    public static String portalTaOnLocal23 = "http://portal-local.testarchitect.com:8080/";
 
 //    public static String frontEndTaUserPortarUrl = "http://frontend.taportal.com:8080/user";
 

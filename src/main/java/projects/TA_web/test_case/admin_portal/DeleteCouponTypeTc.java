@@ -227,7 +227,7 @@ public class DeleteCouponTypeTc extends BaseTest {
             LogReport.logSubStep("Verify the 'Delete' Dialog also disappear");
             generalA.verifyElementHidden(couponTypePO.h2DialogTitleBy, Constant.webDriver, "The dialog 'Delete coupon type'");
             LogReport.logSubStep("Verify the coupon type no longer display on the data table");
-            generalA.verifyElementHidden(couponTypePO.thNameRow1By, Constant.webDriver, "The coupon type at row 10");
+            // implement again, not suitable
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,

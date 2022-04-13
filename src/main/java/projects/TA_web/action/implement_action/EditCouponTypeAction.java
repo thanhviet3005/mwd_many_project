@@ -15,6 +15,7 @@ public class EditCouponTypeAction implements IEditCouponTypeAction {
         editCouponTypePO.inputName.sendKeys(couponType.getName());
         editCouponTypePO.inputLimit.sendKeys(couponType.getLimit());
         utilA.selectOptionByText(editCouponTypePO.divSelectStatus, couponType.getStatus());
+        editCouponTypePO.inputUploadImage.sendKeys(couponType.getImageLink());
         editCouponTypePO.btnSave.click();
     }
 }

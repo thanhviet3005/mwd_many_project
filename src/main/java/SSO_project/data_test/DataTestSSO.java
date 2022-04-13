@@ -132,7 +132,7 @@ public class DataTestSSO {
 
     // Register page, the first / last name
     public String error_msg_special_letters_for_name = "Please remove special characters.";
-    public String error_msg_long_string = "Please enter no more than 100 characters.";
+//    public String error_msg_long_string = "Please enter no more than 100 characters.";
 
     // [TA web][TA portal] page Leave a message, success and failed message
     public String text_send_msg_failed = "The message has been sent unsuccessfully.";
@@ -158,12 +158,13 @@ public class DataTestSSO {
     // message for TA User Portal
     public String success_msg_change_pw = "Your password has been changed successfully.";
     public String failed_msg_change_pw = "Your new password is same as your old password. Please use another password.";
+    public String error_msg_only_number = "Integer number only";
 
     // image for testing
-    public String file_path_image_valid_jpeg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\cute-cat-icon-vector.jpg";
-    public String file_path_image_valid_png = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\phoenix funny.png";
-    public String file_path_image_valid_jfif = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\images.jfif";
-    public String file_path_image_larger_than_10mbs = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\vocabulary_popular.jpg";
+    public String valid_image_file_path_jpeg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\cute-cat-icon-vector.jpg";
+    public String valid_image_file_path_png = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\phoenix funny.png";
+    public String valid_image_file_path_jfif = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\images.jfif";
+    public String image_larger_than_10mbs_file_path_jpg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\vocabulary_popular.jpg";
 
     public DataTestSSO() {
     }

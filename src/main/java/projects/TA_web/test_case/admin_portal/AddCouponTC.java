@@ -10,42 +10,80 @@ import common.ExtentReportManager;
 import common.LogReport;
 import common.SSOUtilImpA;
 import org.testng.annotations.Test;
-import projects.TA_web.action.IAddCouponTypeAction;
+import projects.TA_web.action.IAddCouponAction;
 import projects.TA_web.action.INavigateAction;
-import projects.TA_web.action.implement_action.AddCouponTypeAction;
+import projects.TA_web.action.implement_action.AddCouponAction;
 import projects.TA_web.action.implement_action.NavigateAction;
 import projects.TA_web.data_test.DataTestTAWeb;
-import projects.TA_web.entity.CouponType;
-import projects.TA_web.page_object.admin_portal.AddCouponTypePO;
 
 public class AddCouponTC extends BaseTest {
 
     /** Test case 1: Verify the UI items on the page 'Add coupon'
-     * 1. Go to the page Login
+     * 1. Go to the page 'Add coupon'
      *  + Open the web browser
      *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
      *  + Press the key 'Enter' on the keyboard
      *  + Select the button 'Login'
-     * 2. Login with valid account
-     *  + Go to the page 'Login'
-     *  + Enter the email
-     *  + Enter the password
+     *  + Enter the admin email
+     *  + Enter the admin password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     *  + Select the link 'Go to Admin Page'
      *  + Select the tab 'Manage coupon'
      *  + Select the button 'Add'
-     * 4. Verify UI items display, include:
+     * 2. Verify UI items display, include:
      *  + Verify the title text and all label names: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee
      *  + Verify all input fields, selection fields: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee
      *  + Verify all button names: Save, Cancel
      */
     @Test(priority = 1,
             testName = "Test case 1: Verify the UI items on the page 'Add coupon'",
-            description = "Description: ")
+            description = "Description: Verify the UI items display fully on the page 'Add coupon'")
     public void TC04_Verify_error_message_display_when_submitting_the_name_being_already_in_use(){
+        INavigateAction navigateAction = new NavigateAction();
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        LoginPO loginPO = new LoginPO(Constant.webDriver);
+        UserAccount user = dataTestTAWeb.admin_SSO_account_portal_staging;
+        ILoginAction loginAction = new LoginAction();
+        IAddCouponAction couponAction = new AddCouponAction();
 
         try {
-            System.out.println("Test case ");
+            System.out.println("Test case 1: Verify the UI items on the page 'Add coupon'");
+
+            LogReport.logMainStep("1. Go to the page 'Add coupon'");
+            LogReport.logSubStep("Enter the above URL to the address bar on the browser: stage1.testarchitect.com");
+            LogReport.logSubStep("Press the key 'Enter' on the keyboard");
+            LogReport.logSubStep("Select the button 'Login'");
+            navigateAction.goToLoginPage(Constant.webDriver);
+
+            LogReport.logSubStep("Enter the email to the field 'Email', eg: " + user.getEmail());
+            LogReport.logSubStep("Enter the password to the field 'Password', eg: " + user.getPassword());
+            LogReport.logSubStep("Select the button 'Login'");
+            loginAction.loginSSO(loginPO, user);
+
+            LogReport.logSubStep("Select the link 'Go to Admin Page'");
+            LogReport.logSubStep("Select the tab 'Manage coupon'");
+            LogReport.logSubStep("Select the button 'Add'");
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
+
+            LogReport.logMainStep("2. Verify UI items display on the page 'Add coupon'");
+            LogReport.logSubStep("<b>Verify the title text and all label names as the design: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee</b>");
+
+
+            LogReport.logSubStep("<b>Verify all input fields, selection fields display fully: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee</b>");
+            LogReport.logSubStep("<b>Verify all button names: Save, Cancel</b>");
+
+
+
+
+
+
+
+
+
+
+            LogReport.logMainStep("");
+            LogReport.logSubStep("");
+
 
 //            LogReport.logMainStep("1. Go to the page Login");
 //            LogReport.logSubStep("Open the web browser");
