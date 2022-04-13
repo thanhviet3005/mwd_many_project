@@ -33,6 +33,5 @@ public class DeleteCouponTypeAction implements IDeleteCouponTypeAction {
         generalAction.verifyTextDisplay(dataTestTAWeb.success_msg_delete_coupon_type,
                 manageCouponTypePO.divSuccessMessage, false);
         generalAction.verifyElementHidden(manageCouponTypePO.h2DialogTitleBy, Constant.webDriver, "The dialog 'Delete coupon type'");
-        generalAction.verifyElementHidden(manageCouponTypePO.thNameRow1By, Constant.webDriver, "The coupon type at row 0");
     }
 }

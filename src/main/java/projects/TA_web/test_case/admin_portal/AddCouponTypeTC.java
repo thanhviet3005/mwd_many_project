@@ -14,6 +14,7 @@ import common.SSOUtilImpA;
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.testng.annotations.Test;
 import projects.TA_web.action.IAddCouponTypeAction;
 import projects.TA_web.action.INavigateAction;
@@ -45,12 +46,10 @@ public class AddCouponTypeTC extends BaseTest {
      *  + All input and select fields: 'Name', 'Limit', 'Status', 'Upload image'
      *  + All button: 'Save', 'Cancel'
      */
-    @Test(priority = 1, enabled = false,
+    @Test(priority = 1,
             testName = "Test case 1: Verify all UI items display fully on the form 'Add '",
             description = "Description: Verify all UI item show on the form 'Add'")
     public void TC01_Verify_all_UI_items_display_fully_on_the_form_Add(){
-//        INavigateAction navigateAction = new NavigateAction();
-//        TestArchitectPO testArchitectPO = new TestArchitectPO(Constant.webDriver);
         INavigateAction navigateAction = new NavigateAction();
         ILoginAction loginAction = new LoginAction();
         LoginPO loginPO = new LoginPO(Constant.webDriver);
@@ -68,7 +67,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -81,15 +79,17 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
             LogReport.logMainStep("4. Verify all UI items on form 'Add' display fully");
-            LogReport.logSubStep("<b>Verify all labels names and title: 'Name', 'Limit', 'Status', 'Add coupon type'<b>");
+            LogReport.logSubStep("<b>Verify all labels names and the title text: 'Name', 'Limit', 'Status', 'Add coupon type'</b>");
             addCouponTypeAction.verifyAllLabelsAndTitle(generalAction, addCouponTypePO);
-            LogReport.logSubStep("<b>Verify all input fields and selection fields: 'Name', 'Limit', 'Status'<b>");
+            LogReport.logSubStep("<b>Verify all input fields and selection fields display fully: 'Name', 'Limit', 'Status'</b>");
             addCouponTypeAction.verifyAllInputFields(generalAction, addCouponTypePO);
-            LogReport.logSubStep("<b>Verify all names of buttons: 'Save', 'Cancel'<b>");
+            LogReport.logSubStep("<b>Verify all names of buttons display as the design: 'Save', 'Cancel'</b>");
             addCouponTypeAction.verifyAllButton(generalAction, addCouponTypePO);
+            LogReport.logSubStep("<b>Verify all placeholder texts on the form: 'Name'</b>");
+            addCouponTypeAction.verifyAllPlaceholderTexts(addCouponTypePO);
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -132,7 +132,7 @@ public class AddCouponTypeTC extends BaseTest {
      *      - Verify texts displaying on these fields are unchanged
      *      - Verify the error message and icon 'Warning' for this field does not display
      */
-    @Test(priority = 2,
+    @Test(priority = 2, enabled = false,
             testName = "Test case 2: Verify error message display proper for the field 'Name'",
             description = "Description: Verify the error message and icon 'Warning' for the field 'Name' appear inappropriate",
             dataProviderClass = DataTestTAWeb.class,
@@ -144,6 +144,7 @@ public class AddCouponTypeTC extends BaseTest {
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         AddCouponTypePO addCouponTypePO = new AddCouponTypePO(Constant.webDriver);
         IAddCouponTypeAction addCouponTypeAction = new AddCouponTypeAction();
+        IGeneralAction generalAction = new GeneralAction();
         try {
             System.out.println("Test case 2: Verify error message display proper for the field 'Name'");
 
@@ -153,7 +154,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -166,13 +166,12 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
             LogReport.logMainStep("4. Enter invalid values to the field 'Name' then click any points on the screen");
-            LogReport.logSubStep("Enter value to the field 'Name'");
+            LogReport.logSubStep("Enter value to the field 'Name', eg: " + valueForName);
             LogReport.logSubStep("Click the label 'Limit'");
-            addCouponTypePO.inputName.sendKeys(valueForName);
-            addCouponTypePO.labelLimit.click();
+            generalAction.enterValueOneField(addCouponTypePO.inputName, valueForName, addCouponTypePO.labelLimit);
 
             LogReport.logMainStep("5. Verify all error messages and icon 'Warning' for the field 'Name' appear properly");
             addCouponTypeAction.verifyErrorMsgFieldName(addCouponTypePO, expectedText, errorMsg);
@@ -204,24 +203,24 @@ public class AddCouponTypeTC extends BaseTest {
      *  + Click the title form
      * 5. Verify all error messages and icon 'Warning' for the field 'Limit' appear fully
      * 6. Repeat the step 4,5 with these values:
-     *  + Enter nothing
+     *  + Clear the field and enter nothing
      *      -> Verify the error message and icon 'Warning' display for this field
-     *  + Enter the text contains special letters (no consist numbers)
+     *  + Clear the field and enter a text that it contains special letters (no consist numbers)
      *      - verify no letters display
      *      - verify the error message and icon 'Warning' disappear
-     *  + Enter Unicode text to these fields
+     *  + Clear the field and enter a unicode text
      *      - Verify only numbers display
      *      - verify the error message and icon 'Warning' disappear
-     *  + Enter texts consist numbers and white space letters at the beginning and ending places
+     *  + Enter a text that it consist numbers and white space letters at the beginning and ending places
      *      - Verify white space letters are trimmed
      *      - verify the error message and icon 'Warning' disappear
-     +  + Enter extensive texts that is mix of letters and numbers
+     +  + Enter a extensive text that it is mixed of letters and numbers
      *      - Verify only numbers display
      *      - verify the error message and icon 'Warning' disappear
      */
     @Test(priority = 3, enabled = false,
             testName = "Test case 3: Verify error message display proper for the field 'Limit'",
-            description = "Description: Verify the error message and icon 'Warning' for the field 'Limit' appear proper",
+            description = "Description: Verify the error message and icon 'Warning' for the field 'Limit' appear appropriate",
             dataProviderClass = DataTestTAWeb.class,
             dataProvider = "getDataToCheckFieldLimitOfCouponType")
     public void TC03_Verify_error_message_display_proper_for_the_field_Limit
@@ -240,7 +239,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -253,15 +251,17 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
             LogReport.logMainStep("4. Enter values to the field 'Limit' then click any points on the screen");
-            LogReport.logSubStep("Enter value to the field 'Limit'");
+            LogReport.logSubStep("Enter value to the field 'Limit', eg: " + valueForLimit);
             LogReport.logSubStep("Click the label 'Name'");
             generalAction.enterValueOneField(addCouponTypePO.inputLimit, valueForLimit, addCouponTypePO.labelName);
 
             LogReport.logMainStep("5. Verify all error messages and icon 'Warning' for the field 'Limit' appear properly");
             addCouponTypeAction.verifyErrorMsgFieldLimit(addCouponTypePO, expectedText, errorMsg);
+
+
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -292,16 +292,16 @@ public class AddCouponTypeTC extends BaseTest {
      *  + Select the button 'Save'
      * 5. Verify the error message display
      */
-    @Test(priority = 4, enabled = false,
+    @Test(priority = 4, enabled = true,
             testName = "Test case 4: Verify error message display when submitting the name being already in use",
             description = "Description: Verify the error message display when submitting the name being already in use")
     public void TC04_Verify_error_message_display_when_submitting_the_name_being_already_in_use(){
         INavigateAction navigateAction = new NavigateAction();
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
-        UserAccount user = dataTestTAWeb.activated_SSO_account;
+        UserAccount user = dataTestTAWeb.admin_SSO_account_portal_staging;
         ILoginAction loginAction = new LoginAction();
         LoginPO loginPO = new LoginPO(Constant.webDriver);
-        CouponType couponType = dataTestTAWeb.valid_coupon_type_active;
+        CouponType couponType = dataTestTAWeb.coupon_type_already_in_use;
         IAddCouponTypeAction addCouponTypeAction = new AddCouponTypeAction();
         AddCouponTypePO addCouponTypePO = new AddCouponTypePO(Constant.webDriver);
         try {
@@ -313,7 +313,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -326,12 +325,13 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
-            LogReport.logMainStep("4. Enter valid values all field");
-            LogReport.logSubStep("Enter value already in use to the field 'Name'");
-            LogReport.logSubStep("Enter value to the field 'Limit'");
-            LogReport.logSubStep("Select value on the field 'Status'");
+            LogReport.logMainStep("4. Enter valid values all fields");
+            LogReport.logSubStep("Enter value already in use to the field 'Name', eg: " + couponType.getName());
+            LogReport.logSubStep("Enter value to the field 'Limit', eg: " + couponType.getLimit());
+            LogReport.logSubStep("Select value on the field 'Status', eg: " + couponType.getStatus());
+            LogReport.logSubStep("Select the image to upload from the path:, eg: " + couponType.getImageLink());
             LogReport.logSubStep("Select the button 'Save'");
             addCouponTypeAction.addNewCouponType(addCouponTypePO, couponType);
 
@@ -391,7 +391,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -404,7 +403,7 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
             LogReport.logMainStep("4. Enter valid values all field");
             LogReport.logSubStep("Enter value to the field 'Name', eg: " + couponType.getName());
@@ -414,8 +413,12 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the button 'Save'");
             addCouponTypeAction.addNewCouponTypeWithImage(addCouponTypePO, couponType);
 
-            LogReport.logMainStep("5. Verify the success message display");
-            generalAction.verifyTextDisplay(successMsg, addCouponTypePO.divSuccessMessage, false);
+            LogReport.logMainStep("5. Verify the successful message displays");
+            generalAction.verifyTextDisplay(successMsg, addCouponTypePO.divAlertMessage, false);
+            LogReport.logMainStep("6. Verify the coupon name display on the data table");
+            generalAction.verifyElementDisplayed
+                    (Constant.webDriver.findElement(By.xpath("//tbody//*[text()='"+ couponType.getName() +"']")),
+                            "The coupon " + couponType.getName());
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -468,7 +471,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -481,7 +483,7 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
             LogReport.logMainStep("4. Enter nothing to all field");
             LogReport.logSubStep("Clear all fields");
@@ -498,7 +500,7 @@ public class AddCouponTypeTC extends BaseTest {
         }
     }
 
-    /** Test case 7: Verify the error message for the image appears appropriate
+    /** Test case 7: Verify the error message for the image that it appears appropriate
      * 1. Go to the page Login
      *  + Open the web browser
      *  + Enter the above URL to the address bar on the browser:
@@ -521,7 +523,7 @@ public class AddCouponTypeTC extends BaseTest {
      */
     @Test(priority = 7, enabled = false,
             testName = "Test case 7: Verify the error message for the image appears appropriate",
-            description = "Description: Verify the error message for the field 'Upload image' displaying appropriate")
+            description = "Description: Verify the error message for the field 'Upload image' that it displays appropriate")
     public void TC07_Verify_the_error_message_for_the_image_appears_appropriate(){
         AddCouponTypePO addCouponTypePO = new AddCouponTypePO(Constant.webDriver);
         INavigateAction navigateAction = new NavigateAction();
@@ -534,7 +536,7 @@ public class AddCouponTypeTC extends BaseTest {
         CouponType couponType = dataTestTAWeb.coupon_type_has_huge_image;
 
         try {
-            System.out.println("Test case 5: Verify the successful message display after submitting successful");
+            System.out.println("Test case 7: Verify the error message for the image appears appropriate");
 
             LogReport.logMainStep("1. Go to the page Login");
             LogReport.logSubStep("Open the web browser");
@@ -542,7 +544,6 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Press the key 'Enter' on the keyboard");
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
-//            navigateAction.goToLoginPage(testArchitectPO);
 
             LogReport.logMainStep("2. Login with valid account");
             LogReport.logSubStep("Go to the page 'Login'");
@@ -555,7 +556,7 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage Coupon Type'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCoupon(Constant.webDriver);
+            navigateAction.goToAddCouponTypePage(Constant.webDriver);
 
             LogReport.logMainStep("4. Enter valid values all field");
             LogReport.logSubStep("Enter value to the field 'Name', eg: " + couponType.getName());
@@ -566,8 +567,7 @@ public class AddCouponTypeTC extends BaseTest {
             addCouponTypeAction.addNewCouponTypeWithImage(addCouponTypePO, couponType);
 
             LogReport.logMainStep("5. Verify the error message for the field 'Upload image' displays appropriate");
-            generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_huge_size, addCouponTypePO.divSuccessMessage
-                    , false);
+            generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_huge_size, addCouponTypePO.divAlertMessage, false);
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,

@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AddCouponTypePO {
     @FindBy(css = "label[for='name']")
     public WebElement labelName;
@@ -19,9 +21,11 @@ public class AddCouponTypePO {
     public WebElement labelStatus;
     @FindBy(id = "demo-simple-select")
     public WebElement divSelectStatus;
-    @FindBy(css = "label[for='contained-button-file']")
+    @FindBy(xpath = "//ul[@role='listbox']//li")
+    public List<WebElement> liStatusOptions;
+    @FindBy(css = "label[for='image']")
     public WebElement labelBtnUploadImage;
-    @FindBy(id = "contained-button-file")
+    @FindBy(id = "image")
     public WebElement inputUploadImage;
     @FindBy(xpath = "//img[@alt='coupon icon']")
     public WebElement imgImageDisplay;
@@ -39,9 +43,7 @@ public class AddCouponTypePO {
     public WebElement labelErrorMsgForLimit;
     @FindBy(xpath = "//input[@id='limit']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']")
     public WebElement svgIconWarningForLimit;
-    @FindBy(xpath = "//form//div[@role='alert']")
-    public WebElement divErrorMsgExistedValue;
-    @FindBy(xpath = "//label[@for='contained-button-file']//following-sibling::label")
+    @FindBy(xpath = "//label[@for='image']//following-sibling::label")
     public WebElement labelErrorMsgImage;
 
     public By labelErrorMsgForNameBy = By.xpath("//label[@for='name']//following-sibling::div//label");
@@ -50,10 +52,13 @@ public class AddCouponTypePO {
     public By getSvgIconWarningForLimitBy = By.xpath("//input[@id='limit']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");
 
     // success message
-    @FindBy(xpath = "//div[text()='The Coupon Type has been added successfully.']")
-    public WebElement divSuccessMessage;
+    @FindBy(xpath = "//div[@role='alert']")
+    public WebElement divAlertMessage;
 
     public AddCouponTypePO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
+    }
+
+    public AddCouponTypePO() {
     }
 }

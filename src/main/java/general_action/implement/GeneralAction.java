@@ -108,7 +108,6 @@ public class GeneralAction implements IGeneralAction {
         webDriverWait.until(ExpectedConditions.elementToBeClickable(webElement));
     }
 
-
     @Override
     public void enterValueOneField(WebElement inputElement, String value, WebElement subElement) {
         inputElement.clear();
@@ -116,6 +115,17 @@ public class GeneralAction implements IGeneralAction {
         subElement.click();
     }
 
+    @Override
+    public void enterValueAFieldByTyping(WebElement inputElement, String value, WebElement subElement) {
+        inputElement.clear();
+        String Oneletter;
+        StringBuilder tempText = new StringBuilder();
+        for (int i = 0; i < value.length(); i++){
+            Oneletter = value.charAt(i) + "";
+            inputElement.sendKeys(Oneletter);
+        }
+        subElement.click();
+    }
 
 
 }

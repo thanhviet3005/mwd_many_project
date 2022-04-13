@@ -5,7 +5,18 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EditCouponTypePO {
+public class EditCouponTypePO extends AddCouponTypePO{
+
+    public EditCouponTypePO(WebDriver webDriver){
+        PageFactory.initElements(webDriver, AddCouponTypePO.class);
+        PageFactory.initElements(webDriver, this);
+    }
+
+}
+
+
+
+/*
 
     @FindBy(css = "label[for='name']")
     public WebElement labelName;
@@ -37,8 +48,4 @@ public class EditCouponTypePO {
     // success message
     @FindBy(xpath = "//div[text()='The Coupon Type has been updated successfully.']")
     public WebElement divSuccessMessage;
-
-    public EditCouponTypePO(WebDriver webDriver){
-        PageFactory.initElements(webDriver, this);
-    }
-}
+ */

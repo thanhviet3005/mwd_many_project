@@ -5,6 +5,7 @@ import common.ISSOUtilA;
 import common.SSOUtilImpA;
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
+import org.openqa.selenium.WebElement;
 import projects.TA_web.action.IAddCouponTypeAction;
 import projects.TA_web.data_test.DataTestTAWeb;
 import projects.TA_web.entity.CouponType;
@@ -53,7 +54,7 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
         IGeneralAction generalAction = new GeneralAction();
         if (!errorMsg.equals("")){
             generalAction.verifyTextDisplay(errorMsg, addCouponTypePO.labelErrorMsgForLimit, false);
-            generalAction.verifyElementDisplayed(addCouponTypePO.svgIconWarningForLimit, "The icon 'Warning' for the field 'Name'");
+            generalAction.verifyElementDisplayed(addCouponTypePO.svgIconWarningForLimit, "The icon 'Warning' for the field 'Limit'");
         }else {
             generalAction.verifyAttributeText(expectedText, addCouponTypePO.inputLimit, "value");
             generalAction.verifyElementHidden(addCouponTypePO.getSvgIconWarningForLimitBy, Constant.webDriver, "The icon 'Warning' for the field 'Limit'");
@@ -63,25 +64,37 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
 
     @Override
     public void addNewCouponType(AddCouponTypePO addCouponTypePO, CouponType couponType) {
-        ISSOUtilA utilA = new SSOUtilImpA();
+        String couponStatus = couponType.getStatus();
         addCouponTypePO.inputName.clear();
         addCouponTypePO.inputLimit.clear();
         addCouponTypePO.inputName.sendKeys(couponType.getName());
         addCouponTypePO.inputLimit.sendKeys(couponType.getLimit());
-        utilA.selectOptionByText(addCouponTypePO.divSelectStatus, couponType.getStatus());
+        addCouponTypePO.divSelectStatus.click();
+        for (WebElement element : addCouponTypePO.liStatusOptions) {
+            if(couponStatus.equals(element.getText())){
+                element.click();
+            }
+        }
         addCouponTypePO.btnSave.click();
     }
 
     @Override
-    public void addNewCouponTypeWithImage(AddCouponTypePO addCouponTypePO, CouponType couponType) {
-        ISSOUtilA utilA = new SSOUtilImpA();
+    public void addNewCouponTypeWithImage(AddCouponTypePO addCouponTypePO, CouponType couponType) throws InterruptedException {
+        String couponStatus = couponType.getStatus();
         addCouponTypePO.inputName.clear();
         addCouponTypePO.inputLimit.clear();
         addCouponTypePO.inputName.sendKeys(couponType.getName());
         addCouponTypePO.inputLimit.sendKeys(couponType.getLimit());
-        utilA.selectOptionByText(addCouponTypePO.divSelectStatus, couponType.getStatus());
+        addCouponTypePO.divSelectStatus.click();
+        for (WebElement element : addCouponTypePO.liStatusOptions) {
+            if(couponStatus.equals(element.getText())){
+                element.click();
+            }
+        }
         addCouponTypePO.labelBtnUploadImage.click();
         addCouponTypePO.inputUploadImage.sendKeys(couponType.getImageLink());
+        ISSOUtilA utilA = new SSOUtilImpA();
+        utilA.setThreadSleep(5000);
         addCouponTypePO.btnSave.click();
     }
 
@@ -89,7 +102,7 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
     public void verifyAddNewCouponTypeSuccess(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO) {
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
         generalAction.verifyElementDisplayed(addCouponTypePO.imgImageDisplay, "The image thumbnail");
-        generalAction.verifyTextDisplay(dataTestTAWeb.success_msg_add_coupon_type, addCouponTypePO.divSuccessMessage
+        generalAction.verifyTextDisplay(dataTestTAWeb.success_msg_add_coupon_type, addCouponTypePO.divAlertMessage
                 , false);
     }
 
@@ -101,6 +114,13 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
         generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_field, addCouponTypePO.labelErrorMsgForLimit, false);
         generalAction.verifyElementDisplayed(addCouponTypePO.svgIconWarningForLimit, "The icon 'Warning' for the field 'Limit'");
         generalAction.verifyTextDisplay(dataTestTAWeb.error_msg_empty_image_field, addCouponTypePO.labelErrorMsgImage, false);
+    }
+
+    @Override
+    public void verifyAllPlaceholderTexts(AddCouponTypePO addCouponTypePO) {
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        IGeneralAction generalAction = new GeneralAction();
+        generalAction.verifyAttributeText(dataTestTAWeb.placeholderTextForName, addCouponTypePO.inputName, "placeholder");
     }
 
 }

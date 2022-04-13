@@ -34,6 +34,7 @@ public class DataTestTAWeb extends DataTestSSO {
     public String labelLimit = "Limit*";
     public String labelStatus = "Status*";
     public String btnSave = "Save";
+    public String placeholderTextForName = "Coupon Name";
 
     // TA portal, Page 'Manage Coupon Type'
     public String h5TitlePage = "Manage Coupon Type";
@@ -63,8 +64,6 @@ public class DataTestTAWeb extends DataTestSSO {
             "tester_logi_2","tester_logi_2","aa","abc","Uganda",
             "Abim", "0909999990");
 
-
-
     public UserAccount inactivated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting118@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
@@ -78,18 +77,24 @@ public class DataTestTAWeb extends DataTestSSO {
 
     public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
             , "100", "Active");
-    public CouponType valid_coupon_type_inactive = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+    public CouponType valid_coupon_type_inactive =
+            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
             , "120", "InActive");
     public CouponType coupon_type_empty_field = new CouponType("", "", "", "");
-//    public CouponType coupon_type_active = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss"), "100", "Active");
-    public CouponType coupon_type_has_image_jpeg = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", file_path_image_valid_jpeg);
-    public CouponType coupon_type_has_image_png = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", file_path_image_valid_png);
-    public CouponType coupon_type_has_image_jfif = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", file_path_image_valid_jfif);
-    public CouponType coupon_type_has_huge_image = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", file_path_image_larger_than_10mbs);
+    public CouponType coupon_type_has_image_jpeg =
+            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", valid_image_file_path_jpeg);
+    public CouponType coupon_type_has_image_png =
+            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", valid_image_file_path_png);
+    public CouponType coupon_type_has_image_jfif =
+            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", valid_image_file_path_jfif);
+    public CouponType coupon_type_has_huge_image =
+            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+            , "100", "Active", image_larger_than_10mbs_file_path_jpg);
+    public CouponType coupon_type_already_in_use =
+            new CouponType("Test case", "1", "Active", valid_image_file_path_jpeg);
 
     @DataProvider
     public Object[] getDataForFieldPhone() {
@@ -300,33 +305,38 @@ public class DataTestTAWeb extends DataTestSSO {
 
     @DataProvider
     public Object[] getDataToCheckFieldLimitOfCouponType() {
-        Object[][] data = new Object[5][4];
+        Object[][] data = new Object[6][4];
         RegexPattern regexPattern = new RegexPattern();
         // row 1, enter nothing to the field
-        data[0][0] = activated_SSO_account;
+        data[0][0] = admin_SSO_account_portal_staging;
         data[0][1] = empty_text;
         data[0][2] = empty_text;
         data[0][3] = error_msg_empty_field;
         // row 2, enter the text consist special letters
-        data[1][0] = activated_SSO_account;
+        data[1][0] = admin_SSO_account_portal_staging;
         data[1][1] = name_contain_special_char;
         data[1][2] = empty_text;
-        data[1][3] = empty_text;
+        data[1][3] = error_msg_empty_field;
         // row 3, enter an extensive text
-        data[2][0] = activated_SSO_account;
+        data[2][0] = admin_SSO_account_portal_staging;
         data[2][1] = name_by_unicode_text;
         data[2][2] = regexPattern.textOnlyNumberPattern;
         data[2][3] = empty_text;
         // row 4, enter the text consist a few white space letters at the beginning and end
-        data[3][0] = activated_SSO_account;
+        data[3][0] = admin_SSO_account_portal_staging;
         data[3][1] = number_white_space_at_beging_end;
         data[3][2] = number_white_space_at_beging_end.trim();
         data[3][3] = empty_text;
-        // row 5, enter the unicode text
-        data[4][0] = activated_SSO_account;
-        data[4][1] = active_code_extensive;
-        data[4][2] = regexPattern.textOnlyNumberPattern;
-        data[4][3] = empty_text;
+        // row 6, enter a text, and it is a mix of numbers and a few special letters
+        data[4][0] = admin_SSO_account_portal_staging;
+        data[4][1] = phone_contain_special_char;
+        data[4][2] = empty_text;
+        data[4][3] = error_msg_only_number;
+        // row 7, enter a text that it is mix only letters and a few letters '0'
+        data[5][0] = admin_SSO_account_portal_staging;
+        data[5][1] = name_extensive_text_300_letters + "0000";
+        data[5][2] = "0";
+        data[5][3] = empty_text;
         return data;
     }
 
