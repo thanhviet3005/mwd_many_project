@@ -10,6 +10,7 @@ import projects.TA_web.action.IAddCouponTypeAction;
 import projects.TA_web.data_test.DataTestTAWeb;
 import projects.TA_web.entity.CouponType;
 import projects.TA_web.page_object.admin_portal.AddCouponTypePO;
+import projects.TA_web.page_object.admin_portal.ManageCouponTypePO;
 
 public class AddCouponTypeAction implements IAddCouponTypeAction {
 
@@ -34,6 +35,11 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
         generalAction.verifyTextDisplay(dataTestTAWeb.btnSave, addCouponTypePO.btnSave, false);
         generalAction.verifyTextDisplay(dataTestTAWeb.btnCancel, addCouponTypePO.btnCancel, false);
+    }
+
+    @Override
+    public void verifyThumbnailImage(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO) {
+        generalAction.verifyElementDisplayed(addCouponTypePO.imgImageDisplay, "The thumbnail image of the coupon type");
     }
 
     @Override
@@ -73,6 +79,7 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
         for (WebElement element : addCouponTypePO.liStatusOptions) {
             if(couponStatus.equals(element.getText())){
                 element.click();
+                break;
             }
         }
         addCouponTypePO.btnSave.click();
@@ -80,21 +87,20 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
 
     @Override
     public void addNewCouponTypeWithImage(AddCouponTypePO addCouponTypePO, CouponType couponType) throws InterruptedException {
-        String couponStatus = couponType.getStatus();
+        ISSOUtilA utilA = new SSOUtilImpA();
+        addCouponTypePO.inputUploadImage.sendKeys(couponType.getImageLink());
         addCouponTypePO.inputName.clear();
         addCouponTypePO.inputLimit.clear();
         addCouponTypePO.inputName.sendKeys(couponType.getName());
         addCouponTypePO.inputLimit.sendKeys(couponType.getLimit());
         addCouponTypePO.divSelectStatus.click();
+        utilA.setThreadSleep(5000);
+        String couponStatus = couponType.getStatus();
         for (WebElement element : addCouponTypePO.liStatusOptions) {
             if(couponStatus.equals(element.getText())){
                 element.click();
             }
         }
-        addCouponTypePO.labelBtnUploadImage.click();
-        addCouponTypePO.inputUploadImage.sendKeys(couponType.getImageLink());
-        ISSOUtilA utilA = new SSOUtilImpA();
-        utilA.setThreadSleep(5000);
         addCouponTypePO.btnSave.click();
     }
 
@@ -121,6 +127,24 @@ public class AddCouponTypeAction implements IAddCouponTypeAction {
         DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
         IGeneralAction generalAction = new GeneralAction();
         generalAction.verifyAttributeText(dataTestTAWeb.placeholderTextForName, addCouponTypePO.inputName, "placeholder");
+    }
+
+    @Override
+    public void addManyCouponTypes(ManageCouponTypePO manageCouponTypePO, AddCouponTypePO addCouponTypePO, int number, CouponType couponType)
+            throws InterruptedException {
+        ISSOUtilA utilA = new SSOUtilImpA();
+        for (int i = 0; i < number; i++){
+            couponType.setName(couponType.getName() + utilA.createRandomIntegerNumber(100));
+            couponType.setLimit(couponType.getLimit() + utilA.createRandomIntegerNumber(100));
+            if(couponType.getStatus().equals("Active")){
+                couponType.setStatus("In-Active");
+            }else {
+                couponType.setStatus("Active");
+            }
+            utilA.setThreadSleep(5000);
+            manageCouponTypePO.btnAdd.click();
+            addNewCouponTypeWithImage(addCouponTypePO, couponType);
+        }
     }
 
 }

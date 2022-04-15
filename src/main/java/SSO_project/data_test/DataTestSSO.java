@@ -144,21 +144,17 @@ public class DataTestSSO {
     // error message for field 'limit for a number'
     public String error_msg_number_must_more_than_1 = "Must more than 1.";
 
-    // error message for field 'Name'
-    public String error_msg_name_existed = "";
-
     // extensive text
     public String text_284_characters = "Are you looking for a Test Automation tool that can bring all of your team members into a collaborative Automation production process? If so, TestArchitect is a great fit. With TestArchitect, you can leverage a smaller programming staff to support a much larger non-programming staff.";
 
-    // success message for TA Admin Portal
+    // message for TA Portal
     public String success_msg_update_coupon_type = "The Coupon Type has been updated successfully.";
     public String success_msg_add_coupon_type = "The Coupon Type has been added successfully.";
     public String success_msg_delete_coupon_type = "The Coupon Type has been deleted successfully.";
-
-    // message for TA User Portal
     public String success_msg_change_pw = "Your password has been changed successfully.";
     public String failed_msg_change_pw = "Your new password is same as your old password. Please use another password.";
     public String error_msg_only_number = "Integer number only";
+    public String error_msg_value_existed = "Value is existed";
 
     // image for testing
     public String valid_image_file_path_jpeg = System.getProperty("user.dir") + "\\src\\main\\resources\\image\\cute-cat-icon-vector.jpg";

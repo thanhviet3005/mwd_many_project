@@ -75,26 +75,28 @@ public class DataTestTAWeb extends DataTestSSO {
     // referral link from account qatesting118@yopmail.com/ pass-02468
     public String referralLink = "https://sso-stage1.logigear.com/register?referralCode=1649040169";
 
-    public CouponType valid_coupon_type_active = new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
+    public CouponType valid_coupon_type_active = new CouponType("coupon type for testing " + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
             , "100", "Active");
     public CouponType valid_coupon_type_inactive =
-            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "120", "InActive");
-    public CouponType coupon_type_empty_field = new CouponType("", "", "", "");
+            new CouponType("coupon type for testing " + Math.random()*10000
+            , "120", "In-Active");
+    public CouponType coupon_type_empty_field = new CouponType("", "", "In-Active");
     public CouponType coupon_type_has_image_jpeg =
-            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", valid_image_file_path_jpeg);
+            new CouponType("coupon type for testing " + (int) (Math.random() * 100), "100", "Active"
+                    , valid_image_file_path_jpeg);
     public CouponType coupon_type_has_image_png =
-            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", valid_image_file_path_png);
+            new CouponType("coupon type for testing " + (int) (Math.random()*100), "100", "In-Active"
+                    , valid_image_file_path_png);
     public CouponType coupon_type_has_image_jfif =
-            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", valid_image_file_path_jfif);
+            new CouponType("coupon type for testing " + (int) (Math.random()*100), "100", "Active"
+                    , valid_image_file_path_jfif);
     public CouponType coupon_type_has_huge_image =
-            new CouponType("internal testing only please ignored" + TimeUtil.getSystemTimeHMS("yyyyMMddHHmmss")
-            , "100", "Active", image_larger_than_10mbs_file_path_jpg);
+            new CouponType("coupon type for testing " + (int) (Math.random()*100), "100", "Active"
+                    , image_larger_than_10mbs_file_path_jpg);
     public CouponType coupon_type_already_in_use =
             new CouponType("Test case", "1", "Active", valid_image_file_path_jpeg);
+    public CouponType coupon_type_existed_for_testing =
+            new CouponType("coupon type for testing", "100", "Active", valid_image_file_path_png);
 
     @DataProvider
     public Object[] getDataForFieldPhone() {
@@ -344,15 +346,15 @@ public class DataTestTAWeb extends DataTestSSO {
     public Object[] getDataToCreateNewCouponTypeSuccessfully() {
         Object[][] data = new Object[3][3];
         // row 1, coupon type has an image that it is the file type .jpeg
-        data[0][0] = activated_SSO_account_portal_staging;
+        data[0][0] = admin_SSO_account_portal_staging;
         data[0][1] = coupon_type_has_image_jpeg;
         data[0][2] = success_msg_add_coupon_type;
         // row 2, coupon type has an image that it is the file type .png
-        data[1][0] = activated_SSO_account_portal_staging;
+        data[1][0] = admin_SSO_account_portal_staging;
         data[1][1] = coupon_type_has_image_png;
         data[1][2] = success_msg_add_coupon_type;
         // row 2, coupon type has an image that it is the file type .jfif
-        data[2][0] = activated_SSO_account_portal_staging;
+        data[2][0] = admin_SSO_account_portal_staging;
         data[2][1] = coupon_type_has_image_jfif;
         data[2][2] = success_msg_add_coupon_type;
         return data;
