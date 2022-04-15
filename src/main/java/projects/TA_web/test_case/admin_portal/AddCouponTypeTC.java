@@ -46,7 +46,7 @@ public class AddCouponTypeTC extends BaseTest {
      *  + All input and select fields: 'Name', 'Limit', 'Status', 'Upload image'
      *  + All button: 'Save', 'Cancel'
      */
-    @Test(priority = 1,
+    @Test(priority = 1, enabled = false,
             testName = "Test case 1: Verify all UI items display fully on the form 'Add '",
             description = "Description: Verify all UI item show on the form 'Add'")
     public void TC01_Verify_all_UI_items_display_fully_on_the_form_Add(){
@@ -292,7 +292,7 @@ public class AddCouponTypeTC extends BaseTest {
      *  + Select the button 'Save'
      * 5. Verify the error message display
      */
-    @Test(priority = 4, enabled = true,
+    @Test(priority = 4, enabled = false,
             testName = "Test case 4: Verify error message display when submitting the name being already in use",
             description = "Description: Verify the error message display when submitting the name being already in use")
     public void TC04_Verify_error_message_display_when_submitting_the_name_being_already_in_use(){
@@ -302,8 +302,10 @@ public class AddCouponTypeTC extends BaseTest {
         ILoginAction loginAction = new LoginAction();
         LoginPO loginPO = new LoginPO(Constant.webDriver);
         CouponType couponType = dataTestTAWeb.coupon_type_already_in_use;
+        String errorMsgExpected = dataTestTAWeb.error_msg_value_existed;
         IAddCouponTypeAction addCouponTypeAction = new AddCouponTypeAction();
         AddCouponTypePO addCouponTypePO = new AddCouponTypePO(Constant.webDriver);
+        IGeneralAction generalAction = new GeneralAction();
         try {
             System.out.println("Test case 4: Verify error message display when submitting the name being already in use");
 
@@ -333,11 +335,10 @@ public class AddCouponTypeTC extends BaseTest {
             LogReport.logSubStep("Select value on the field 'Status', eg: " + couponType.getStatus());
             LogReport.logSubStep("Select the image to upload from the path:, eg: " + couponType.getImageLink());
             LogReport.logSubStep("Select the button 'Save'");
-            addCouponTypeAction.addNewCouponType(addCouponTypePO, couponType);
+            addCouponTypeAction.addNewCouponTypeWithImage(addCouponTypePO, couponType);
 
             LogReport.logMainStep("5. Verify the error message display");
-            addCouponTypeAction.verifyErrorMsgFieldName(addCouponTypePO
-                    , dataTestTAWeb.empty_text, dataTestTAWeb.error_msg_name_existed);
+            generalAction.verifyTextDisplay(errorMsgExpected, addCouponTypePO.labelErrorMsgForName, false);
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -521,7 +522,7 @@ public class AddCouponTypeTC extends BaseTest {
      * 5. Verify error message displays appropriate
      *  + Verify the error message display
      */
-    @Test(priority = 7, enabled = false,
+    @Test(priority = 7, enabled = true,
             testName = "Test case 7: Verify the error message for the image appears appropriate",
             description = "Description: Verify the error message for the field 'Upload image' that it displays appropriate")
     public void TC07_Verify_the_error_message_for_the_image_appears_appropriate(){

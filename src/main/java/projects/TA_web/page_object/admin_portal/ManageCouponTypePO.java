@@ -23,7 +23,7 @@ public class ManageCouponTypePO {
     // 'Delete' dialog
     @FindBy(id = "modal-modal-title")
     public WebElement h2DialogTitle;
-    @FindBy(xpath = "//h2[@id='modal-modal-title']//following-sibling::div//button[text()='Ok']")
+    @FindBy(xpath = "//h2[@id='modal-modal-title']//following-sibling::div//button[text()='Delete']")
     public WebElement btnDelete;
     @FindBy(xpath = "//h2[@id='modal-modal-title']//following-sibling::div//button[text()='Cancel']")
     public WebElement btnCancel;
@@ -35,7 +35,6 @@ public class ManageCouponTypePO {
     // row 1 on the table
     @FindBy(xpath = "//td[@id='enhanced-table-checkbox-0']")
     public WebElement tdCouponTypeRow1;
-
     @FindBy(xpath = "//td[@id='enhanced-table-checkbox-0']//following-sibling::td//*[name()='svg' and @data-testid='ModeEditOutlineOutlinedIcon']")
     public WebElement svgIconEditRow1;
     @FindBy(xpath = "//td[@id='enhanced-table-checkbox-0']//following-sibling::td//*[name()='svg' and @data-testid='DeleteOutlineIcon']")

@@ -52,7 +52,7 @@ public class AddCouponTypePO {
     public By getSvgIconWarningForLimitBy = By.xpath("//input[@id='limit']//following-sibling::*[name()='svg' and @data-icon='exclamation-triangle']");
 
     // success message
-    @FindBy(xpath = "//div[@role='alert']")
+    @FindBy(css = "div[role='alert']")
     public WebElement divAlertMessage;
 
     public AddCouponTypePO(WebDriver webDriver){
