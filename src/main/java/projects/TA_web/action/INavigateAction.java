@@ -12,10 +12,17 @@ public interface INavigateAction {
     void goToChangePasswordPage(WebDriver webDriver, UserPortalPO userPortalPO);
     void goToLoginPage(WebDriver webDriver);
     void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO) throws InterruptedException;
+
     void goToAddCouponTypePage(WebDriver webDriver);
     void goToEditCouponTypePage(WebDriver webDriver);
+
+    void goToAddCoupon(WebDriver webDriver);
+    void goToEditCoupon(WebDriver webDriver) throws InterruptedException;
+
+
     void openExpectedEditCouponTypePage(WebDriver webDriver, CouponType couponType);
     void goToManageCouponTypePage(WebDriver webDriver);
+
 
 
 }
