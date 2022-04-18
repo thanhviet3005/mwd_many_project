@@ -3,12 +3,17 @@ package projects.TA_web.action.implement_action;
 import common.Constant;
 import common.SSOUtilImpA;
 import common.URL;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import projects.TA_web.action.INavigateAction;
+import projects.TA_web.entity.CouponType;
 import projects.TA_web.page_object.admin_portal.AdminPortalPO;
 import projects.TA_web.page_object.admin_portal.ManageCouponPO;
 import projects.TA_web.page_object.admin_portal.ManageCouponTypePO;
 import projects.TA_web.page_object.user_portal.UserPortalPO;
+
+import java.util.List;
 
 public class NavigateAction implements INavigateAction {
     @Override
@@ -68,10 +73,28 @@ public class NavigateAction implements INavigateAction {
 
     @Override
     public void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO)  {
+
+    public void openExpectedEditCouponTypePage(WebDriver webDriver, CouponType couponType) {
+        webDriver.findElement(By.xpath("//td[contains(text(),'" + couponType.getName()
+                + "')]//following-sibling::td//*[name()='svg' and @data-testid='ModeEditOutlineOutlinedIcon']")).click();
+    }
+
+    @Override
+    public void goToManageCouponTypePage(WebDriver webDriver) {
+        UserPortalPO userPortalPO = new UserPortalPO(webDriver);
+        AdminPortalPO adminPortalPO = new AdminPortalPO(webDriver);
+        userPortalPO.spanGoToAdminPage.click();
+        adminPortalPO.spanManageCouponType.click();
+    }
+
+
+
+    @Override
+    public void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO){
+
         userPortalPO.svgAccountMenu.click();
         userPortalPO.aMyProfile.click();
         userPortalPO.btnEditProfile.click();
-
     }
 
 

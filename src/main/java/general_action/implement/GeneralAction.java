@@ -96,7 +96,7 @@ public class GeneralAction implements IGeneralAction {
 
     @Override
     public void setupWebdriverTimeOut(WebDriver webDriver) {
-        webDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        webDriver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         webDriver.manage().timeouts().pageLoadTimeout(60, TimeUnit.SECONDS);
         webDriver.manage().timeouts().setScriptTimeout(5, TimeUnit.SECONDS);
     }
