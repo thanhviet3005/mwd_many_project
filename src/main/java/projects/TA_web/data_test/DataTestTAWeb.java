@@ -56,6 +56,10 @@ public class DataTestTAWeb extends DataTestSSO {
     public String labelDuration = "Duration*";
     public String labelPresentee = "Presentee";
 
+    //TA portal page Edit Coupon
+    public String value_existed="Test Case";
+    public String error_msg_existed="Value is existed";
+
     public UserAccount activated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting119@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
             "Logigear Test", "Uganda", "Abim", "0909999990");
@@ -358,5 +362,35 @@ public class DataTestTAWeb extends DataTestSSO {
         return data;
     }
 
+    // page 'Add coupon type'
+    @DataProvider
+    public Object[] getDataToCheckFieldNameOfCoupon() {
+        Object[][] data = new Object[5][3];
+        // row 1, enter nothing to the field
+        data[0][0] = empty_text;
+        data[0][1] = empty_text;
+        data[0][2] = error_msg_empty_field;
+        // row 2, enter the text consist special letters
+
+        data[1][0] = name_contain_special_char;
+        data[1][1] = empty_text;
+        data[1][2] = error_msg_special_letters_for_name;
+        // row 3, enter an extensive text
+
+        data[2][0] = name_extensive_text_300_letters;
+        data[2][1] = name_extensive_text_300_letters.substring(0, 200);
+        data[2][2] = empty_text;
+        // row 4, enter the text consist a few white space letters at the beginning and end
+
+        data[3][0] = text_white_space_at_begining_ending;
+        data[3][1] = text_white_space_at_begining_ending.trim();
+        data[3][2] = empty_text;
+        // row 5, enter the unicode text
+
+        data[4][0] = name_by_unicode_text;
+        data[4][1] = name_by_unicode_text;
+        data[4][2] = empty_text;
+        return data;
+    }
 
 }

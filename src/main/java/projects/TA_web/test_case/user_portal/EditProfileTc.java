@@ -3,8 +3,6 @@ package projects.TA_web.test_case.user_portal;
 import SSO_project.data_test.DataTestSSO;
 import SSO_project.entity.UserAccount;
 import base_test.BaseTest;
-import SSO_project.page_object.TestArchitectPO;
-import SSO_project.page_object.UpdateProfilePO;
 import common.Constant;
 import common.ExtentReportManager;
 import common.LogReport;

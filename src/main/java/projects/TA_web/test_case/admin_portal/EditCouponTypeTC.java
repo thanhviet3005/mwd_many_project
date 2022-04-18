@@ -6,7 +6,6 @@ import SSO_project.action.implement_action.LoginAction;
 
 import SSO_project.entity.UserAccount;
 import SSO_project.page_object.LoginPO;
-import SSO_project.page_object.TestArchitectPO;
 import base_test.BaseTest;
 import common.Constant;
 import common.ExtentReportManager;

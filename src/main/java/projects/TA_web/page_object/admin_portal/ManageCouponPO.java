@@ -36,6 +36,9 @@ public class ManageCouponPO {
     public WebElement btnDeleteCoupon;
     @FindBy(xpath = "//button[text()='Cancel']")
     public WebElement btnCancelDialog;
+    /* absolute xpath of items on table in page Manage Coupon*/
+    @FindBy(xpath = "//td[text()='Increase Test Case']//following-sibling::td//div//button[2]")
+    public  WebElement editIcon;
 
     public ManageCouponPO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);
