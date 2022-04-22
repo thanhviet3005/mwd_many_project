@@ -12,7 +12,7 @@ public interface IAddCouponTypeAction {
     void verifyThumbnailImage(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
     void verifyErrorMsgFieldName(AddCouponTypePO addCouponTypePO, String expectedText, String errorMsg);
     void verifyErrorMsgFieldLimit(AddCouponTypePO addCouponTypePO, String expectedText, String errorMsg);
-    void addNewCouponType(AddCouponTypePO addCouponTypePO, CouponType couponType);
+    void addNewCouponType(AddCouponTypePO addCouponTypePO, CouponType couponType) throws InterruptedException;
     void addNewCouponTypeWithImage(AddCouponTypePO addCouponTypePO, CouponType couponType) throws InterruptedException;
     void verifyAddNewCouponTypeSuccess(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);
     void verifyAllErrorMsgForEmptyFields(IGeneralAction generalAction, AddCouponTypePO addCouponTypePO);

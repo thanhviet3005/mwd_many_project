@@ -54,7 +54,16 @@ public class NavigateAction implements INavigateAction {
     }
 
     @Override
-    public void goToAddCoupon(WebDriver webDriver) {
+    public void goToAddCoupon(WebDriver webDriver) throws InterruptedException {
+        AdminPortalPO adminPortalPO = new AdminPortalPO(webDriver);
+        ManageCouponPO manageCouponPO = new ManageCouponPO(Constant.webDriver);
+        UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
+        SSOUtilImpA ssoUtilImpA = new SSOUtilImpA();
+        userPortalPO.spanGoToAdminPage.click();
+        adminPortalPO.spanManageCoupon.click();
+        ssoUtilImpA.setThreadSleep(5000);
+        manageCouponPO.btnAdd.click();
+
         
     }
 
@@ -71,8 +80,6 @@ public class NavigateAction implements INavigateAction {
 
     }
 
-    @Override
-    public void goToEditProfileUserPage(WebDriver webDriver, UserPortalPO userPortalPO)  {
 
     public void openExpectedEditCouponTypePage(WebDriver webDriver, CouponType couponType) {
         webDriver.findElement(By.xpath("//td[contains(text(),'" + couponType.getName()

@@ -6,6 +6,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -110,9 +111,17 @@ public class GeneralAction implements IGeneralAction {
 
     @Override
     public void enterValueOneField(WebElement inputElement, String value, WebElement subElement) {
+        if (!(subElement ==null)) {
+            Actions actions = new Actions(Constant.webDriver);
+            inputElement.clear();
+            inputElement.sendKeys(value);
+           actions.moveToElement(subElement).click().perform();
+           subElement.click();
+
+        }
         inputElement.clear();
         inputElement.sendKeys(value);
-        subElement.click();
+
     }
 
     @Override

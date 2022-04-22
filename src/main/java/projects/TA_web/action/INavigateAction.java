@@ -16,7 +16,7 @@ public interface INavigateAction {
     void goToAddCouponTypePage(WebDriver webDriver);
     void goToEditCouponTypePage(WebDriver webDriver);
 
-    void goToAddCoupon(WebDriver webDriver);
+    void goToAddCoupon(WebDriver webDriver) throws InterruptedException;
     void goToEditCoupon(WebDriver webDriver) throws InterruptedException;
 
 

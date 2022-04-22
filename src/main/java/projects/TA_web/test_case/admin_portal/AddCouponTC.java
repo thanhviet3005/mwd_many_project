@@ -1,20 +1,27 @@
 package projects.TA_web.test_case.admin_portal;
 
-import SSO_project.action.ILoginAction;
-import SSO_project.action.implement_action.LoginAction;
-import SSO_project.entity.UserAccount;
-import SSO_project.page_object.LoginPO;
 import base_test.BaseTest;
 import common.Constant;
 import common.ExtentReportManager;
 import common.LogReport;
 import common.SSOUtilImpA;
+import general_action.IGeneralAction;
+import general_action.implement.GeneralAction;
 import org.testng.annotations.Test;
 import projects.TA_web.action.IAddCouponAction;
+import projects.TA_web.action.IEditCouponAction;
+import projects.TA_web.action.ILoginAction;
 import projects.TA_web.action.INavigateAction;
 import projects.TA_web.action.implement_action.AddCouponAction;
+import projects.TA_web.action.implement_action.EditCouponAction;
+import projects.TA_web.action.implement_action.LoginAction;
 import projects.TA_web.action.implement_action.NavigateAction;
 import projects.TA_web.data_test.DataTestTAWeb;
+import projects.TA_web.entity.Coupon;
+import projects.TA_web.page_object.admin_portal.AddCouponPO;
+import projects.TA_web.page_object.admin_portal.EditCouponPO;
+import projects.TA_web.page_object.user_portal.LoginOn23ServerPO;
+import projects.TA_web.page_object.user_portal.UserPortalPO;
 
 public class AddCouponTC extends BaseTest {
 
@@ -35,16 +42,17 @@ public class AddCouponTC extends BaseTest {
      *  + Verify all input fields, selection fields: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee
      *  + Verify all button names: Save, Cancel
      */
-    @Test(priority = 1,
+    @Test(priority = 1,enabled = false,
             testName = "Test case 1: Verify the UI items on the page 'Add coupon'",
             description = "Description: Verify the UI items display fully on the page 'Add coupon'")
-    public void TC04_Verify_error_message_display_when_submitting_the_name_being_already_in_use(){
+    public void TC01_Verify_GUI(){
         INavigateAction navigateAction = new NavigateAction();
-        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
-        LoginPO loginPO = new LoginPO(Constant.webDriver);
-        UserAccount user = dataTestTAWeb.admin_SSO_account_portal_staging;
         ILoginAction loginAction = new LoginAction();
-        IAddCouponAction couponAction = new AddCouponAction();
+        LoginOn23ServerPO loginOn23ServerPO = new LoginOn23ServerPO(Constant.webDriver);
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        IGeneralAction generalAction = new GeneralAction();
+        AddCouponPO addCouponPO = new AddCouponPO(Constant.webDriver);
+        IAddCouponAction addCouponAction = new AddCouponAction();
 
         try {
             System.out.println("Test case 1: Verify the UI items on the page 'Add coupon'");
@@ -55,49 +63,25 @@ public class AddCouponTC extends BaseTest {
             LogReport.logSubStep("Select the button 'Login'");
             navigateAction.goToLoginPage(Constant.webDriver);
 
-            LogReport.logSubStep("Enter the email to the field 'Email', eg: " + user.getEmail());
-            LogReport.logSubStep("Enter the password to the field 'Password', eg: " + user.getPassword());
+            LogReport.logSubStep("Enter the email to the field 'Email', eg: " + dataTestTAWeb.account_test_edit_profile);
+            LogReport.logSubStep("Enter the password to the field 'Password', eg: " + dataTestTAWeb.account_test_edit_profile);
             LogReport.logSubStep("Select the button 'Login'");
-            loginAction.loginSSO(loginPO, user);
+            loginAction.loginSSO(loginOn23ServerPO, dataTestTAWeb.account_test_edit_profile);
 
             LogReport.logSubStep("Select the link 'Go to Admin Page'");
             LogReport.logSubStep("Select the tab 'Manage coupon'");
             LogReport.logSubStep("Select the button 'Add'");
-            navigateAction.goToAddCouponTypePage(Constant.webDriver);
+            navigateAction.goToAddCoupon(Constant.webDriver);
 
             LogReport.logMainStep("2. Verify UI items display on the page 'Add coupon'");
             LogReport.logSubStep("<b>Verify the title text and all label names as the design: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee</b>");
-
+            addCouponAction.verifyAllLabelsOnFormCoupon(addCouponPO,generalAction);
 
             LogReport.logSubStep("<b>Verify all input fields, selection fields display fully: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee</b>");
             LogReport.logSubStep("<b>Verify all button names: Save, Cancel</b>");
-
-
-
-
-
-
-
-
-
-
-            LogReport.logMainStep("");
-            LogReport.logSubStep("");
-
-
-//            LogReport.logMainStep("1. Go to the page Login");
-//            LogReport.logSubStep("Open the web browser");
-//            LogReport.logSubStep("Enter the above URL to the address bar on the browser");
-//            LogReport.logSubStep("Press the key 'Enter' on the keyboard");
-//            LogReport.logSubStep("Select the button 'Login'");
-//            navigateAction.goToLoginPage(Constant.webDriver);
-//
-//            LogReport.logMainStep("2. Login with valid account");
-//            LogReport.logSubStep("Go to the page 'Login'");
-//            LogReport.logSubStep("Enter the email, eg: " + user.getEmail());
-//            LogReport.logSubStep("Enter the password, eg: " + user.getPassword());
-//            LogReport.logSubStep("Select the button 'Login'");
-//            loginAction.loginSSO(loginPO, user);
+            addCouponAction.verifyAllFieldsOnFormCoupon(addCouponPO,generalAction);
+            LogReport.logSubStep("<b>Verify all input fields, selection fields display fully: Name, Type, Value, Unit name, Point, Duration, Unit name, Status, Presentee</b>");
+            addCouponAction.verifyAllButtonsNames(addCouponPO,generalAction);
 
         } catch (Exception exception) {
             LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
@@ -125,6 +109,59 @@ public class AddCouponTC extends BaseTest {
      *  + Select the button 'Save'
      * 5. Verify the error messages and icon 'Warning' for an empty field appears fully on all required fields
      */
+
+    @Test(priority = 2,enabled = false,
+            testName = "Verify the error messages for empty fields appear fully after " +
+            "creating a new coupon without any values",
+            description = "erify the error messages for empty fields appear fully after creating " +
+            "a new coupon without any values")
+    public void Verify_Error_Message_For_Empty_Fields(){
+        INavigateAction navigateAction = new NavigateAction();
+        ILoginAction loginAction = new LoginAction();
+        LoginOn23ServerPO loginOn23ServerPO = new LoginOn23ServerPO(Constant.webDriver);
+        UserPortalPO userPortalPO = new UserPortalPO(Constant.webDriver);
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        IGeneralAction generalAction = new GeneralAction();
+        IAddCouponAction addCouponAction = new AddCouponAction();
+        AddCouponPO addCouponPO = new AddCouponPO(Constant.webDriver);
+        try {
+            System.out.println("Verify the error messages for empty fields appear after the user updates" +
+                    " a coupon with empty value");
+
+            LogReport.logMainStep("1. Go to the page Login");
+            LogReport.logSubStep("Open the web browser");
+            LogReport.logSubStep("Enter the above URL to the address bar on the browser");
+            LogReport.logSubStep("Press the key 'Enter' on the keyboard");
+            LogReport.logSubStep("Select the button 'Login'");
+            navigateAction.goToLoginPage(Constant.webDriver);
+
+            LogReport.logMainStep("2. Log in");
+            LogReport.logSubStep("Go to the page 'Login'");
+            LogReport.logSubStep("Enter the email, eg: " );
+            LogReport.logSubStep("Enter the password, eg: ");
+            LogReport.logSubStep("Select the button 'Login'");
+            loginAction.loginSSO(loginOn23ServerPO, dataTestTAWeb.account_test_edit_profile);
+
+            LogReport.logMainStep("3. Go to the page 'Edit coupon type'");
+            LogReport.logSubStep("Select the link 'Go to Admin Page'");
+            LogReport.logSubStep("Select the Edit icons in record has been selected in Manage Coupon page");
+            navigateAction.goToEditCoupon(Constant.webDriver);
+
+            LogReport.logMainStep("4. Verify the error messages for empty fields appear after the user updates a coupon with empty value'");
+            LogReport.logSubStep("clear value in all fields");
+            addCouponAction.ClearFields(addCouponPO);
+            LogReport.logMainStep("5. Verify All error messages for empty fields display fully");
+            addCouponAction.verifyAllErrorMsgForEmptyFields(generalAction,addCouponPO);
+
+
+        }
+        catch (Exception e){
+            LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
+                    Constant.webDriver.getCurrentUrl(), e);
+            e.printStackTrace();
+        }
+    }
+
 
     /** Test case 3: Verify the error message displays appropriate on the field 'Name*'
      * 1. Go to the page Login
@@ -160,159 +197,63 @@ public class AddCouponTC extends BaseTest {
      *      - Verify the error message and icon 'Warning' for this field  still hide
      */
 
-    /** Test case 4: Verify the error message displays appropriate on the field 'Value*'
-     * 1. Go to the page Login
-     *  + Open the web browser
-     *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
-     *  + Press the key 'Enter' on the keyboard
-     *  + Select the button 'Login'
-     * 2. Login with valid account
-     *  + Go to the page 'Login'
-     *  + Enter the email
-     *  + Enter the password
-     *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
-     *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Enter value to field 'Value'
-     *  + Enter an invalid value / a valid value to the field 'Name'
-     *  + Click any points on the screen, eg: The title page
-     * 5. Verify the error messages display or not
-     * 6. Repeat the steps 4, 5 with these values:
-     *  + Enter nothing
-     *      - Verify the error message for the empty field and icon 'Warning' display
-     *  + Enter texts consist special character to these field, eg: "Test #.,{}'" and press Enter
-     *      - Verify the error message and icon 'Warning' still hide
-     *      - Verify the text on the input field is only digits or empty
-     *  + Enter extensive texts, and it is mixed numbers, letters
-     *      - Verify texts display is only digits
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter texts consist white space letters at the beginning and ending places, eg: "  02468    "
-     *      - Verify texts on it are trimmed
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter Unicode text
-     *      - Verify text on it are empty text or only digits
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter a text that is mixed numbers, letters, special characters, symbol '+,-,.'
-     *      - Verify the error message and icon 'Warning' display
-     *      - Verify the text on the field only numbers and symbols '+,-,.'
-     *  + Enter a text consists more 200 letters is only numbers
-     *      - Verify texts display is only 200 first numbers
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     */
+    @Test(priority = 3,enabled = false,
+            testName = "Verify the error message displays appropriate on the field 'Name*",
+            description = "Verify the error message displays appropriate on the field 'Name*",
+            dataProviderClass = DataTestTAWeb.class,
+            dataProvider = "getDataToCheckFieldNameOfCoupon")
+    public void Verify_Error_Message_For_Field_Name(String valueForName, String expectedText , String errorMsg){
+        INavigateAction navigateAction = new NavigateAction();
+        ILoginAction loginAction = new LoginAction();
+        LoginOn23ServerPO loginOn23ServerPO = new LoginOn23ServerPO(Constant.webDriver);
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        IGeneralAction generalAction = new GeneralAction();
+        IAddCouponAction addCouponAction = new AddCouponAction();
+        AddCouponPO addCouponPO = new AddCouponPO(Constant.webDriver);
+        try {
+            System.out.println("Verify the error message displays appropriate on the field 'Name*");
 
-    /** Test case 5: Verify the error message displays appropriate on the field 'Point*'
-     * 1. Go to the page Login
-     *  + Open the web browser
-     *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
-     *  + Press the key 'Enter' on the keyboard
-     *  + Select the button 'Login'
-     * 2. Login with valid account
-     *  + Go to the page 'Login'
-     *  + Enter the email
-     *  + Enter the password
-     *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
-     *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Enter value to field 'Value'
-     *  + Enter an invalid value / a valid value to the field 'Name'
-     *  + Click any points on the screen, eg: The title page
-     * 5. Verify the error messages display or not
-     * 6. Repeat the steps 4, 5 with these values:
-     *  + Enter nothing
-     *      - Verify the error message for the empty field and icon 'Warning' display
-     *  + Enter texts consist special character to these field, eg: "Test #.,{}'" and press Enter
-     *      - Verify the error message and icon 'Warning' still hide
-     *      - Verify the text on the input field is only digits or empty
-     *  + Enter extensive texts, and it is mixed numbers, letters
-     *      - Verify texts display is only digits
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter texts consist white space letters at the beginning and ending places, eg: "  02468    "
-     *      - Verify texts on it are trimmed
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter Unicode text
-     *      - Verify text on it are empty text or only digits
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter a text that is mixed numbers, letters, special characters, symbol '+,-,.'
-     *      - Verify the error message and icon 'Warning' display
-     *      - Verify the text on the field only numbers and symbols '+,-,.'
-     *  + Enter a text consists more 200 letters is only numbers
-     *      - Verify texts display is only 200 first numbers
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     */
+            LogReport.logMainStep("1. Go to the page Login");
+            LogReport.logSubStep("Open the web browser");
+            LogReport.logSubStep("Enter the above URL to the address bar on the browser");
+            LogReport.logSubStep("Press the key 'Enter' on the keyboard");
+            LogReport.logSubStep("Select the button 'Login'");
+            navigateAction.goToLoginPage(Constant.webDriver);
 
-    /** Test case 6: Verify the error message displays appropriate on the field 'Duration*'
-     * 1. Go to the page Login
-     *  + Open the web browser
-     *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
-     *  + Press the key 'Enter' on the keyboard
-     *  + Select the button 'Login'
-     * 2. Login with valid account
-     *  + Go to the page 'Login'
-     *  + Enter the email
-     *  + Enter the password
-     *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
-     *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Enter value to field 'Value'
-     *  + Enter an invalid value / a valid value to the field 'Name'
-     *  + Click any points on the screen, eg: The title page
-     * 5. Verify the error messages display or not
-     * 6. Repeat the steps 4, 5 with these values:
-     *  + Enter nothing
-     *      - Verify the error message for the empty field and icon 'Warning' display
-     *  + Enter texts consist special character to these field, eg: "Test #.,{}'" and press Enter
-     *      - Verify the error message and icon 'Warning' still hide
-     *      - Verify the text on the input field is only digits or empty
-     *  + Enter extensive texts, and it is mixed numbers, letters
-     *      - Verify texts display is only digits
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter texts consist white space letters at the beginning and ending places, eg: "  02468    "
-     *      - Verify texts on it are trimmed
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter Unicode text
-     *      - Verify text on it are empty text or only digits
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     *  + Enter a text that is mixed numbers, letters, special characters, symbol '+,-,.'
-     *      - Verify the error message and icon 'Warning' display
-     *      - Verify the text on the field only numbers and symbols '+,-,.'
-     *  + Enter a text consists more 200 letters is only numbers
-     *      - Verify texts display is only 200 first numbers
-     *      - Verify the error message and icon 'Warning' for this field still hide
-     */
+            LogReport.logMainStep("2. Log in");
+            LogReport.logSubStep("Go to the page 'Login'");
+            LogReport.logSubStep("Enter the email, eg: " );
+            LogReport.logSubStep("Enter the password, eg: ");
+            LogReport.logSubStep("Select the button 'Login'");
+            loginAction.loginSSO(loginOn23ServerPO, dataTestTAWeb.account_test_edit_profile);
 
-    /** Test case 7: Verify only active coupon types are displayed at the field 'Unit '
-     * 1. Go to the page Login
-     *  + Open the web browser
-     *  + Enter the above URL to the address bar on the browser: stage1.testarchitect.com
-     *  + Press the key 'Enter' on the keyboard
-     *  + Select the button 'Login'
-     * 2. Login with valid account
-     *  + Go to the page 'Login'
-     *  + Enter the email
-     *  + Enter the password
-     *  + Select the button 'Login'
-     * 3. Collect all coupon types on the page 'Manage coupon type'
-     *  + Select the tab 'Manage coupon type'
-     *  + Observe all active coupon types
-     * 4. Go to the page 'Add coupon'
-     *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 5. Open the coupon type list
-     *  + Select the field 'Type'
-     * 6. Verify all the active coupon types from step 3 display fully on the field 'Type'
-     * 7. Back to page 'Manage coupon type', select and update a coupon type to in-active at random
-     *  + Select the tab 'Manage coupon type'
-     *  + Select a coupon type at random
-     *  + Update this coupon type's status to 'in-active'
-     *  + Select the button 'Save'
-     * 8. Repeat step 5
-     * 9. Verify the in-active coupon at step 7 disappears from list
-     */
+            LogReport.logMainStep("3. Go to the page 'Edit coupon type'");
+            LogReport.logSubStep("Select the link 'Go to Admin Page'");
+            LogReport.logSubStep("Select the Edit icons in record has been selected in Manage Coupon page");
+            navigateAction.goToAddCoupon(Constant.webDriver);
 
-    /** Test case 8: Verify the error message appears if the user create new coupon is the same to another coupon
+            LogReport.logMainStep("4. Verify the error messages for empty fields appear after the user updates a coupon with empty value'");
+            LogReport.logSubStep("Clear the current value on the field 'Name'");
+            LogReport.logSubStep("Enter value to the field 'Name', eg: " + valueForName);
+
+            generalAction.enterValueOneField(addCouponPO.inputName, valueForName,addCouponPO.labelName);
+
+
+            LogReport.logMainStep("5. Verify All error messages");
+            addCouponAction.verifyAllErrorMsgFields(addCouponPO, expectedText, errorMsg);
+
+
+        }
+        catch (Exception e){
+            LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
+                    Constant.webDriver.getCurrentUrl(), e);
+            e.printStackTrace();
+        }
+
+    }
+
+
+    /** Test case 4: Verify the error message appears, if the user updates the current coupon that it is the same to another coupon
      * 1. Go to the page Login
      *  + Open the web browser
      *  + Enter the URL to the address bar on the browser: stage1.testarchitect.com
@@ -323,38 +264,72 @@ public class AddCouponTC extends BaseTest {
      *  + Enter the email
      *  + Enter the password
      *  + Select the button 'Login'
-     * 3. Go to the page 'Add coupon'
+     * 3. Go to the page 'Edit coupon'
+     *  + Select the link 'Go To Admin Page'
      *  + Select the tab 'Manage coupon'
-     *  + Select the button 'Add'
-     * 4. Create a new coupon is the same to any coupons on the data table 'Manage coupon'
+     *  + Select icon 'Edit' at random from the data table
+     * 4. Update the coupon that it has been selected is the same to any coupons on the data table 'Manage coupon'
      *  + Enter all valid values to all fields, and they are similar another coupon that it is already use
      *  + Select the button 'Save'
      * 5. Verify the error message that it appears to reminder the coupon is existed
      */
+    @Test (priority = 4,
+            testName = "Verify the error message appears, if the user updates the current coupon" +
+                    " that it is the same name to another coupon",
+            description = "Verify the error message appears, if the user updates the current coupon" +
+                    " that it is the same name to another coupon"
+    )
+    public void Verify_Error_Message_If_Coupon_Has_Been_Existed()  {
+        INavigateAction navigateAction = new NavigateAction();
+        ILoginAction loginAction = new LoginAction();
+        LoginOn23ServerPO loginOn23ServerPO = new LoginOn23ServerPO(Constant.webDriver);
+        DataTestTAWeb dataTestTAWeb = new DataTestTAWeb();
+        IGeneralAction generalAction = new GeneralAction();
+        IAddCouponAction addCouponAction = new AddCouponAction();
+        AddCouponPO addCouponPO= new AddCouponPO(Constant.webDriver);
+        Coupon coupon = new Coupon("20","30","45");
+        Coupon coupon2=  new Coupon("Active","Test Cases","Hours","Repository");
 
-    /** Test case 9: Verify the coupon status is updated 'in-active' automatically after the user updates the current coupon type' status that it is 'in-active'
-     * 1. Go to the page Login
-     *  + Open the web browser
-     *  + Enter the URL to the address bar on the browser: stage1.testarchitect.com
-     *  + Press the key 'Enter' on the keyboard
-     *  + Select the button 'Login'
-     * 2. Login with valid account
-     *  + Go to the page 'Login'
-     *  + Enter the email
-     *  + Enter the password
-     *  + Select the button 'Login'
-     * 3. Observe an active coupon, and it has coupon type's status being 'active'
-     *  + Go to the page 'Manage coupon'
-     *  + Select at random an active coupon, and it has coupon type's status being 'active'
-     * 4. Update a current type's status that it is 'in-active'
-     *  + Select the coupon type for the coupon from step 3
-     *  + Update the coupon type's status being 'in-active'
-     * 5. Verify the coupon status at step 3 being 'in-active', and it disappears on the page 'Refer and earn point'
-     *  + Back to the page 'Manage coupon'
-     *  + Verify the coupon status at step 3 being 'in-active'
-     *  + Go to the page 'Refer and earn point'
-     *  + Verify this coupon disappear
-     */
+        System.out.println("Test case 4:Verify the error message appears," +
+                " if the user updates the current coupon that it is the same to another coupon");
+        try {
+            LogReport.logMainStep("1. Go to the page Login");
+            LogReport.logSubStep("Open the web browser");
+            LogReport.logSubStep("Enter the above URL to the address bar on the browser");
+            LogReport.logSubStep("Press the key 'Enter' on the keyboard");
+            LogReport.logSubStep("Select the button 'Login'");
+            navigateAction.goToLoginPage(Constant.webDriver);
+
+            LogReport.logMainStep("2. Log in");
+            LogReport.logSubStep("Go to the page 'Login'");
+            LogReport.logSubStep("Enter the email, eg: ");
+            LogReport.logSubStep("Enter the password, eg: ");
+            LogReport.logSubStep("Select the button 'Login'");
+            loginAction.loginSSO(loginOn23ServerPO, dataTestTAWeb.account_test_edit_profile);
+
+            LogReport.logMainStep("3. Go to the page 'Edit coupon type'");
+            LogReport.logSubStep("Select the link 'Go to Admin Page'");
+            LogReport.logSubStep("Select the Edit icons in record has been selected in Manage Coupon page");
+            navigateAction.goToAddCoupon(Constant.webDriver);
+
+            LogReport.logMainStep("4. Verify the error messages when input the coupon name has been existed'");
+            LogReport.logSubStep("Enter value to the field 'Name', eg: " + dataTestTAWeb.value_existed);
+            generalAction.enterValueOneField(addCouponPO.inputName, dataTestTAWeb.value_test_case_existed,addCouponPO.labelName);
+            addCouponAction.AddCoupon(addCouponPO,coupon,coupon2);
+
+            LogReport.logMainStep("5. Verify All error messages");
+            addCouponAction.verifyAllErrorMsgFields(addCouponPO, dataTestTAWeb.error_msg_existed_page_AddCoupon, dataTestTAWeb.error_msg_existed_page_AddCoupon);
+
+        }
+        catch (Exception e){
+            LogReport.logErrorAndCaptureBase64(ExtentReportManager.extentTest, SSOUtilImpA.stepName,
+                    Constant.webDriver.getCurrentUrl(), e);
+            e.printStackTrace();
+        }
+    }
+
+
+
 
     /** Notes: This case is tested manual testing
      * Test case 11: Verify the coupon status is updated 'in-active' automatically after the coupon out of duration time
