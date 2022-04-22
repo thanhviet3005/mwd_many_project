@@ -6,17 +6,21 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class AddCouponPO {
     @FindBy(id = "tableTitle")
     public WebElement h5Title;
-    @FindBy(css = "label[for='name'")
+    @FindBy(xpath = "//label[.='Name*']")
     public WebElement labelName;
-    @FindBy(id = "name")
+    @FindBy(xpath = "//input[@id='name']")
     public WebElement inputName;
     @FindBy(css = "label[for='type']")
     public WebElement labelType;
     @FindBy(xpath = "//label[@for='type']//following-sibling::div//div[@id='durationUnit-select']")
     public WebElement divSelectCouponType;
+    @FindBy(xpath = "//ul[@role='listbox']//li")
+    public List<WebElement> divList;
     @FindBy(xpath = "//div[@id='menu-couponType']//li[1]")
     public WebElement liFirstCouponType;
     @FindBy(xpath = "//div[@id='menu-couponType']//li[2]")
@@ -27,8 +31,8 @@ public class AddCouponPO {
     public WebElement inputValue;
     @FindBy(css = "label[for='valueUnit']")
     public WebElement labelUnitFirst;
-    @FindBy(id = "valueUnit")
-    public WebElement divSelectUnitFirst;
+    @FindBy(xpath = "//div[@id='valueUnit']")
+    public WebElement divSelectUnit;
     @FindBy(xpath = "//div[@id='menu-valueUnit']//li[1]")
     public WebElement liValueUnitOption1;
     @FindBy(xpath = "//div[@id='menu-valueUnit']//li[2]")
@@ -53,9 +57,9 @@ public class AddCouponPO {
     public WebElement divSelectStatus;
     @FindBy(css = "label[for='presentee']")
     public WebElement labelPresentee;
-    @FindBy(xpath = "//input[@aria-label='B' and @type='radio']")
+    @FindBy(xpath = "//label[.='Presentee']//following-sibling::div//div//input[@aria-label='B' and @type='radio']//following-sibling::span//*[name()='svg']")
     public WebElement inputRadioBtnYes;
-    @FindBy(xpath = "//input[@aria-label='A' and @type='radio']")
+    @FindBy(xpath = "//label[.='Presentee']//following-sibling::div//div//input[@aria-label='A' and @type='radio']//following-sibling::span//*[name()='svg']")
     public WebElement inputRadioBtnNo;
     @FindBy(xpath = "//label[@for='presentee']//following-sibling::div//b[text()='Yes']")
     public WebElement bYes;
@@ -94,6 +98,8 @@ public class AddCouponPO {
     public WebElement labelErrorMsgUnitDuration;
     @FindBy(xpath = "//label[@for='unitDuration']//following-sibling::div//div[@id='durationUnit-select']//following-sibling::*[name()= 'svg' and @data-icon='exclamation-triangle']")
     public WebElement svgIconWarningForUnitDuration;
+    @FindBy(xpath = "//label[@for='name']//following-sibling::div//label")
+    public WebElement labelErrorMsgForName;
 
     public AddCouponPO(WebDriver webDriver){
         PageFactory.initElements(webDriver, this);

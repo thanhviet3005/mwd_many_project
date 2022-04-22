@@ -4,6 +4,7 @@ import SSO_project.data_test.DataTestSSO;
 import SSO_project.entity.UserAccount;
 import common.TimeUtil;
 import org.testng.annotations.DataProvider;
+import projects.TA_web.entity.Coupon;
 import projects.TA_web.entity.CouponType;
 
 public class DataTestTAWeb extends DataTestSSO {
@@ -59,6 +60,16 @@ public class DataTestTAWeb extends DataTestSSO {
     //TA portal page Edit Coupon
     public String value_existed="Test Case";
     public String error_msg_existed="Value is existed";
+
+    //TA portal page Add Coupon
+    public Coupon new_coupon = new Coupon("10","Test Case 2","1010","210",
+            "Active","Test Cases","Days","Test Case");
+
+    public String value_test_case_existed= "Test Case";
+
+    public String error_msg_existed_page_AddCoupon= "Test Case is existed";
+
+    public String success_msg_add_coupon= "The Coupon Type has been added successfully.";
 
     public UserAccount activated_SSO_account_portal_staging = new UserAccount("internal testing only", "please ignored",
             "qatesting119@yopmail.com", "pass-02468", "pass-02468", "Logigear Test",
@@ -386,7 +397,7 @@ public class DataTestTAWeb extends DataTestSSO {
 
         data[3][0] = text_white_space_at_begining_ending;
         data[3][1] = text_white_space_at_begining_ending.trim();
-        data[3][2] = empty_text;
+
         // row 5, enter the unicode text
 
         data[4][0] = name_by_unicode_text;
@@ -394,5 +405,24 @@ public class DataTestTAWeb extends DataTestSSO {
         data[4][2] = empty_text;
         return data;
     }
+
+    @DataProvider
+    public Object[] getDataToCreateNewCouponSuccessfully() {
+        Object[][] data = new Object[2][2];
+
+        data[0][1]=new_coupon;
+        data[0][2]=success_msg_add_coupon;
+
+        return  data;
+    }
+
+    @DataProvider
+    public Object[][] CheckValueExistedOfCoupon(){
+        Object[][] data = new Object[2][3];
+        data [0][1]=value_test_case_existed;
+        data [0][2]=error_msg_existed_page_AddCoupon;
+        return data;
+    }
+
 
 }
