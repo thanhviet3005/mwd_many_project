@@ -395,8 +395,9 @@ public class DataTestTAWeb extends DataTestSSO {
         data[2][2] = empty_text;
         // row 4, enter the text consist a few white space letters at the beginning and end
 
-        data[3][0] = text_white_space_at_begining_ending;
+        data[3][0] = text_white_space_at_begining_ending.trim();
         data[3][1] = text_white_space_at_begining_ending.trim();
+        data[3][2] = empty_text;
 
         // row 5, enter the unicode text
 

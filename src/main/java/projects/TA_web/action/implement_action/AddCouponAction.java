@@ -4,6 +4,7 @@ import common.Constant;
 import common.SSOUtilImpA;
 import general_action.IGeneralAction;
 import general_action.implement.GeneralAction;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import projects.TA_web.action.IAddCouponAction;
@@ -80,8 +81,6 @@ public class AddCouponAction implements IAddCouponAction {
         String CouponStatus = coupon2.getStatus();
         String UnitName = coupon2.getUnitName();
         String UnitNameTimes = coupon2.getUnitNameTimes();
-        SSOUtilImpA ssoUtilImpA = new SSOUtilImpA();
-        Actions actions = new Actions(Constant.webDriver);
         addCouponPO.inputValue.clear();
         addCouponPO.inputDuration.clear();
         addCouponPO.inputPoint.clear();
@@ -89,23 +88,42 @@ public class AddCouponAction implements IAddCouponAction {
         addCouponPO.inputPoint.sendKeys(coupon.getPoint());
         addCouponPO.inputValue.sendKeys(coupon.getValue());
 
-
         addCouponPO.divSelectCouponType.click();
-        addCouponPO.divList.stream().filter(e->e.getText().equals(CouponType)).forEach(WebElement::click);
-        ssoUtilImpA.setThreadSleep(3000);
+       // addCouponPO.divList.stream().filter(e->e.getText().equals(CouponType)).forEach(WebElement::click);
+        for (WebElement e : addCouponPO.divList){
+            if(e.getText().equals(CouponType)){
+                e.click();
+                break;
+            }
+        }
+        addCouponPO.labelName.click();
 
         addCouponPO.divSelectStatus.click();
-        addCouponPO.divList.stream().filter(e->e.getText().equals(CouponStatus)).forEach(WebElement::click);
-        ssoUtilImpA.setThreadSleep(3000);
-
+       // addCouponPO.divList.stream().filter(e->e.getText().equals(CouponStatus)).forEach(WebElement::click);
+        for (WebElement e : addCouponPO.divList){
+            if(e.getText().equals(CouponStatus)){
+                e.click();
+                break;
+            }
+        }
+        addCouponPO.labelName.click();
         addCouponPO.divSelectUnit.click();
-        addCouponPO.divList.stream().filter(e->e.getText().equals(UnitName)).forEach(WebElement::click);
-        ssoUtilImpA.setThreadSleep(3000);
-
+        for (WebElement e : addCouponPO.divList){
+            if(e.getText().equals(UnitName)){
+                e.click();
+                break;
+            }
+        }
+        addCouponPO.labelName.click();
         addCouponPO.divSelectUnitDuration.click();
-        addCouponPO.divList.stream().filter(e->e.getText().equals(UnitNameTimes)).forEach(WebElement::click);
-        ssoUtilImpA.setThreadSleep(3000);
-
+       // addCouponPO.divList.stream().filter(e->e.getText().equals(UnitNameTimes)).forEach(WebElement::click);
+        for (WebElement e : addCouponPO.divList){
+            if(e.getText().equals(UnitNameTimes)){
+                e.click();
+                break;
+            }
+        }
+        addCouponPO.labelName.click();
         addCouponPO.btnSave.click();
 
     }
