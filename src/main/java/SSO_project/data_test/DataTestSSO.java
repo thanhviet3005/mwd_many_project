@@ -71,7 +71,7 @@ public class DataTestSSO {
 
     // phone number error message
     public String error_msg_phone_short_or_too_long = "Phone numbers must be from 10 to 15 characters.";
-    public String error_msg_phone_invalid_number = "Please enter a valid phone number.";
+    public String error_msg_phone_invalid_number = "Please enter a valid phone number";
 
     // valid account, however it is an never register account
     public UserAccount valid_account_all_fields_available = new UserAccount("internal testing only", "please ignored",
@@ -653,7 +653,7 @@ public class DataTestSSO {
         data[0][2] = error_msg_special_letters_for_name;
 
         // row 2, the texts consist white space letters at the beginning and ending places
-        data[1][0] = text_white_space_at_begining_ending;
+        data[1][0] = text_white_space_at_begining_ending.trim();
         data[1][1] = text_white_space_at_begining_ending.trim();
         data[1][2] = error_msg_special_letters_for_name;;
         // row 3, the texts consist a few unicode letters
