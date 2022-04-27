@@ -68,8 +68,6 @@ public class EditProfileTc extends BaseTest {
             LogReport.logSubStep("The form label and all input fields");
             editProfileAction.checkAllFieldsDisplayed(generalAction,editProfilePO);
 
-           /* LogReport.logSubStep("Verify all error message and icon 'Warning' are hidden");
-            changePwA.verifyAllErrorMessageHidden(generalA, Constant.webDriver, changePwPO);*/
 
 
         }
@@ -186,8 +184,8 @@ public class EditProfileTc extends BaseTest {
     @Test(priority = 4,enabled = false,
             testName = "Verify error message on phone field",
             description = "Verify error message on phone field",
-            dataProvider = "getDataForFieldPhone",dataProviderClass =DataTestSSO.class )
-    public void TC_4_Verify_Error_Message_On_Phone_Field(UserAccount userAccount, String phone, String errorMsg){
+            dataProvider = "getDataForFieldPhone",dataProviderClass =DataTestTAWeb.class )
+    public void TC_4_Verify_Error_Message_On_Phone_Field( String phone, String errorMsg){
         System.out.println("Test case 04: Verify error message on phone field");
         INavigateAction navigateAction = new NavigateAction();
         ILoginAction loginAction = new LoginAction();

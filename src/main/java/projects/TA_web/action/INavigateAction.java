@@ -3,6 +3,7 @@ package projects.TA_web.action;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import projects.TA_web.entity.CouponType;
+import projects.TA_web.page_object.admin_portal.AdminPortalPO;
 import projects.TA_web.page_object.user_portal.UserPortalPO;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public interface INavigateAction {
 
     void openExpectedEditCouponTypePage(WebDriver webDriver, CouponType couponType);
     void goToManageCouponTypePage(WebDriver webDriver);
+    void goToMangeEditProfilePageOnAdminPage (WebDriver webDriver, AdminPortalPO adminPortalPO);
 
 
 

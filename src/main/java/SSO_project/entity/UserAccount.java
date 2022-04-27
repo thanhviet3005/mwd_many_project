@@ -30,6 +30,11 @@ public class UserAccount {
         this.phone = phone;
     }
 
+    public UserAccount(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public String getFirstName() {
         return firstName;
     }

@@ -94,6 +94,12 @@ public class NavigateAction implements INavigateAction {
         adminPortalPO.spanManageCouponType.click();
     }
 
+    @Override
+    public void goToMangeEditProfilePageOnAdminPage(WebDriver webDriver, AdminPortalPO adminPortalPO) {
+        UserPortalPO userPortalPO = new UserPortalPO(webDriver);
+            userPortalPO.spanGoToAdminPage.click();
+            adminPortalPO.spanManageClient.click();
+    }
 
 
     @Override

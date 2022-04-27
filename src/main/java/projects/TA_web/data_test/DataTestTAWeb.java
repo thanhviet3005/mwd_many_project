@@ -87,6 +87,9 @@ public class DataTestTAWeb extends DataTestSSO {
             "thien.kieu@logigear.com", "abc123!@#", "abc123!@#", "sdfsf",
             "abc111", "Aruba", "Aruba", "11111111111111");
 
+    public UserAccount account_admin_23_Server= new UserAccount("thien.kieu@logigear.com","abc123!@#");
+    public String email_test_edit_profile="tester_logi_10@yopmail.com";
+
     // referral link from account qatesting118@yopmail.com/ pass-02468
     public String referralLink = "https://sso-stage1.logigear.com/register?referralCode=1649040169";
 

@@ -6,6 +6,7 @@ import general_action.implement.GeneralAction;
 import org.openqa.selenium.WebDriver;
 
 import projects.TA_web.action.IEditProfileAction;
+import projects.TA_web.page_object.admin_portal.EditProfileAdminPagePO;
 import projects.TA_web.page_object.user_portal.EditProfilePO;
 import common.SSOUtilImpA;
 
@@ -66,4 +67,13 @@ public class EditProfileAction implements IEditProfileAction {
     public void checkAllErrorMsg(IGeneralAction generalAction, WebDriver webDriver, EditProfilePO editProfilePO) {
 
     }
+
+    @Override
+    public void inputEmailToEdit(String email, EditProfileAdminPagePO editProfileAdminPagePO) throws InterruptedException {
+
+    }
+
+
+
+
 }
